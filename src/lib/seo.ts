@@ -3,6 +3,9 @@ import technique from "@/content/technique.json";
 
 /** Domaine du site : un seul réglage, dans src/content/technique.json. */
 export const SITE_URL = technique.siteUrl;
+/** Site de test : jamais indexé par les moteurs de recherche (compilé avec VITE_STAGING=1). */
+export const IS_STAGING = import.meta.env["VITE_STAGING"] === "1";
+
 export const BUSINESS_ID = `${SITE_URL}/#entreprise`;
 
 type Schema = Record<string, unknown>;
@@ -113,7 +116,7 @@ export function buildSeoHead({
     meta: [
       { title },
       { name: "description", content: description },
-      { name: "robots", content: "index, follow, max-image-preview:large" },
+      { name: "robots", content: IS_STAGING ? "noindex, nofollow" : "index, follow, max-image-preview:large" },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: ogType },

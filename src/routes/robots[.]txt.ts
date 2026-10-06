@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SITE_URL } from "@/lib/seo";
+import { IS_STAGING, SITE_URL } from "@/lib/seo";
 
 const body = `User-agent: Googlebot
 Allow: /
@@ -23,9 +23,10 @@ export const Route = createFileRoute("/robots.txt")({
   server: {
     handlers: {
       GET: () =>
-        new Response(body, {
+        new Response(IS_STAGING ? "User-agent: *\nDisallow: /\n" : body, {
           headers: {
             "content-type": "text/plain; charset=utf-8",
+            ...(IS_STAGING ? { "x-robots-tag": "noindex, nofollow" } : {}),
             "cache-control": "public, max-age=3600",
           },
         }),

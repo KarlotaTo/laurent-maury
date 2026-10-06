@@ -36,7 +36,7 @@
         "title": "Des projets de rénovation réalisés avec soin, de la pièce à la maison entière",
         "intro": "Une chambre à rafraîchir, un séjour à éclaircir, des combles à rendre habitables ou une maison à reprendre du sol au plafond : depuis 1994, Maury Laurent accompagne des projets très différents, avec la même exigence artisanale. Peinture, décoration, murs, sols et façades, chaque chantier raconte une façon de travailler.",
         "image": {
-          "src": "/__l5e/assets-v1/1dce1b1a-5f7b-4cff-9f87-df931ad40d3b/sejour-blanc-lumineux.jpg",
+          "src": "/images/realisations/sejour-blanc-lumineux.jpg",
           "alt": "Séjour rénové aux murs et plafond blancs, baigné de lumière"
         }
       }
@@ -56,7 +56,7 @@
         "figures": [
           {
             "image": {
-              "src": "/__l5e/assets-v1/2816a54f-8183-4e84-9681-00bc6a59dd2a/etage-poutres-parquet.jpg",
+              "src": "/images/realisations/etage-poutres-parquet.jpg",
               "alt": "Étage rénové : poutres peintes en blanc, murs clairs et parquet en bois"
             },
             "caption": "Poutres repeintes et parquet en bois à l'étage",
@@ -80,7 +80,7 @@
         "figures": [
           {
             "image": {
-              "src": "/__l5e/assets-v1/605c9ab1-d2d8-45a2-9005-8c7d970a02be/sejour-cheminee-peinture.jpg",
+              "src": "/images/realisations/sejour-cheminee-peinture.jpg",
               "alt": "Séjour en cours de rénovation, murs et plafond repeints autour d'une cheminée en brique"
             },
             "caption": "Séjour repeint, en fin de chantier",
@@ -104,7 +104,7 @@
         "figures": [
           {
             "image": {
-              "src": "/__l5e/assets-v1/60f6b79b-bb60-4f78-a65f-8be8e2aab541/renovation-bouloc-mur-graphique-fini.jpeg",
+              "src": "/images/realisations/renovation-bouloc-mur-graphique-fini.jpeg",
               "alt": "Mur graphique noir sur toute la hauteur d'un séjour à Bouloc"
             },
             "caption": "Mur graphique noir, réalisation à Bouloc",
@@ -125,11 +125,11 @@
         ],
         "comparison": {
           "before": {
-            "src": "/__l5e/assets-v1/f424ec54-726b-4d25-b224-422b586c14bb/combles-avant.jpg",
+            "src": "/images/realisations/combles-avant.jpg",
             "alt": "Combles en cours de travaux : plaques de plâtre jointées, isolant et parpaings apparents"
           },
           "after": {
-            "src": "/__l5e/assets-v1/7ef08ea6-6f5f-44fd-8cee-bdf6e68aca30/combles-apres.jpg",
+            "src": "/images/realisations/combles-apres.jpg",
             "alt": "Combles terminés : murs et rampants blancs autour de la fenêtre"
           },
           "beforeLabel": "Avant",
@@ -152,7 +152,7 @@
         "figures": [
           {
             "image": {
-              "src": "/__l5e/assets-v1/94b9ffc8-f2e3-42ff-981d-423c7b07800a/renovation-bouloc-chambre-parquet.jpeg",
+              "src": "/images/realisations/renovation-bouloc-chambre-parquet.jpeg",
               "alt": "Chambre aux murs orange avec parquet neuf, à Bouloc"
             },
             "caption": "Parquet posé, Bouloc",
@@ -160,7 +160,7 @@
           },
           {
             "image": {
-              "src": "/__l5e/assets-v1/edae9000-3b3f-46df-ac4d-2a1e8c144b29/mezzanine-charpente.jpg",
+              "src": "/images/realisations/mezzanine-charpente.jpg",
               "alt": "Mezzanine aux murs blancs, charpente apparente en bois et garde-corps"
             },
             "caption": "Charpente et murs blancs",

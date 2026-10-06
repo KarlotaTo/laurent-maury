@@ -43,7 +43,7 @@
         "title": "Entreprise de rénovation et peinture à Bouloc",
         "intro": "Artisan de la rénovation à Bouloc depuis 1994, Laurent Maury rénove maisons et appartements avec son fils : peinture, décoration, sols, placo, isolation et revêtements, avec un seul interlocuteur du premier rendez-vous à la réception.",
         "image": {
-          "src": "/__l5e/assets-v1/6c0bf8ec-c0ab-49f5-aedd-25a0baeb2668/renovation-bouloc-salon-lumineux.jpeg",
+          "src": "/images/realisations/renovation-bouloc-salon-lumineux.jpeg",
           "alt": "Salon lumineux rénové par Laurent Maury dans une maison de Bouloc"
         }
       }
@@ -154,17 +154,17 @@
           "label": "Voir la réalisation"
         },
         "before": {
-          "src": "/__l5e/assets-v1/bd1078ae-72ea-47f6-9b6a-23971524a51f/renovation-bouloc-mur-graphique-chantier.jpeg",
+          "src": "/images/realisations/renovation-bouloc-mur-graphique-chantier.jpeg",
           "alt": "Salon en cours de rénovation à Bouloc, mur graphique en préparation"
         },
         "after": {
-          "src": "/__l5e/assets-v1/60f6b79b-bb60-4f78-a65f-8be8e2aab541/renovation-bouloc-mur-graphique-fini.jpeg",
+          "src": "/images/realisations/renovation-bouloc-mur-graphique-fini.jpeg",
           "alt": "Salon rénové à Bouloc avec mur graphique noir"
         },
         "beforeLabel": "Chantier",
         "afterLabel": "Après",
         "extra": {
-          "src": "/__l5e/assets-v1/94b9ffc8-f2e3-42ff-981d-423c7b07800a/renovation-bouloc-chambre-parquet.jpeg",
+          "src": "/images/realisations/renovation-bouloc-chambre-parquet.jpeg",
           "alt": "Chambre rénovée avec parquet naturel dans une maison de Bouloc"
         }
       }

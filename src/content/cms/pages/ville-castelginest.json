@@ -136,17 +136,17 @@
           "label": "Voir la réalisation"
         },
         "before": {
-          "src": "/__l5e/assets-v1/bd1078ae-72ea-47f6-9b6a-23971524a51f/renovation-bouloc-mur-graphique-chantier.jpeg",
+          "src": "/images/realisations/renovation-bouloc-mur-graphique-chantier.jpeg",
           "alt": "Salon en cours de rénovation à Bouloc, mur graphique en préparation"
         },
         "after": {
-          "src": "/__l5e/assets-v1/60f6b79b-bb60-4f78-a65f-8be8e2aab541/renovation-bouloc-mur-graphique-fini.jpeg",
+          "src": "/images/realisations/renovation-bouloc-mur-graphique-fini.jpeg",
           "alt": "Salon rénové à Bouloc avec mur graphique noir"
         },
         "beforeLabel": "Chantier",
         "afterLabel": "Après",
         "extra": {
-          "src": "/__l5e/assets-v1/94b9ffc8-f2e3-42ff-981d-423c7b07800a/renovation-bouloc-chambre-parquet.jpeg",
+          "src": "/images/realisations/renovation-bouloc-chambre-parquet.jpeg",
           "alt": "Chambre rénovée avec parquet naturel dans une maison de Bouloc"
         }
       }
