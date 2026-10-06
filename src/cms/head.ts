@@ -1,11 +1,22 @@
 import { getAllPages } from "@/cms/pages";
 import type { Page } from "@/cms/types";
 import { site } from "@/data/site";
+import { realisations } from "@/data/realisations";
 import { absoluteUrl, buildSeoHead, localBusinessSchema, BUSINESS_ID, SITE_URL } from "@/lib/seo";
 
 /** Remplace {{site}} par le domaine courant dans les données structurées enregistrées. */
 function withSite<T>(value: T): T {
-  return JSON.parse(JSON.stringify(value).replaceAll("{{site}}", SITE_URL)) as T;
+  const realisationList = realisations.map((r, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: r.title,
+    url: absoluteUrl(`/realisations/${r.slug}`),
+  }));
+  return JSON.parse(
+    JSON.stringify(value)
+      .replaceAll('"{{realisations}}"', JSON.stringify(realisationList))
+      .replaceAll("{{site}}", SITE_URL),
+  ) as T;
 }
 
 /** Fil d'Ariane de Google : Accueil, puis chaque page parente, puis la page. */

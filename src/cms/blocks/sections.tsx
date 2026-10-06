@@ -493,16 +493,14 @@ export const realisationsList = defineBlock({
             params={{ slug: r.slug }}
             className="group bg-background p-8 transition-colors hover:bg-sand lg:p-10"
           >
-            {r.images[0] ? (
-              <div className="overflow-hidden">
-                <img
-                  src={r.images[0].src}
-                  alt={r.images[0].alt}
-                  loading="lazy"
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                />
-              </div>
-            ) : null}
+            <div className="overflow-hidden">
+              <img
+                src={r.image.src}
+                alt={r.image.alt}
+                loading="lazy"
+                className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+            </div>
             <p className="mt-6 text-xs uppercase tracking-[0.18em] text-accent">{r.type}</p>
             <h3 className="mt-3 text-2xl leading-snug">{r.title}</h3>
             <p className="mt-2 text-sm text-muted-foreground">{r.city}</p>

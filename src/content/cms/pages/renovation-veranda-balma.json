@@ -1,0 +1,176 @@
+{
+  "id": "renovation-veranda-balma",
+  "path": "/realisations/renovation-veranda-balma",
+  "parentId": "realisations",
+  "template": "realisation",
+  "status": "published",
+  "order": 201,
+  "label": "Rénovation intérieure d’une véranda à Balma",
+  "inMenu": false,
+  "meta": {
+    "cardTitle": "Rénovation intérieure d’une véranda",
+    "city": "Balma",
+    "type": "Papier peint",
+    "summary": "Retrait de l’ancien papier peint, préparation des surfaces et pose d’un papier peint végétal dans une véranda à Balma.",
+    "image": {
+      "src": "/__l5e/assets-v1/da94da8f-4b87-46df-a20f-cc4796b121c2/veranda-balma-papier-peint-vegetal.jpeg",
+      "alt": "Véranda rénovée avec papier peint végétal à Balma"
+    }
+  },
+  "seo": {
+    "title": "Rénovation véranda à Balma | Laurent Maury",
+    "description": "Découvrez cette rénovation de véranda à Balma : retrait d’un ancien papier peint et pose d’un nouveau décor végétal par Laurent Maury.",
+    "ogType": "article",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": "Rénovation intérieure d’une véranda à Balma",
+        "description": "Découvrez cette rénovation de véranda à Balma : retrait d’un ancien papier peint et pose d’un nouveau décor végétal par Laurent Maury.",
+        "url": "{{site}}/realisations/renovation-veranda-balma",
+        "genre": "Rénovation intérieure",
+        "creator": {
+          "@id": "{{site}}/#entreprise"
+        },
+        "about": [
+          "Retrait de papier peint",
+          "Préparation des surfaces",
+          "Pose de papier peint"
+        ],
+        "contentLocation": {
+          "@type": "Place",
+          "name": "Balma",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Balma",
+            "addressCountry": "FR"
+          }
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "renovation-veranda-balma-1",
+      "type": "projectHero",
+      "data": {
+        "eyebrow": "Réalisation · Balma",
+        "title": "Rénovation intérieure d’une véranda à Balma",
+        "intro": "À Balma, Laurent Maury est intervenu pour donner un nouveau caractère à cette véranda. L’ancien papier peint a été retiré afin de laisser place à un nouveau décor végétal, transformant l’atmosphère de cette pièce lumineuse.",
+        "image": {
+          "src": "/__l5e/assets-v1/da94da8f-4b87-46df-a20f-cc4796b121c2/veranda-balma-papier-peint-vegetal.jpeg",
+          "alt": "Véranda rénovée avec papier peint végétal à Balma",
+          "width": 864,
+          "height": 1920
+        },
+        "focus": "upper"
+      }
+    },
+    {
+      "id": "renovation-veranda-balma-2",
+      "type": "projectFacts",
+      "data": {
+        "items": [
+          {
+            "label": "Lieu",
+            "value": "Balma"
+          },
+          {
+            "label": "Type de projet",
+            "value": "Rénovation intérieure d’une véranda"
+          },
+          {
+            "label": "Prestations",
+            "value": "Retrait de papier peint · Préparation des surfaces · Pose de papier peint"
+          }
+        ]
+      }
+    },
+    {
+      "id": "renovation-veranda-balma-3",
+      "type": "projectStory",
+      "background": "light",
+      "data": {
+        "eyebrow": "Le projet",
+        "title": "Donner une nouvelle atmosphère à la véranda",
+        "paragraphs": [
+          "Cette véranda disposait déjà d’un cadre particulièrement lumineux, mais son ancien papier peint avait perdu de sa fraîcheur.",
+          "L’objectif était de renouveler l’ambiance de la pièce sans en modifier l’esprit : retirer l’ancien revêtement et créer une nouvelle atmosphère grâce à un papier peint végétal."
+        ]
+      }
+    },
+    {
+      "id": "renovation-veranda-balma-4",
+      "type": "projectStory",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Avant / Après",
+        "title": "De l’ancien papier peint à un décor végétal",
+        "paragraphs": [
+          "Le premier travail a consisté à retirer l’ancien papier peint afin de repartir sur une surface propre et prête à recevoir le nouveau revêtement.",
+          "Un papier peint végétal a ensuite été posé pour renouveler complètement l’ambiance de la véranda.",
+          "Le motif apporte une présence décorative forte tout en restant cohérent avec la vocation de cette pièce ouverte sur l’extérieur."
+        ],
+        "comparison": {
+          "before": {
+            "src": "/__l5e/assets-v1/863bbc51-1eb8-40b1-9061-880df50ec7ae/veranda-balma-avant.jpeg",
+            "alt": "Véranda avant la pose du papier peint, ancien revêtement retiré"
+          },
+          "after": {
+            "src": "/__l5e/assets-v1/3352ad5b-3d3c-4a9c-ad90-b3a2d529bbb8/veranda-balma-apres.jpeg",
+            "alt": "Pose d’un papier peint végétal dans une véranda à Balma"
+          }
+        }
+      }
+    },
+    {
+      "id": "renovation-veranda-balma-5",
+      "type": "projectStory",
+      "background": "light",
+      "data": {
+        "eyebrow": "Le résultat",
+        "title": "Un nouveau décor pour une pièce lumineuse",
+        "paragraphs": [
+          "Le changement de revêtement suffit ici à transformer profondément la perception de la véranda.",
+          "Le nouveau papier peint végétal apporte davantage de personnalité à la pièce et crée un lien naturel avec son environnement extérieur."
+        ],
+        "gallery": [
+          {
+            "src": "/__l5e/assets-v1/888b44e4-4801-44b1-8e9d-881fa6bedd4f/veranda-balma-surfaces-preparees.jpeg",
+            "alt": "Murs de la véranda préparés après le retrait de l’ancien papier peint",
+            "width": 1920,
+            "height": 866
+          },
+          {
+            "src": "/__l5e/assets-v1/da94da8f-4b87-46df-a20f-cc4796b121c2/veranda-balma-papier-peint-vegetal.jpeg",
+            "alt": "Rénovation intérieure d’une véranda à Balma",
+            "width": 864,
+            "height": 1920
+          }
+        ]
+      }
+    },
+    {
+      "id": "renovation-veranda-balma-6",
+      "type": "projectCta",
+      "data": {
+        "eyebrow": "À Balma et alentour",
+        "title": "Votre projet de rénovation intérieure à Balma",
+        "paragraphs": [
+          "Cette réalisation illustre une intervention ciblée qui peut suffire à renouveler complètement une pièce : la préparation des surfaces, le retrait d’un ancien revêtement et la pose d’un nouveau papier peint permettent de donner une nouvelle identité à un intérieur.",
+          "Laurent Maury accompagne les particuliers à Balma et dans les communes voisines pour leurs projets de peinture intérieure, de rénovation et de décoration murale."
+        ],
+        "links": [
+          {
+            "href": "/murs-revetements",
+            "label": "Murs & revêtements"
+          },
+          {
+            "href": "/renovation-interieure",
+            "label": "Rénovation intérieure"
+          }
+        ]
+      }
+    }
+  ]
+}

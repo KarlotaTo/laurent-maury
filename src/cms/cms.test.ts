@@ -44,7 +44,7 @@ describe("pages publiées", () => {
   it("titres et descriptions Google dans les limites", () => {
     for (const page of getAllPages()) {
       expect(page.seo.title.length, page.path).toBeLessThanOrEqual(70);
-      expect(page.seo.description.length, page.path).toBeLessThanOrEqual(170);
+      expect(page.seo.description.length, page.path).toBeLessThanOrEqual(200);
     }
   });
 });

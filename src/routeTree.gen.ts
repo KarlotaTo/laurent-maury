@@ -27,8 +27,6 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SolsParquetsRouteImport } from './routes/sols-parquets'
 import { Route as RealisationsIndexRouteImport } from './routes/realisations/index'
 import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
-import { Route as RealisationsRenovationPeintureInterieureBoulocRouteImport } from './routes/realisations.renovation-peinture-interieure-bouloc'
-import { Route as RealisationsRenovationVerandaBalmaRouteImport } from './routes/realisations.renovation-veranda-balma'
 import { Route as ZonesInterventionIndexRouteImport } from './routes/zones-intervention.index'
 import { Route as ZonesInterventionCommuneRouteImport } from './routes/zones-intervention.$commune'
 
@@ -122,18 +120,6 @@ const RealisationsSlugRoute = RealisationsSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => RealisationsRoute,
 } as any)
-const RealisationsRenovationPeintureInterieureBoulocRoute =
-  RealisationsRenovationPeintureInterieureBoulocRouteImport.update({
-    id: '/renovation-peinture-interieure-bouloc',
-    path: '/renovation-peinture-interieure-bouloc',
-    getParentRoute: () => RealisationsRoute,
-  } as any)
-const RealisationsRenovationVerandaBalmaRoute =
-  RealisationsRenovationVerandaBalmaRouteImport.update({
-    id: '/renovation-veranda-balma',
-    path: '/renovation-veranda-balma',
-    getParentRoute: () => RealisationsRoute,
-  } as any)
 const ZonesInterventionIndexRoute = ZonesInterventionIndexRouteImport.update({
   id: '/zones-intervention/',
   path: '/zones-intervention/',
@@ -164,8 +150,6 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sols-parquets': typeof SolsParquetsRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
-  '/realisations/renovation-peinture-interieure-bouloc': typeof RealisationsRenovationPeintureInterieureBoulocRoute
-  '/realisations/renovation-veranda-balma': typeof RealisationsRenovationVerandaBalmaRoute
   '/zones-intervention/$commune': typeof ZonesInterventionCommuneRoute
   '/realisations/': typeof RealisationsIndexRoute
   '/zones-intervention/': typeof ZonesInterventionIndexRoute
@@ -187,8 +171,6 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sols-parquets': typeof SolsParquetsRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
-  '/realisations/renovation-peinture-interieure-bouloc': typeof RealisationsRenovationPeintureInterieureBoulocRoute
-  '/realisations/renovation-veranda-balma': typeof RealisationsRenovationVerandaBalmaRoute
   '/zones-intervention/$commune': typeof ZonesInterventionCommuneRoute
   '/realisations': typeof RealisationsIndexRoute
   '/zones-intervention': typeof ZonesInterventionIndexRoute
@@ -212,8 +194,6 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sols-parquets': typeof SolsParquetsRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
-  '/realisations/renovation-peinture-interieure-bouloc': typeof RealisationsRenovationPeintureInterieureBoulocRoute
-  '/realisations/renovation-veranda-balma': typeof RealisationsRenovationVerandaBalmaRoute
   '/zones-intervention/$commune': typeof ZonesInterventionCommuneRoute
   '/realisations/': typeof RealisationsIndexRoute
   '/zones-intervention/': typeof ZonesInterventionIndexRoute
@@ -238,8 +218,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sols-parquets'
     | '/realisations/$slug'
-    | '/realisations/renovation-peinture-interieure-bouloc'
-    | '/realisations/renovation-veranda-balma'
     | '/zones-intervention/$commune'
     | '/realisations/'
     | '/zones-intervention/'
@@ -261,8 +239,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sols-parquets'
     | '/realisations/$slug'
-    | '/realisations/renovation-peinture-interieure-bouloc'
-    | '/realisations/renovation-veranda-balma'
     | '/zones-intervention/$commune'
     | '/realisations'
     | '/zones-intervention'
@@ -285,8 +261,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sols-parquets'
     | '/realisations/$slug'
-    | '/realisations/renovation-peinture-interieure-bouloc'
-    | '/realisations/renovation-veranda-balma'
     | '/zones-intervention/$commune'
     | '/realisations/'
     | '/zones-intervention/'
@@ -441,20 +415,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RealisationsSlugRouteImport
       parentRoute: typeof RealisationsRoute
     }
-    '/realisations/renovation-peinture-interieure-bouloc': {
-      id: '/realisations/renovation-peinture-interieure-bouloc'
-      path: '/renovation-peinture-interieure-bouloc'
-      fullPath: '/realisations/renovation-peinture-interieure-bouloc'
-      preLoaderRoute: typeof RealisationsRenovationPeintureInterieureBoulocRouteImport
-      parentRoute: typeof RealisationsRoute
-    }
-    '/realisations/renovation-veranda-balma': {
-      id: '/realisations/renovation-veranda-balma'
-      path: '/renovation-veranda-balma'
-      fullPath: '/realisations/renovation-veranda-balma'
-      preLoaderRoute: typeof RealisationsRenovationVerandaBalmaRouteImport
-      parentRoute: typeof RealisationsRoute
-    }
     '/zones-intervention/': {
       id: '/zones-intervention/'
       path: '/zones-intervention'
@@ -474,17 +434,11 @@ declare module '@tanstack/react-router' {
 
 interface RealisationsRouteChildren {
   RealisationsSlugRoute: typeof RealisationsSlugRoute
-  RealisationsRenovationPeintureInterieureBoulocRoute: typeof RealisationsRenovationPeintureInterieureBoulocRoute
-  RealisationsRenovationVerandaBalmaRoute: typeof RealisationsRenovationVerandaBalmaRoute
   RealisationsIndexRoute: typeof RealisationsIndexRoute
 }
 
 const RealisationsRouteChildren: RealisationsRouteChildren = {
   RealisationsSlugRoute: RealisationsSlugRoute,
-  RealisationsRenovationPeintureInterieureBoulocRoute:
-    RealisationsRenovationPeintureInterieureBoulocRoute,
-  RealisationsRenovationVerandaBalmaRoute:
-    RealisationsRenovationVerandaBalmaRoute,
   RealisationsIndexRoute: RealisationsIndexRoute,
 }
 

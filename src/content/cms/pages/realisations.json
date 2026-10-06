@@ -1,0 +1,216 @@
+{
+  "id": "realisations",
+  "path": "/realisations",
+  "parentId": null,
+  "template": "realisationsHub",
+  "status": "published",
+  "order": 9,
+  "label": "Réalisations",
+  "inMenu": true,
+  "seo": {
+    "title": "Réalisations de rénovation et peinture | Maury Laurent, Bouloc",
+    "description": "Rénovation intérieure, peinture, décoration, murs, sols et parquets : découvrez les réalisations de Maury Laurent, artisan de la rénovation à Bouloc et au nord de Toulouse.",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Réalisations",
+        "description": "Rénovation intérieure, peinture, décoration, murs, sols et parquets : découvrez les réalisations de Maury Laurent, artisan de la rénovation à Bouloc et au nord de Toulouse.",
+        "url": "{{site}}/realisations",
+        "about": {
+          "@id": "{{site}}/#entreprise"
+        },
+        "mainEntity": {
+          "@type": "ItemList",
+          "itemListElement": "{{realisations}}"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "realisations-1",
+      "type": "heroSplit",
+      "data": {
+        "eyebrow": "Réalisations",
+        "title": "Des projets de rénovation réalisés avec soin, de la pièce à la maison entière",
+        "intro": "Une chambre à rafraîchir, un séjour à éclaircir, des combles à rendre habitables ou une maison à reprendre du sol au plafond : depuis 1994, Maury Laurent accompagne des projets très différents, avec la même exigence artisanale. Peinture, décoration, murs, sols et façades, chaque chantier raconte une façon de travailler.",
+        "image": {
+          "src": "/__l5e/assets-v1/1dce1b1a-5f7b-4cff-9f87-df931ad40d3b/sejour-blanc-lumineux.jpg",
+          "alt": "Séjour rénové aux murs et plafond blancs, baigné de lumière"
+        }
+      }
+    },
+    {
+      "id": "realisations-2",
+      "type": "textMedia",
+      "background": "light",
+      "data": {
+        "eyebrow": "Savoir-faire",
+        "title": "Des réalisations qui racontent un savoir-faire",
+        "paragraphs": [
+          "Aucun projet ne commence de la même façon. Certains clients veulent moderniser un intérieur resté figé, d'autres retrouver de la luminosité ou changer complètement l'atmosphère d'une pièce. Il y a des murs fatigués à remettre en état, des sols à rénover, une maison entière à transformer, parfois une façade à reprendre.",
+          "Entreprise de rénovation et de second œuvre installée à Bouloc, Maury Laurent intervient en peintre en bâtiment autant qu'en artisan rénovation. Pour les travaux qui relèvent de son savoir-faire, vous gardez un seul interlocuteur, du premier rendez-vous à la dernière finition. C'est ce qui permet de mener une rénovation intérieure cohérente, presque clé en main, sans multiplier les intervenants."
+        ],
+        "layout": "right",
+        "figures": [
+          {
+            "image": {
+              "src": "/__l5e/assets-v1/2816a54f-8183-4e84-9681-00bc6a59dd2a/etage-poutres-parquet.jpg",
+              "alt": "Étage rénové : poutres peintes en blanc, murs clairs et parquet en bois"
+            },
+            "caption": "Poutres repeintes et parquet en bois à l'étage",
+            "format": "portrait"
+          }
+        ]
+      }
+    },
+    {
+      "id": "realisations-3",
+      "type": "textMedia",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Rénovation intérieure",
+        "title": "Rénover un intérieur, pièce par pièce ou de A à Z",
+        "paragraphs": [
+          "Certaines interventions sont ciblées : repeindre un séjour, reprendre des plafonds, changer les couleurs d'une chambre. D'autres s'inscrivent dans une rénovation intérieure plus globale, où la préparation des murs, le placo, l'isolation, les revêtements muraux et les sols s'enchaînent dans un ordre précis.",
+          "Dans les deux cas, la méthode est la même : protéger, préparer, puis finir proprement. Une rénovation pièce par pièce permet de vivre dans la maison pendant les travaux ; une rénovation de maison complète demande une coordination plus fine. Découvrez notre approche de la [rénovation intérieure](/renovation-interieure)."
+        ],
+        "layout": "left",
+        "figures": [
+          {
+            "image": {
+              "src": "/__l5e/assets-v1/605c9ab1-d2d8-45a2-9005-8c7d970a02be/sejour-cheminee-peinture.jpg",
+              "alt": "Séjour en cours de rénovation, murs et plafond repeints autour d'une cheminée en brique"
+            },
+            "caption": "Séjour repeint, en fin de chantier",
+            "format": "large"
+          }
+        ]
+      }
+    },
+    {
+      "id": "realisations-4",
+      "type": "textMedia",
+      "background": "light",
+      "data": {
+        "eyebrow": "Peinture & décoration",
+        "title": "De la peinture classique aux finitions décoratives",
+        "paragraphs": [
+          "Une peinture intérieure réussie se joue avant le premier coup de rouleau. Lessivage, rebouchage, ponçage, sous-couche : la préparation des supports conditionne la tenue et l'aspect final, sur les murs comme sur les boiseries.",
+          "Vient ensuite la mise en couleur. Un mur graphique sombre peut structurer une pièce haute de plafond, une peinture à la chaux ou un enduit décoratif apporte de la matière, des effets et des textures qu'une peinture lisse ne donne pas. L'artisan peintre conseille, teste, puis applique. Tout le détail est sur la page [Peinture & décoration](/peinture-decoration)."
+        ],
+        "layout": "below",
+        "figures": [
+          {
+            "image": {
+              "src": "/__l5e/assets-v1/60f6b79b-bb60-4f78-a65f-8be8e2aab541/renovation-bouloc-mur-graphique-fini.jpeg",
+              "alt": "Mur graphique noir sur toute la hauteur d'un séjour à Bouloc"
+            },
+            "caption": "Mur graphique noir, réalisation à Bouloc",
+            "format": "paysage"
+          }
+        ]
+      }
+    },
+    {
+      "id": "realisations-5",
+      "type": "beforeAfterWide",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Avant / après",
+        "title": "Une transformation visible au premier regard",
+        "paragraphs": [
+          "Ces combles ont été photographiés à deux étapes du chantier. Faites glisser le curseur pour passer de l'un à l'autre."
+        ],
+        "comparison": {
+          "before": {
+            "src": "/__l5e/assets-v1/f424ec54-726b-4d25-b224-422b586c14bb/combles-avant.jpg",
+            "alt": "Combles en cours de travaux : plaques de plâtre jointées, isolant et parpaings apparents"
+          },
+          "after": {
+            "src": "/__l5e/assets-v1/7ef08ea6-6f5f-44fd-8cee-bdf6e68aca30/combles-apres.jpg",
+            "alt": "Combles terminés : murs et rampants blancs autour de la fenêtre"
+          },
+          "beforeLabel": "Avant",
+          "afterLabel": "Après"
+        }
+      }
+    },
+    {
+      "id": "realisations-6",
+      "type": "textMedia",
+      "background": "light",
+      "data": {
+        "eyebrow": "Murs & sols",
+        "title": "Les détails qui transforment un intérieur",
+        "paragraphs": [
+          "Un parquet bien posé ou bien rénové change la perception d'une pièce entière. Pose de parquet massif, motifs comme le point de Hongrie, rénovation de parquet ancien : le sol mérite la même attention que les murs. Voir la page [Sols & parquets](/sols-parquets).",
+          "Côté murs, le détapissage, la pose de papier peint, les revêtements muraux et les enduits demandent eux aussi des supports sains. C'est ce travail qui a été mené dans une véranda à Balma, avec un papier peint végétal. Plus de détails sur [Murs & revêtements](/murs-revetements)."
+        ],
+        "layout": "right",
+        "figures": [
+          {
+            "image": {
+              "src": "/__l5e/assets-v1/94b9ffc8-f2e3-42ff-981d-423c7b07800a/renovation-bouloc-chambre-parquet.jpeg",
+              "alt": "Chambre aux murs orange avec parquet neuf, à Bouloc"
+            },
+            "caption": "Parquet posé, Bouloc",
+            "format": "vertical"
+          },
+          {
+            "image": {
+              "src": "/__l5e/assets-v1/edae9000-3b3f-46df-ac4d-2a1e8c144b29/mezzanine-charpente.jpg",
+              "alt": "Mezzanine aux murs blancs, charpente apparente en bois et garde-corps"
+            },
+            "caption": "Charpente et murs blancs",
+            "format": "vertical"
+          }
+        ]
+      }
+    },
+    {
+      "id": "realisations-7",
+      "type": "textMedia",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Extérieur",
+        "title": "Des projets intérieurs jusqu'aux façades",
+        "paragraphs": [
+          "Le savoir-faire ne s'arrête pas à la porte d'entrée. Peinture de façade, ravalement, traitement des fissures, boiseries extérieures et clôtures : les travaux extérieurs protègent la maison autant qu'ils l'embellissent. Découvrez la page [Façades & extérieur](/facades-exterieur), ainsi que [Entretien & bâti](/entretien-bati) pour les interventions plus ponctuelles."
+        ],
+        "layout": "below",
+        "figures": []
+      }
+    },
+    {
+      "id": "realisations-8",
+      "type": "zonesLinks",
+      "background": "light",
+      "data": {
+        "eyebrow": "Secteur",
+        "title": "Des réalisations à Bouloc et dans le nord de Toulouse",
+        "paragraphs": [
+          "Bouloc est le siège de l'entreprise et son territoire historique. La plupart des projets de rénovation, de peinture et de second œuvre se déroulent dans un rayon proche : Fronton au nord, Castelginest, Aucamville et L'Union vers Toulouse, Grenade et Blagnac à l'ouest."
+        ]
+      }
+    },
+    {
+      "id": "realisations-9",
+      "type": "realisationsDetailed",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Chantiers",
+        "title": "Explorer les réalisations"
+      }
+    },
+    {
+      "id": "realisations-10",
+      "type": "contactCta",
+      "data": {
+        "title": "Vous avez un projet similaire ?",
+        "text": "Une pièce à rénover, une maison entière, des travaux de peinture, un nouveau revêtement, un parquet, une façade ou un projet plus global : présentez-nous votre projet, nous venons voir et vous remettons un devis détaillé."
+      }
+    }
+  ]
+}

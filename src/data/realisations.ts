@@ -1,42 +1,35 @@
 /**
- * Réalisations.
- *
- * Les photos ci-dessous sont des visuels d'illustration en attendant
- * les photos des chantiers réels de l'entreprise.
+ * Réalisations : lues depuis les pages du modèle « réalisation » du CMS.
+ * Une réalisation publiée apparaît automatiquement dans les listes du site et le plan du site.
  */
-
-
-export type RealisationBeforeAfter = {
-  beforeImage: string;
-  afterImage: string;
-  beforeLabel?: string;
-  afterLabel?: string;
-  beforeAlt?: string;
-  afterAlt?: string;
-};
+import { getAllPages } from "@/cms/pages";
 
 export type Realisation = {
   order: number;
   slug: string;
+  /** Titre court affiché sur les cartes */
   title: string;
   city: string;
   type: string;
-  year?: string;
-  seoTitle: string;
   summary: string;
-  description: string;
-  prestations: string[];
-  images: { src: string; alt: string }[];
-  /** Renseigner un ou plusieurs duos uniquement lorsque les deux photos du même cadrage existent. */
-  beforeAfter?: RealisationBeforeAfter[];
+  image: { src: string; alt: string };
 };
 
-/** Contenu éditable dans le CMS : un fichier JSON par réalisation dans src/content/realisations. */
-const files = import.meta.glob<Realisation>("../content/realisations/*.json", { eager: true, import: "default" });
+type RealisationMeta = Partial<Omit<Realisation, "order" | "slug" | "title">> & { cardTitle?: string };
 
-/** L'adresse de la page (slug) est le nom du fichier : elle ne change pas si le titre est modifié. */
-export const realisations: Realisation[] = Object.entries(files)
-  .map(([path, entry]) => ({ ...entry, slug: path.split("/").pop()!.replace(/\.json$/, "") }))
+export const realisations: Realisation[] = getAllPages()
+  .filter((page) => page.template === "realisation" && page.status === "published")
+  .map((page) => {
+    const meta = (page.meta ?? {}) as RealisationMeta;
+    return {
+      order: page.order,
+      slug: page.path.split("/").pop() ?? "",
+      title: meta.cardTitle ?? page.label,
+      city: meta.city ?? "",
+      type: meta.type ?? "",
+      summary: meta.summary ?? page.seo.description,
+      image: meta.image ?? { src: "", alt: "" },
+    };
+  })
+  .filter((r) => r.image.src !== "")
   .sort((a, b) => a.order - b.order);
-
-export const getRealisation = (slug: string) => realisations.find((r) => r.slug === slug);

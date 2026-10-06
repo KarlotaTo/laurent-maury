@@ -1,0 +1,199 @@
+{
+  "id": "renovation-peinture-interieure-bouloc",
+  "path": "/realisations/renovation-peinture-interieure-bouloc",
+  "parentId": "realisations",
+  "template": "realisation",
+  "status": "published",
+  "order": 202,
+  "label": "Rénovation et peinture intérieure d’une maison à Bouloc",
+  "inMenu": false,
+  "meta": {
+    "cardTitle": "Rénovation et peinture intérieure d’une maison",
+    "city": "Bouloc",
+    "type": "Rénovation intérieure",
+    "summary": "Rénovation intérieure à Bouloc : mise en peinture du salon, nouvelles couleurs et pose d’un parquet naturel dans la chambre.",
+    "image": {
+      "src": "/__l5e/assets-v1/96d66a9f-8a9b-424a-8558-295c1c578390/renovation-bouloc-mur-graphique-detail.jpeg",
+      "alt": "Mur graphique noir dans un salon rénové à Bouloc"
+    }
+  },
+  "seo": {
+    "title": "Rénovation et peinture intérieure à Bouloc | Maury Laurent",
+    "description": "Découvrez la rénovation et la peinture intérieure d’une maison à Bouloc : salon lumineux, mur graphique, entrée rose poudré et chambre rénovée avec parquet naturel.",
+    "ogType": "article",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": "Rénovation et peinture intérieure d’une maison à Bouloc",
+        "description": "Découvrez la rénovation et la peinture intérieure d’une maison à Bouloc : salon lumineux, mur graphique, entrée rose poudré et chambre rénovée avec parquet naturel.",
+        "url": "{{site}}/realisations/renovation-peinture-interieure-bouloc",
+        "genre": "Rénovation intérieure",
+        "creator": {
+          "@id": "{{site}}/#entreprise"
+        },
+        "about": [
+          "Peinture intérieure",
+          "Mise en couleur",
+          "Pose de parquet"
+        ],
+        "contentLocation": {
+          "@type": "Place",
+          "name": "Bouloc",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bouloc",
+            "addressCountry": "FR"
+          }
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "renovation-peinture-interieure-bouloc-1",
+      "type": "projectHero",
+      "data": {
+        "eyebrow": "Réalisation · Bouloc",
+        "title": "Rénovation et peinture intérieure d’une maison à Bouloc",
+        "intro": "Isabelle souhaitait redonner de la lumière et de la fraîcheur à son intérieur. Les anciennes peintures étaient devenues ternes et plusieurs pièces ont été repensées avec de nouvelles couleurs, des finitions plus contemporaines et un travail de rénovation adapté à chaque espace.",
+        "image": {
+          "src": "/__l5e/assets-v1/6c0bf8ec-c0ab-49f5-aedd-25a0baeb2668/renovation-bouloc-salon-lumineux.jpeg",
+          "alt": "Salon rénové et repeint en blanc à Bouloc",
+          "width": 1600,
+          "height": 1200
+        },
+        "focus": "center"
+      }
+    },
+    {
+      "id": "renovation-peinture-interieure-bouloc-2",
+      "type": "projectFacts",
+      "data": {
+        "items": [
+          {
+            "label": "Lieu",
+            "value": "Bouloc"
+          },
+          {
+            "label": "Type de projet",
+            "value": "Rénovation intérieure"
+          },
+          {
+            "label": "Prestations",
+            "value": "Peinture intérieure · Mise en couleur · Pose de parquet"
+          }
+        ]
+      }
+    },
+    {
+      "id": "renovation-peinture-interieure-bouloc-3",
+      "type": "projectStory",
+      "background": "light",
+      "data": {
+        "eyebrow": "Le salon",
+        "title": "Un salon plus lumineux avec une touche graphique",
+        "paragraphs": [
+          "Dans le salon, l’objectif était avant tout de gagner en luminosité. Les murs ont été repeints essentiellement en blanc, avec une touche graphique originale sur le mur situé derrière la télévision.",
+          "Un rectangle noir se terminant en pointe vient créer un contraste avec le blanc et rappeler certains meubles plus sombres présents dans la pièce.",
+          "La hauteur importante du salon constituait le principal défi technique. Après la mise en protection du sol et des meubles, un échafaudage a été installé afin de réaliser les travaux en hauteur."
+        ],
+        "comparison": {
+          "before": {
+            "src": "/__l5e/assets-v1/bd1078ae-72ea-47f6-9b6a-23971524a51f/renovation-bouloc-mur-graphique-chantier.jpeg",
+            "alt": "Mur graphique noir en cours de réalisation, mobilier protégé dans le salon"
+          },
+          "after": {
+            "src": "/__l5e/assets-v1/60f6b79b-bb60-4f78-a65f-8be8e2aab541/renovation-bouloc-mur-graphique-fini.jpeg",
+            "alt": "Mur graphique noir dans un salon repeint en blanc à Bouloc"
+          },
+          "beforeLabel": "Chantier",
+          "afterLabel": "Après"
+        }
+      }
+    },
+    {
+      "id": "renovation-peinture-interieure-bouloc-4",
+      "type": "projectStory",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Entrée & couloir",
+        "title": "Une entrée et un couloir plus doux et lumineux",
+        "paragraphs": [
+          "L’entrée et le couloir, auparavant dans des tonalités grises et vieillissantes, ont été modernisés avec une nouvelle mise en couleur.",
+          "Le plafond a été repeint en blanc tandis que les murs ont reçu une teinte pastel rose poudré, apportant davantage de douceur et de luminosité à cet espace."
+        ]
+      }
+    },
+    {
+      "id": "renovation-peinture-interieure-bouloc-5",
+      "type": "projectStory",
+      "background": "light",
+      "data": {
+        "eyebrow": "La chambre d’Isabelle",
+        "title": "Une chambre lumineuse avec une touche de vert matcha",
+        "paragraphs": [
+          "La chambre d’Isabelle était auparavant peinte en orange. Pour maximiser la luminosité, trois murs ont été repeints en blanc pur.",
+          "Le mur situé derrière la tête de lit a quant à lui été réalisé dans une teinte vert matcha, apportant une touche naturelle et chaleureuse à la pièce.",
+          "Le sol a également été rénové avec la pose d’un parquet naturel flottant après préparation et isolation."
+        ],
+        "comparison": {
+          "before": {
+            "src": "/__l5e/assets-v1/f6dbb821-62fa-4fb3-bbfd-fc098757643a/renovation-bouloc-chambre-sol-prepare.jpeg",
+            "alt": "Préparation et isolation du sol avant la pose du parquet, mur vert matcha"
+          },
+          "after": {
+            "src": "/__l5e/assets-v1/94b9ffc8-f2e3-42ff-981d-423c7b07800a/renovation-bouloc-chambre-parquet.jpeg",
+            "alt": "Chambre rénovée avec parquet naturel flottant à Bouloc"
+          },
+          "beforeLabel": "Préparation",
+          "afterLabel": "Parquet"
+        }
+      }
+    },
+    {
+      "id": "renovation-peinture-interieure-bouloc-6",
+      "type": "projectGallery",
+      "background": "light",
+      "data": {
+        "eyebrow": "Galerie",
+        "title": "La transformation en images",
+        "images": [
+          {
+            "src": "/__l5e/assets-v1/457a0fb8-6fff-4123-abed-1df3b5be3812/renovation-bouloc-salon-echafaudage.jpeg",
+            "alt": "Échafaudage installé pour les travaux de peinture en hauteur dans le salon",
+            "width": 1200,
+            "height": 1600
+          },
+          {
+            "src": "/__l5e/assets-v1/96d66a9f-8a9b-424a-8558-295c1c578390/renovation-bouloc-mur-graphique-detail.jpeg",
+            "alt": "Détail du mur graphique noir et des murs blancs du salon",
+            "width": 1200,
+            "height": 1600
+          }
+        ]
+      }
+    },
+    {
+      "id": "renovation-peinture-interieure-bouloc-7",
+      "type": "projectCta",
+      "data": {
+        "eyebrow": "À Bouloc et alentour",
+        "title": "Une rénovation pensée pièce par pièce",
+        "paragraphs": [
+          "Cette rénovation illustre l'importance d'adapter les couleurs, les matériaux et les techniques aux caractéristiques de chaque pièce. Laurent Maury accompagne les particuliers dans leurs projets de peinture intérieure et de rénovation à Bouloc et dans les communes alentours."
+        ],
+        "links": [
+          {
+            "href": "/peinture-decoration",
+            "label": "Peinture & décoration"
+          },
+          {
+            "href": "/renovation-interieure",
+            "label": "Rénovation intérieure"
+          }
+        ]
+      }
+    }
+  ]
+}

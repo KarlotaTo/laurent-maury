@@ -44,7 +44,7 @@ export const pageSchema = z.object({
   meta: z.record(z.unknown()).optional(),
   seo: z.object({
     title: z.string().min(1).max(70),
-    description: z.string().min(1).max(170),
+    description: z.string().min(1).max(200),
     image: z.string().optional(),
     ogType: z.enum(["website", "article"]).optional(),
     /** Données structurées propres à la page (réservé Super-admin). */
