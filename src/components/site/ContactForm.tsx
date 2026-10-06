@@ -1,13 +1,15 @@
 import { useState, useEffect, type FormEvent } from "react";
 import { Check, Clock } from "lucide-react";
 import { Section } from "@/components/site/ui";
-import { site, communes, hasPhone, telHref, isOpen } from "@/data/site";
+import { useSite } from "@/cms/context";
+import { hasPhone, telHref, isOpen } from "@/cms/site-data";
 
 function OpenBadge({ className = "" }: { className?: string }) {
+  const site = useSite().general;
   const [open, setOpen] = useState<boolean | null>(null);
   useEffect(() => {
-    setOpen(isOpen());
-    const id = setInterval(() => setOpen(isOpen()), 60000);
+    setOpen(isOpen(site));
+    const id = setInterval(() => setOpen(isOpen(site)), 60000);
     return () => clearInterval(id);
   }, []);
   if (open === null) return null;
@@ -31,6 +33,7 @@ const inputClass =
 
 /** Formulaire de demande de devis et colonne coordonnées / horaires de la page Contact. */
 export function ContactForm({ horairesNote, bonASavoir }: { horairesNote: string; bonASavoir: string[] }) {
+  const { general: site, zones: communes } = useSite();
   const [sent, setSent] = useState(false);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -138,8 +141,8 @@ export function ContactForm({ horairesNote, bonASavoir }: { horairesNote: string
               <p className="mt-2 text-[15px] text-muted-foreground">{site.address}</p>
               <ul className="mt-6 space-y-3 text-[15px]">
                 <li>
-                  {hasPhone() ? (
-                    <a href={telHref()} className="text-ink underline-offset-4 hover:underline">
+                  {hasPhone(site) ? (
+                    <a href={telHref(site)} className="text-ink underline-offset-4 hover:underline">
                       {site.phone}
                     </a>
                   ) : (

@@ -5,5 +5,5 @@ export const Route = createFileRoute("/contact")({
   validateSearch: (search: Record<string, unknown>): { intent?: string } =>
     typeof search["intent"] === "string" ? { intent: search["intent"] } : {},
   ...cmsRouteOptions(() => "/contact"),
-  component: () => <CmsPageView page={Route.useLoaderData()} />,
+  component: () => <CmsPageView data={Route.useLoaderData()} />,
 });

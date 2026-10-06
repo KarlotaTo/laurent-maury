@@ -1,34 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { nav } from "@/data/site";
-import { zones } from "@/data/zones";
-import { realisations } from "@/data/realisations";
-import { SITE_URL } from "@/lib/seo";
+import { loadSiteData } from "@/cms/source";
 
-const paths = [
-  "/",
-  "/peinture-decoration",
-  "/sols-parquets",
-  "/murs-revetements",
-  "/renovation-interieure",
-  "/facades-exterieur",
-  "/entretien-bati",
-  ...nav.map((n) => n.to),
-  ...zones.map((z) => `/zones-intervention/${z.slug}`),
-  "/contact",
-  "/mentions-legales",
-  "/charte-utilisation",
-  ...realisations.map((r) => `/realisations/${r.slug}`),
-].filter((path, index, all) => all.indexOf(path) === index);
-
+/** Plan du site pour Google : toutes les pages publiées et indexables, à jour à chaque publication. */
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
-      GET: () => {
+      GET: async () => {
+        const site = await loadSiteData();
+        const paths = site.pages
+          .filter((p) => p.status === "published" && !p.seo.noindex)
+          .map((p) => p.path);
         const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${paths
-  .map((p) => `  <url><loc>${new URL(p, SITE_URL).toString()}</loc></url>`)
-  .join("\n")}
+${paths.map((p) => `  <url><loc>${new URL(p, site.technique.siteUrl).toString()}</loc></url>`).join("\n")}
 </urlset>
 `;
         return new Response(body, {

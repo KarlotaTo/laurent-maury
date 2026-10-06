@@ -4,7 +4,8 @@ import { Fragment, type ReactNode } from "react";
 /**
  * Affiche un texte issu du CMS avec une mise en forme minimale :
  * **gras**, *italique*, [lien](/page-du-site) et retours à la ligne.
- * Les liens ne mènent qu'à des pages du site (adresse commençant par /).
+ * Les liens mènent à une page du site (adresse commençant par /),
+ * à un numéro de téléphone (tel:) ou à une adresse e-mail (mailto:).
  */
 export function Rich({
   text,
@@ -28,10 +29,18 @@ export function Rich({
   );
 }
 
-const TOKEN = /(\*\*[^*]+\*\*|\*[^*]+\*|\[[^\]]+\]\(\/[^)\s]*\))/g;
+const TOKEN = /(\*\*[^*]+\*\*|\*[^*]+\*|\[[^\]]+\]\((?:\/|tel:|mailto:)[^)\s]*\))/g;
 
 function inline(line: string, emClassName?: string, linkClassName?: string): ReactNode[] {
   return line.split(TOKEN).map((part, i) => {
+    const external = /^\[([^\]]+)\]\(((?:tel|mailto):[^)\s]+)\)$/.exec(part);
+    if (external) {
+      return (
+        <a key={i} href={external[2]} className={linkClassName}>
+          {external[1]}
+        </a>
+      );
+    }
     const link = /^\[([^\]]+)\]\((\/[^)\s]*)\)$/.exec(part);
     if (link) {
       return (

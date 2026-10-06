@@ -1,13 +1,16 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X, Phone, ChevronDown, Clock } from "lucide-react";
-import { nav, expertises, site, hasPhone, telHref, isOpen } from "@/data/site";
+import { useSite } from "@/cms/context";
+import { hasPhone, telHref, isOpen } from "@/cms/site-data";
+import { nav, expertises } from "@/data/navigation";
 
 function OpenBadge({ className = "" }: { className?: string }) {
+  const site = useSite().general;
   const [open, setOpen] = useState<boolean | null>(null);
   useEffect(() => {
-    setOpen(isOpen());
-    const id = setInterval(() => setOpen(isOpen()), 60000);
+    setOpen(isOpen(site));
+    const id = setInterval(() => setOpen(isOpen(site)), 60000);
     return () => clearInterval(id);
   }, []);
   if (open === null) return null;
@@ -27,6 +30,7 @@ function OpenBadge({ className = "" }: { className?: string }) {
 }
 
 export function Header() {
+  const site = useSite().general;
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [dropOpen, setDropOpen] = useState(false);
@@ -123,9 +127,9 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          {hasPhone() && (
+          {hasPhone(site) && (
             <a
-              href={telHref()}
+              href={telHref(site)}
               className="group relative hidden h-10 w-10 items-center justify-center overflow-hidden border border-line text-ink transition-all duration-300 hover:w-auto lg:flex"
               aria-label={`Appeler ${site.name} au ${site.phone}`}
               title={site.phone}

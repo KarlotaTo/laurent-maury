@@ -1,8 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { Clock } from "lucide-react";
-import { nav, site, communes, hasPhone, telHref } from "@/data/site";
+import { useSite } from "@/cms/context";
+import { hasPhone, telHref } from "@/cms/site-data";
+import { nav } from "@/data/navigation";
 
 export function Footer() {
+  const { general: site, zones: communes } = useSite();
   return (
     <footer className="mt-24 bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-[1400px] gap-12 px-5 py-20 lg:grid-cols-12 lg:px-10">
@@ -50,8 +53,8 @@ export function Footer() {
           <ul className="mt-5 space-y-3 text-sm text-primary-foreground/80">
             <li>{site.address}</li>
             <li>
-              {hasPhone() ? (
-                <a href={telHref()} className="hover:text-white">
+              {hasPhone(site) ? (
+                <a href={telHref(site)} className="hover:text-white">
                   {site.phone}
                 </a>
               ) : (

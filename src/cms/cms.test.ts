@@ -1,7 +1,8 @@
 import { describe, expect, it, vi } from "vitest";
 import { blockRegistry } from "@/cms/registry";
 import { checkBlock } from "@/cms/render";
-import { getAllPages } from "@/cms/pages";
+import { fallbackData } from "@/cms/fallback";
+const getAllPages = () => fallbackData.pages;
 import { pageSchema } from "@/cms/types";
 
 const pageFiles = import.meta.glob("../content/cms/pages/*.json", { eager: true, import: "default" });

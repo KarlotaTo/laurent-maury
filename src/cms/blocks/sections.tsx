@@ -1,15 +1,15 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, MapPin, Star } from "lucide-react";
+import { Fragment } from "react";
 import { z } from "zod";
 import * as f from "@/cms/fields";
 import { defineBlock } from "@/cms/types";
 import { Rich } from "@/components/site/Rich";
 import { Section, Eyebrow, SectionTitle, Lead, CtaPair, PageHero, PrestationList, FinalCta } from "@/components/site/ui";
 import { InterventionMap } from "@/components/site/InterventionMap";
-import { site, communes, avis, engagements, expertises, hasPhone, telHref } from "@/data/site";
+import { expertises } from "@/data/navigation";
+import { hasPhone, telHref } from "@/cms/site-data";
 import { BeforeAfterSlider } from "@/components/site/BeforeAfterSlider";
-import { realisations } from "@/data/realisations";
-import { zones } from "@/data/zones";
 import { ContactForm } from "@/components/site/ContactForm";
 
 /**
@@ -53,7 +53,7 @@ export const hero = defineBlock({
     intro: "Une introduction de deux ou trois phrases qui présente la page.",
     chantier: [],
   },
-  render: ({ data }) => (
+  render: ({ data, ctx }) => (
     <PageHero
       eyebrow={data.eyebrow}
       title={
@@ -105,7 +105,7 @@ export const heroHome = defineBlock({
     intro: "Une introduction de deux ou trois phrases.",
     image: { src: "/images/hero-interieur.jpg", alt: "Description de la photo" },
   },
-  render: ({ data }) => (
+  render: ({ data, ctx }) => (
     <section className="relative">
       <div className="mx-auto max-w-[1400px] px-5 pt-10 lg:px-10 lg:pt-16">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
@@ -121,9 +121,9 @@ export const heroHome = defineBlock({
             <div className="mt-8">
               <CtaPair />
             </div>
-            {hasPhone() && (
-              <a href={telHref()} className="mt-6 inline-block text-sm text-ink">
-                ou appelez le <span className="text-accent">{site.phone}</span>
+            {hasPhone(ctx.general) && (
+              <a href={telHref(ctx.general)} className="mt-6 inline-block text-sm text-ink">
+                ou appelez le <span className="text-accent">{ctx.general.phone}</span>
               </a>
             )}
           </div>
@@ -168,7 +168,7 @@ export const textTitle = defineBlock({
     lead: "Le paragraphe principal répond à la question.",
     text: "",
   },
-  render: ({ data, background }) =>
+  render: ({ data, background, ctx }) =>
     background === "dark" ? (
       <Section tone="dark">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
@@ -242,7 +242,7 @@ export const feature = defineBlock({
     steps: ["Première étape", "Deuxième étape", "Troisième étape"],
     image: { src: "/images/atelier.jpg", alt: "Description de la photo" },
   },
-  render: ({ data }) => (
+  render: ({ data, ctx }) => (
     <Section tone="dark">
       <div className="grid gap-14 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-6">
@@ -309,7 +309,7 @@ export const prestations = defineBlock({
       { title: "Deuxième prestation", text: "Description de la prestation." },
     ],
   },
-  render: ({ data, background }) => (
+  render: ({ data, background, ctx }) => (
     <Section tone={background === "sand" ? "sand" : "light"}>
       <Eyebrow>{data.eyebrow}</Eyebrow>
       <SectionTitle>{data.title}</SectionTitle>
@@ -342,7 +342,7 @@ export const engagementsGrid = defineBlock({
       { title: "Troisième engagement", text: "Description." },
     ],
   },
-  render: ({ data, background }) => (
+  render: ({ data, background, ctx }) => (
     <Section tone={background === "sand" ? "sand" : "light"}>
       <Eyebrow>{data.eyebrow}</Eyebrow>
       <SectionTitle>{data.title}</SectionTitle>
@@ -380,7 +380,7 @@ export const steps = defineBlock({
       { title: "Chantier", text: "Détail de l'étape." },
     ],
   },
-  render: ({ data, background }) => (
+  render: ({ data, background, ctx }) => (
     <Section tone={background === "sand" ? "sand" : "light"}>
       <div className="grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-5">
@@ -433,7 +433,7 @@ export const serviceCards = defineBlock({
       image: { src: "/images/parquet.jpg", alt: "Description de la photo" },
     })),
   },
-  render: ({ data, background }) => (
+  render: ({ data, background, ctx }) => (
     <Section tone={background === "light" ? "light" : "sand"}>
       <Eyebrow>{data.eyebrow}</Eyebrow>
       <SectionTitle>{data.title}</SectionTitle>
@@ -474,7 +474,7 @@ export const realisationsList = defineBlock({
     limit: f.number({ label: "Nombre de réalisations affichées", min: 2, max: 12 }),
   }),
   example: { eyebrow: "Réalisations", title: "Nos réalisations", linkLabel: "Toutes les réalisations", limit: 6 },
-  render: ({ data, background }) => (
+  render: ({ data, background, ctx }) => (
     <Section tone={background === "sand" ? "sand" : "light"}>
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div>
@@ -486,7 +486,7 @@ export const realisationsList = defineBlock({
         </Link>
       </div>
       <div className="mt-14 grid gap-px border border-line bg-line md:grid-cols-2">
-        {realisations.slice(0, data.limit).map((r) => (
+        {ctx.realisations.slice(0, data.limit).map((r) => (
           <Link
             key={r.slug}
             to="/realisations/$slug"
@@ -522,7 +522,7 @@ export const reviews = defineBlock({
     note: f.string({ label: "Mention à droite", max: 40 }),
   }),
   example: { eyebrow: "Avis clients", title: "La parole de nos clients", note: "Avis Google" },
-  render: ({ data, background }) => (
+  render: ({ data, background, ctx }) => (
     <Section tone={background === "light" ? "light" : "sand"}>
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div>
@@ -532,7 +532,7 @@ export const reviews = defineBlock({
         <p className="text-sm uppercase tracking-[0.18em] text-muted-foreground">{data.note}</p>
       </div>
       <div className="mt-14 grid gap-px border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
-        {avis.map((a) => (
+        {ctx.avis.map((a) => (
           <figure key={a.author} className="flex flex-col bg-background p-8 lg:p-10">
             <div className="flex items-center gap-1 text-accent" aria-label={`${a.rating} étoiles sur 5`}>
               {Array.from({ length: 5 }).map((_, i) => (
@@ -565,7 +565,7 @@ export const communesSummary = defineBlock({
     linkLabel: f.string({ label: "Texte du lien", max: 50 }),
   }),
   example: { eyebrow: "Zones d'intervention", title: "Où nous intervenons", lead: "Un texte court.", linkLabel: "Voir toutes les communes" },
-  render: ({ data, background }) => (
+  render: ({ data, background, ctx }) => (
     <Section tone={background === "sand" ? "sand" : "light"}>
       <div className="grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-5">
@@ -581,7 +581,7 @@ export const communesSummary = defineBlock({
         </div>
         <div className="lg:col-span-6 lg:col-start-7">
           <ul className="grid gap-px border border-line bg-line sm:grid-cols-2">
-            {communes.map((c) => (
+            {ctx.zones.map((c) => (
               <li
                 key={c.slug}
                 className="group flex items-center gap-4 bg-background p-5 transition-colors last:sm:col-span-2 hover:bg-sand"
@@ -612,12 +612,12 @@ export const communesGrid = defineBlock({
     title: f.string({ label: "Titre", max: 120 }),
   }),
   example: { eyebrow: "Communes", title: "Où nous travaillons" },
-  render: ({ data }) => (
+  render: ({ data, ctx }) => (
     <Section>
       <Eyebrow>{data.eyebrow}</Eyebrow>
       <SectionTitle>{data.title}</SectionTitle>
       <div className="mt-14 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
-        {communes.map((c) => (
+        {ctx.zones.map((c) => (
           <Link
             key={c.slug}
             to="/zones-intervention/$commune"
@@ -634,7 +634,7 @@ export const communesGrid = defineBlock({
               )}
             </div>
             <p className="text-[15px] leading-relaxed text-muted-foreground">
-              {zones.find((z) => z.slug === c.slug)?.hubText}
+              {c.hubText}
             </p>
             <span className="text-[11px] uppercase tracking-[0.18em] text-accent">Voir la page {c.name} →</span>
           </Link>
@@ -657,7 +657,7 @@ export const contactCta = defineBlock({
     text: f.text({ label: "Texte", max: 320 }),
   }),
   example: { title: "Parlons de votre projet", text: "Une visite sur place, puis un devis détaillé." },
-  render: ({ data }) => <FinalCta title={data.title} text={data.text} />,
+  render: ({ data, ctx }) => <FinalCta title={data.title} text={data.text} />,
 });
 
 export const contactForm = defineBlock({
@@ -670,7 +670,7 @@ export const contactForm = defineBlock({
     bonASavoir: f.list(f.string({ label: "Point", max: 80 }), { label: "« Bon à savoir »", min: 1, max: 5, itemLabel: "Point" }),
   }),
   example: { horairesNote: "Nous vous rappelons pendant les heures d'ouverture.", bonASavoir: ["Visite sur place avant tout devis"] },
-  render: ({ data }) => <ContactForm horairesNote={data.horairesNote} bonASavoir={data.bonASavoir} />,
+  render: ({ data, ctx }) => <ContactForm horairesNote={data.horairesNote} bonASavoir={data.bonASavoir} />,
 });
 
 /* ---------- Pages villes ---------- */
@@ -696,7 +696,7 @@ export const zoneHero = defineBlock({
     intro: "Une introduction de deux ou trois phrases sur la commune.",
     image: { src: "/images/renovation.jpg", alt: "Description de la photo" },
   },
-  render: ({ data }) => (
+  render: ({ data, ctx }) => (
     <section className="border-b border-line bg-background">
       <div className="mx-auto grid max-w-[1400px] gap-12 px-5 pt-16 pb-20 lg:grid-cols-12 lg:px-10 lg:pt-24 lg:pb-28">
         <div className="lg:col-span-7">
@@ -740,7 +740,7 @@ export const localIntro = defineBlock({
     ),
   }),
   example: { eyebrow: "Commune", title: "Un titre local", paragraphs: ["Un paragraphe."], projects: [] },
-  render: ({ data, background }) => (
+  render: ({ data, background, ctx }) => (
     <Section tone={background === "sand" ? "sand" : "light"}>
       <div className="grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-5">
@@ -791,7 +791,7 @@ export const linkedServices = defineBlock({
     title: "Les travaux réalisés",
     items: [{ link: "/peinture-decoration", label: "Peinture & décoration", text: "Un texte.", image: { src: "/images/peinture-decorative.jpg", alt: "Description" } }],
   },
-  render: ({ data, background }) => (
+  render: ({ data, background, ctx }) => (
     <Section tone={background === "light" ? "light" : "sand"}>
       <Eyebrow>{data.eyebrow}</Eyebrow>
       <SectionTitle>{data.title}</SectionTitle>
@@ -843,7 +843,7 @@ export const showcase = defineBlock({
     beforeLabel: "Avant",
     afterLabel: "Après",
   },
-  render: ({ data, background }) => (
+  render: ({ data, background, ctx }) => (
     <Section tone={background === "sand" ? "sand" : "light"}>
       <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-5">
@@ -896,7 +896,7 @@ export const stepsBand = defineBlock({
       { title: "Chantier", text: "Détail." },
     ],
   },
-  render: ({ data }) => (
+  render: ({ data, ctx }) => (
     <Section tone="dark">
       <p className="eyebrow">{data.eyebrow}</p>
       <h2 className="mt-5 max-w-3xl text-4xl leading-[1.08] lg:text-5xl">{data.title}</h2>
@@ -925,12 +925,12 @@ export const sharedEngagements = defineBlock({
     showLinks: f.boolean({ label: "Afficher les liens vers l'entreprise, les réalisations et les zones" }),
   }),
   example: { eyebrow: "Pourquoi nous ?", title: "Les engagements de l'entreprise", showLinks: true },
-  render: ({ data, background }) => (
+  render: ({ data, background, ctx }) => (
     <Section tone={background === "sand" ? "sand" : "light"}>
       <Eyebrow>{data.eyebrow}</Eyebrow>
       <SectionTitle>{data.title}</SectionTitle>
       <div className="mt-14 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
-        {engagements.map((e) => (
+        {ctx.engagements.map((e) => (
           <article key={e.title} className="bg-background p-8">
             <h3 className="text-2xl">{e.title}</h3>
             <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{e.text}</p>
@@ -965,13 +965,13 @@ export const neighbours = defineBlock({
     }),
   }),
   example: { eyebrow: "Secteur", title: "Interventions dans les communes voisines", communes: ["bouloc"] },
-  render: ({ data, background }) => (
+  render: ({ data, background, ctx }) => (
     <Section tone={background === "light" ? "light" : "sand"}>
       <Eyebrow>{data.eyebrow}</Eyebrow>
       <SectionTitle>{data.title}</SectionTitle>
       <div className="mt-12 grid gap-px border border-line bg-line sm:grid-cols-3">
         {data.communes.map((slug) => {
-          const zone = zones.find((x) => x.slug === slug);
+          const zone = ctx.zones.find((x) => x.slug === slug);
           if (!zone) return null;
           return (
             <Link key={slug} to="/zones-intervention/$commune" params={{ commune: slug }} className="group flex items-center gap-4 bg-background p-6 hover:bg-sand">
@@ -985,6 +985,72 @@ export const neighbours = defineBlock({
         {expertises.map((e) => (
           <Link key={e.to} to={e.to} className="text-muted-foreground hover:text-accent">{e.label}</Link>
         ))}
+      </div>
+    </Section>
+  ),
+});
+
+/* ---------- Pages légales ---------- */
+
+/** Remplace {{telephone}}, {{tel}} et {{email}} par les coordonnées du site. */
+function withContacts(text: string, g: { phone: string; email: string }) {
+  return text
+    .replaceAll("{{telephone}}", g.phone)
+    .replaceAll("{{tel}}", g.phone.replace(/\s/g, ""))
+    .replaceAll("{{email}}", g.email);
+}
+
+export const legalText = defineBlock({
+  type: "legalText",
+  label: "Texte légal",
+  description: "Intertitres, paragraphes et listes (mentions légales, charte, confidentialité)",
+  backgrounds: ["light"],
+  schema: z.object({
+    sections: f.list(
+      z.object({
+        title: f.string({ label: "Intertitre", max: 120 }),
+        items: f.list(
+          z.object({
+            kind: f.select({ label: "Type", options: [{ value: "paragraph", label: "Paragraphe" }, { value: "list", label: "Liste" }] as const }),
+            text: f.rich({
+              label: "Texte",
+              max: 3000,
+              help: "Un retour à la ligne = une ligne (ou un élément de liste). {{telephone}} et {{email}} reprennent les coordonnées du site.",
+            }),
+            spaced: f.boolean({ label: "Espace avant" }),
+          }),
+          { label: "Contenu", min: 1, max: 30, itemLabel: "Élément" },
+        ),
+      }),
+      { label: "Sections", min: 1, max: 30, itemLabel: "Section" },
+    ),
+  }),
+  example: { sections: [{ title: "Éditeur du site", items: [{ kind: "paragraph", text: "Texte.", spaced: false }] }] },
+  render: ({ data, ctx }) => (
+    <Section>
+      <div className="mx-auto max-w-4xl">
+        <article className="prose prose-lg max-w-none">
+          {data.sections.map((section, i) => (
+            <Fragment key={i}>
+              <h2 className={i === 0 ? "text-3xl" : "mt-14 text-3xl"}>{section.title}</h2>
+              {section.items.map((item, j) =>
+                item.kind === "list" ? (
+                  <ul key={j} className="mt-4 list-none space-y-2 pl-0">
+                    {withContacts(item.text, ctx.general).split("\n").map((line, k) => (
+                      <li key={k}>
+                        <Rich text={line} linkClassName="underline hover:text-accent" />
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p key={j} {...(item.spaced ? { className: "mt-6" } : {})}>
+                    <Rich text={withContacts(item.text, ctx.general)} linkClassName="underline hover:text-accent" />
+                  </p>
+                ),
+              )}
+            </Fragment>
+          ))}
+        </article>
       </div>
     </Section>
   ),

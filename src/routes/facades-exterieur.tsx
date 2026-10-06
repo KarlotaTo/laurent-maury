@@ -3,5 +3,5 @@ import { cmsRouteOptions, CmsPageView } from "@/cms/route";
 
 export const Route = createFileRoute("/facades-exterieur")({
   ...cmsRouteOptions(() => "/facades-exterieur"),
-  component: () => <CmsPageView page={Route.useLoaderData()} />,
+  component: () => <CmsPageView data={Route.useLoaderData()} />,
 });

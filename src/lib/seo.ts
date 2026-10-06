@@ -1,8 +1,5 @@
-import { communes, site } from "@/data/site";
-import technique from "@/content/technique.json";
+import type { SiteContext } from "@/cms/site-data";
 
-/** Domaine du site : un seul réglage, dans src/content/technique.json. */
-export const SITE_URL = technique.siteUrl;
 /** Site de test : jamais indexé par les moteurs de recherche (compilé avec VITE_STAGING=1). */
 export const IS_STAGING = import.meta.env["VITE_STAGING"] === "1";
 
@@ -10,138 +7,91 @@ export const IS_STAGING = import.meta.env["VITE_STAGING"] === "1";
  * Indexation par les moteurs de recherche :
  * - site de test : jamais ;
  * - site en ligne : selon le réglage technique « indexable » (désactivé tant que
- *   le site est sur son adresse provisoire maury-laurent.lnkio.fr).
+ *   le site est sur son adresse provisoire).
  */
-export function robotsContent() {
+export function robotsContent(ctx: Pick<SiteContext, "indexable">) {
   if (IS_STAGING) return "noindex, nofollow";
-  return technique.indexable ? "index, follow, max-image-preview:large" : "noindex, follow";
+  return ctx.indexable ? "index, follow, max-image-preview:large" : "noindex, follow";
 }
-
-export const BUSINESS_ID = `${SITE_URL}/#entreprise`;
 
 type Schema = Record<string, unknown>;
 
-type SeoHeadOptions = {
-  title: string;
-  description: string;
-  path: string;
-  ogType?: "website" | "article";
-  schema?: Schema | Schema[];
-  breadcrumbLabel?: string;
-};
+export const businessId = (ctx: Pick<SiteContext, "siteUrl">) => `${ctx.siteUrl}/#entreprise`;
 
-export function absoluteUrl(path: string) {
-  return new URL(path, SITE_URL).toString();
+export function absoluteUrl(ctx: Pick<SiteContext, "siteUrl">, path: string) {
+  return new URL(path, ctx.siteUrl).toString();
 }
 
-export const localBusinessSchema: Schema = {
-  "@context": "https://schema.org",
-  "@type": ["HomeAndConstructionBusiness", "GeneralContractor", "HousePainter"],
-  "@id": BUSINESS_ID,
-  name: site.name,
-  url: SITE_URL,
-  telephone: `+33${site.phone.replace(/\s/g, "").replace(/^0/, "")}`,
-  email: site.email,
-  description:
-    "Artisan de la rénovation à Bouloc depuis 1994 : rénovation clé en main ou travaux ciblés, peinture et décoration, sols, placo, isolation, façades. Quatre générations d'artisans.",
-  foundingDate: String(site.since),
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "14 impasse de la Seube",
-    addressLocality: site.city,
-    addressRegion: "Haute-Garonne",
-    postalCode: "31620",
-    addressCountry: "FR",
-  },
-  areaServed: communes.map((commune) => ({
-    "@type": "City",
-    name: commune.name,
-  })),
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "17:00",
-    },
-  ],
-  knowsAbout: [
-    "Peinture intérieure et décorative",
-    "Sols et parquets",
-    "Enduits, placo et isolation",
-    "Rénovation intérieure",
-    "Ravalement de façade",
-    "Entretien du bâti",
-  ],
-};
+const hour = (h: number) => `${String(h).padStart(2, "0")}:00`;
 
-export function breadcrumbSchema(path: string, label: string): Schema {
+/** Fiche entreprise lue par Google, construite à partir des coordonnées du back-office. */
+export function localBusinessSchema(ctx: SiteContext): Schema {
+  const g = ctx.general;
   return {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
+    "@type": ["HomeAndConstructionBusiness", "GeneralContractor", "HousePainter"],
+    "@id": businessId(ctx),
+    name: g.name,
+    url: ctx.siteUrl,
+    telephone: `+33${g.phone.replace(/\s/g, "").replace(/^0/, "")}`,
+    email: g.email,
+    description: g.description,
+    foundingDate: String(g.since),
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: g.streetAddress,
+      addressLocality: g.city,
+      addressRegion: g.region,
+      postalCode: g.postalCode,
+      addressCountry: "FR",
+    },
+    areaServed: ctx.zones.map((zone) => ({ "@type": "City", name: zone.name })),
+    openingHoursSpecification: [
       {
-        "@type": "ListItem",
-        position: 1,
-        name: "Accueil",
-        item: SITE_URL,
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: hour(g.hours.openHour),
+        closes: hour(g.hours.closeHour),
       },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: label,
-        item: absoluteUrl(path),
-      },
+    ],
+    knowsAbout: [
+      "Peinture intérieure et décorative",
+      "Sols et parquets",
+      "Enduits, placo et isolation",
+      "Rénovation intérieure",
+      "Ravalement de façade",
+      "Entretien du bâti",
     ],
   };
 }
 
-export function serviceSchema(name: string, description: string, path: string): Schema {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name,
-    description,
-    url: absoluteUrl(path),
-    provider: { "@id": BUSINESS_ID },
-    areaServed: communes.map((commune) => ({ "@type": "City", name: commune.name })),
-    serviceType: name,
-  };
-}
+type SeoHeadOptions = {
+  ctx: SiteContext;
+  title: string;
+  description: string;
+  path: string;
+  ogType?: "website" | "article";
+  schema?: Schema[];
+};
 
-export function buildSeoHead({
-  title,
-  description,
-  path,
-  ogType = "website",
-  schema,
-  breadcrumbLabel,
-}: SeoHeadOptions) {
-  const url = absoluteUrl(path);
-  const schemas = [
-    ...(schema ? (Array.isArray(schema) ? schema : [schema]) : []),
-    ...(breadcrumbLabel ? [breadcrumbSchema(path, breadcrumbLabel)] : []),
-  ];
-
+export function buildSeoHead({ ctx, title, description, path, ogType = "website", schema = [] }: SeoHeadOptions) {
+  const url = absoluteUrl(ctx, path);
   return {
     meta: [
       { title },
       { name: "description", content: description },
-      { name: "robots", content: robotsContent() },
+      { name: "robots", content: robotsContent(ctx) },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: ogType },
       { property: "og:url", content: url },
       { property: "og:locale", content: "fr_FR" },
-      { property: "og:site_name", content: site.name },
+      { property: "og:site_name", content: ctx.general.name },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
     links: [{ rel: "canonical", href: url }],
-    scripts: schemas.map((item) => ({
-      type: "application/ld+json",
-      children: JSON.stringify(item),
-    })),
+    scripts: schema.map((item) => ({ type: "application/ld+json", children: JSON.stringify(item) })),
   };
 }

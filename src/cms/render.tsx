@@ -1,4 +1,5 @@
 import { Component, Fragment, type ReactNode } from "react";
+import { useSite } from "@/cms/context";
 import { blockRegistry } from "@/cms/registry";
 import type { Background, BlockInstance } from "@/cms/types";
 
@@ -40,6 +41,7 @@ class BlockBoundary extends Component<{ block: BlockInstance; children: ReactNod
 }
 
 export function PageBlocks({ blocks }: { blocks: BlockInstance[] }) {
+  const ctx = useSite();
   return (
     <>
       {blocks.map((block) => {
@@ -51,7 +53,7 @@ export function PageBlocks({ blocks }: { blocks: BlockInstance[] }) {
         }
         return (
           <BlockBoundary key={block.id} block={block}>
-            <Fragment>{checked.def.render({ data: checked.data, background: checked.background })}</Fragment>
+            <Fragment>{checked.def.render({ data: checked.data, background: checked.background, ctx })}</Fragment>
           </BlockBoundary>
         );
       })}

@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { IS_STAGING, SITE_URL } from "@/lib/seo";
+import { loadSiteData } from "@/cms/source";
+import { IS_STAGING } from "@/lib/seo";
 
-const body = `User-agent: Googlebot
+const body = (siteUrl: string) => `User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
@@ -16,14 +17,14 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: ${SITE_URL}/sitemap.xml
+Sitemap: ${siteUrl}/sitemap.xml
 `;
 
 export const Route = createFileRoute("/robots.txt")({
   server: {
     handlers: {
-      GET: () =>
-        new Response(IS_STAGING ? "User-agent: *\nDisallow: /\n" : body, {
+      GET: async () =>
+        new Response(IS_STAGING ? "User-agent: *\nDisallow: /\n" : body((await loadSiteData()).technique.siteUrl), {
           headers: {
             "content-type": "text/plain; charset=utf-8",
             ...(IS_STAGING ? { "x-robots-tag": "noindex, nofollow" } : {}),

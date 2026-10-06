@@ -1,0 +1,209 @@
+{
+  "id": "charte-utilisation",
+  "path": "/charte-utilisation",
+  "parentId": null,
+  "template": "legal",
+  "status": "published",
+  "order": 301,
+  "label": "Charte d'utilisation",
+  "inMenu": false,
+  "seo": {
+    "title": "Charte d'utilisation | MAURY LAURENT",
+    "description": "Charte d'utilisation du site internet de MAURY LAURENT, artisan spécialisé dans les travaux de peinture.",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Charte d'utilisation du site",
+        "description": "Charte d'utilisation du site internet de MAURY LAURENT, artisan spécialisé dans les travaux de peinture.",
+        "url": "{{site}}/charte-utilisation"
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "charte-utilisation-1",
+      "type": "hero",
+      "data": {
+        "eyebrow": "Règles d'usage",
+        "titleSeoPrefix": "",
+        "title": "Charte d'utilisation du site",
+        "intro": "Cette charte définit les conditions d'accès et d'utilisation du site internet de MAURY LAURENT.",
+        "chantier": []
+      }
+    },
+    {
+      "id": "charte-utilisation-2",
+      "type": "legalText",
+      "data": {
+        "sections": [
+          {
+            "title": "Objet",
+            "items": [
+              {
+                "kind": "paragraph",
+                "text": "La présente charte définit les règles applicables à l'utilisation du site internet de MAURY LAURENT.",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "L'accès et l'utilisation du site impliquent l'acceptation des présentes règles.",
+                "spaced": false
+              }
+            ]
+          },
+          {
+            "title": "Accès au site",
+            "items": [
+              {
+                "kind": "paragraph",
+                "text": "Le site est accessible gratuitement à tout utilisateur disposant d'un accès à Internet.",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "Les éventuels frais liés à l'accès à Internet et à l'utilisation des équipements nécessaires à la consultation du site restent à la charge de l'utilisateur.",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "MAURY LAURENT s'efforce de maintenir le site accessible dans des conditions normales d'utilisation, mais ne peut garantir une disponibilité permanente ou exempte d'interruption.",
+                "spaced": false
+              }
+            ]
+          },
+          {
+            "title": "Utilisation du contenu",
+            "items": [
+              {
+                "kind": "paragraph",
+                "text": "Les contenus disponibles sur le site sont destinés à fournir des informations sur l'activité, les prestations et le savoir-faire de MAURY LAURENT.",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "L'utilisateur s'engage à utiliser ces contenus de manière conforme à la législation française et à ne pas porter atteinte aux droits de MAURY LAURENT ou de tiers.",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "Toute utilisation frauduleuse, abusive ou détournée du site est interdite.",
+                "spaced": false
+              }
+            ]
+          },
+          {
+            "title": "Propriété intellectuelle",
+            "items": [
+              {
+                "kind": "paragraph",
+                "text": "Les contenus, textes, photographies, éléments graphiques, logos et autres éléments présents sur le site sont protégés par les dispositions relatives à la propriété intellectuelle.",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "Ils ne peuvent être reproduits, copiés, modifiés, distribués ou exploités à des fins commerciales sans autorisation préalable.",
+                "spaced": false
+              }
+            ]
+          },
+          {
+            "title": "Liens hypertextes",
+            "items": [
+              {
+                "kind": "paragraph",
+                "text": "Le site peut éventuellement contenir des liens vers des sites internet externes.",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "MAURY LAURENT n'exerce aucun contrôle sur ces sites et ne peut être tenu responsable de leur contenu, de leur disponibilité ou de leurs pratiques.",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "La présence d'un lien vers un site externe ne constitue pas nécessairement une recommandation ou une validation de son contenu.",
+                "spaced": false
+              }
+            ]
+          },
+          {
+            "title": "Données personnelles",
+            "items": [
+              {
+                "kind": "paragraph",
+                "text": "Lorsque l'utilisateur transmet volontairement des informations personnelles via les moyens de contact proposés sur le site, ces informations sont utilisées uniquement dans le cadre nécessaire au traitement de sa demande.",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "Les informations transmises peuvent notamment comprendre le nom, le numéro de téléphone, l'adresse e-mail et le contenu du message.",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "MAURY LAURENT s'engage à traiter ces données dans le respect de la réglementation applicable en matière de protection des données personnelles, notamment du Règlement général sur la protection des données (RGPD).",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "Pour toute question relative aux données personnelles ou pour exercer ses droits, l'utilisateur peut contacter :",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "**MAURY LAURENT**\n14 impasse de la Seube\n31620 Bouloc\nFrance\n**E-mail :** [{{email}}](mailto:{{email}})",
+                "spaced": false
+              }
+            ]
+          },
+          {
+            "title": "Cookies et données de navigation",
+            "items": [
+              {
+                "kind": "paragraph",
+                "text": "Le site peut utiliser des cookies ou technologies similaires nécessaires à son fonctionnement, à sa sécurité ou à la mesure de son audience.",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "Lorsque le consentement de l'utilisateur est requis par la réglementation applicable, celui-ci doit pouvoir être recueilli ou refusé conformément aux règles en vigueur.",
+                "spaced": false
+              }
+            ]
+          },
+          {
+            "title": "Disponibilité et sécurité",
+            "items": [
+              {
+                "kind": "paragraph",
+                "text": "L'utilisateur s'engage à ne pas tenter de perturber le fonctionnement du site, d'en compromettre la sécurité ou d'accéder à des ressources auxquelles il n'est pas autorisé à accéder.",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "Toute tentative d'intrusion, de dégradation ou d'utilisation malveillante du site est interdite.",
+                "spaced": false
+              }
+            ]
+          },
+          {
+            "title": "Modification de la charte",
+            "items": [
+              {
+                "kind": "paragraph",
+                "text": "MAURY LAURENT peut être amené à modifier la présente charte afin de tenir compte de l'évolution du site, de ses fonctionnalités ou de la réglementation applicable.",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "La version publiée sur le site est la version applicable au moment de la consultation.",
+                "spaced": false
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

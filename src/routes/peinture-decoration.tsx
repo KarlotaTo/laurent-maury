@@ -3,5 +3,5 @@ import { cmsRouteOptions, CmsPageView } from "@/cms/route";
 
 export const Route = createFileRoute("/peinture-decoration")({
   ...cmsRouteOptions(() => "/peinture-decoration"),
-  component: () => <CmsPageView page={Route.useLoaderData()} />,
+  component: () => <CmsPageView data={Route.useLoaderData()} />,
 });

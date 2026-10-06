@@ -1,0 +1,139 @@
+{
+  "id": "mentions-legales",
+  "path": "/mentions-legales",
+  "parentId": null,
+  "template": "legal",
+  "status": "published",
+  "order": 300,
+  "label": "Mentions légales",
+  "inMenu": false,
+  "seo": {
+    "title": "Mentions légales | MAURY LAURENT",
+    "description": "Mentions légales de MAURY LAURENT, entrepreneur individuel spécialisé dans les travaux de peinture à Bouloc et en Haute-Garonne.",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Mentions légales",
+        "description": "Mentions légales de MAURY LAURENT, entrepreneur individuel spécialisé dans les travaux de peinture à Bouloc et en Haute-Garonne.",
+        "url": "{{site}}/mentions-legales"
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "mentions-legales-1",
+      "type": "hero",
+      "data": {
+        "eyebrow": "Informations légales",
+        "titleSeoPrefix": "",
+        "title": "Mentions légales",
+        "intro": "Retrouvez ci-dessous les informations administratives et juridiques relatives au site internet de MAURY LAURENT.",
+        "chantier": []
+      }
+    },
+    {
+      "id": "mentions-legales-2",
+      "type": "legalText",
+      "data": {
+        "sections": [
+          {
+            "title": "Éditeur du site",
+            "items": [
+              {
+                "kind": "paragraph",
+                "text": "Le présent site est édité par :\n**MAURY LAURENT**\nEntrepreneur individuel",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "**Adresse du siège social :**\n14 impasse de la Seube\n31620 Bouloc\nFrance",
+                "spaced": false
+              },
+              {
+                "kind": "list",
+                "text": "**SIREN :** 395 277 510\n**SIRET :** 395 277 510 00057\n**Numéro de TVA intracommunautaire :** FR73 395 277 510\n**Code APE / NAF :** 43.34G – Travaux de peinture\n**Date d'immatriculation :** 02/06/1994",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "**Téléphone :** [{{telephone}}](tel:{{tel}})\n**E-mail :** [{{email}}](mailto:{{email}})",
+                "spaced": true
+              }
+            ]
+          },
+          {
+            "title": "Activité",
+            "items": [
+              {
+                "kind": "paragraph",
+                "text": "MAURY LAURENT exerce une activité de travaux de peinture.",
+                "spaced": false
+              }
+            ]
+          },
+          {
+            "title": "Directeur de la publication",
+            "items": [
+              {
+                "kind": "paragraph",
+                "text": "**Directeur de la publication : MAURY LAURENT**",
+                "spaced": false
+              }
+            ]
+          },
+          {
+            "title": "Hébergement",
+            "items": [
+              {
+                "kind": "paragraph",
+                "text": "Le site est hébergé par :\n**OVH SAS**\n2 rue Kellermann\n59100 Roubaix\nFrance",
+                "spaced": false
+              },
+              {
+                "kind": "list",
+                "text": "**RCS Lille Métropole :** 424 761 419\n**SIREN :** 424 761 419\n**TVA intracommunautaire :** FR22 424 761 419",
+                "spaced": false
+              }
+            ]
+          },
+          {
+            "title": "Propriété intellectuelle",
+            "items": [
+              {
+                "kind": "paragraph",
+                "text": "L'ensemble des éléments présents sur ce site, notamment les textes, photographies, illustrations, graphismes, logo, éléments visuels et contenus, est protégé par les dispositions légales applicables en matière de propriété intellectuelle.",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "Toute reproduction, représentation, modification, adaptation ou utilisation, totale ou partielle, de ces éléments sans autorisation préalable de leur titulaire est interdite, sauf dans les cas prévus par la loi.",
+                "spaced": false
+              }
+            ]
+          },
+          {
+            "title": "Responsabilité",
+            "items": [
+              {
+                "kind": "paragraph",
+                "text": "MAURY LAURENT s'efforce de fournir sur ce site des informations exactes et régulièrement mises à jour.",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "Toutefois, malgré le soin apporté à la mise à disposition des informations, MAURY LAURENT ne peut garantir l'exactitude, l'exhaustivité ou l'actualité de l'ensemble des contenus présents sur le site.",
+                "spaced": false
+              },
+              {
+                "kind": "paragraph",
+                "text": "L'utilisateur reconnaît utiliser les informations disponibles sur le site sous sa propre responsabilité.",
+                "spaced": false
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { z } from "zod";
+import type { SiteContext } from "@/cms/site-data";
 
 export type Background = "light" | "sand" | "dark";
 
@@ -13,7 +14,7 @@ export type BlockDef<S extends z.ZodTypeAny = z.ZodTypeAny> = {
   backgrounds: readonly Background[];
   /** Contenu d'exemple : sert aux nouveaux blocs et aux tests. */
   example: z.infer<S>;
-  render: (props: { data: z.infer<S>; background: Background }) => ReactNode;
+  render: (props: { data: z.infer<S>; background: Background; ctx: SiteContext }) => ReactNode;
 };
 
 export function defineBlock<S extends z.ZodTypeAny>(def: BlockDef<S>): BlockDef<S> {

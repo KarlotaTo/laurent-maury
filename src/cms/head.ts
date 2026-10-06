@@ -1,61 +1,58 @@
-import { getAllPages } from "@/cms/pages";
+import type { SiteContext } from "@/cms/site-data";
 import type { Page } from "@/cms/types";
-import { site } from "@/data/site";
-import { realisations } from "@/data/realisations";
-import { absoluteUrl, buildSeoHead, localBusinessSchema, BUSINESS_ID, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, buildSeoHead, businessId, localBusinessSchema } from "@/lib/seo";
 
-/** Remplace {{site}} par le domaine courant dans les données structurées enregistrées. */
-function withSite<T>(value: T): T {
-  const realisationList = realisations.map((r, index) => ({
+/**
+ * Données structurées enregistrées avec la page : {{site}} devient le domaine courant,
+ * "{{realisations}}" la liste à jour des réalisations publiées.
+ */
+function resolveJsonLd(page: Page, ctx: SiteContext) {
+  const realisationList = ctx.realisations.map((r, index) => ({
     "@type": "ListItem",
     position: index + 1,
     name: r.title,
-    url: absoluteUrl(`/realisations/${r.slug}`),
+    url: absoluteUrl(ctx, `/realisations/${r.slug}`),
   }));
   return JSON.parse(
-    JSON.stringify(value)
+    JSON.stringify(page.seo.jsonLd ?? [])
       .replaceAll('"{{realisations}}"', JSON.stringify(realisationList))
-      .replaceAll("{{site}}", SITE_URL),
-  ) as T;
+      .replaceAll("{{site}}", ctx.siteUrl),
+  ) as Record<string, unknown>[];
 }
 
 /** Fil d'Ariane de Google : Accueil, puis chaque page parente, puis la page. */
-function breadcrumb(page: Page) {
-  const byId = new Map(getAllPages().map((p) => [p.id, p]));
-  const chain: Page[] = [];
-  for (let current: Page | undefined = page; current && chain.length < 10; current = current.parentId ? byId.get(current.parentId) : undefined) {
-    chain.unshift(current);
-  }
+function breadcrumbSchema(ctx: SiteContext, chain: { label: string; path: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Accueil", item: SITE_URL },
-      ...chain.map((p, i) => ({ "@type": "ListItem", position: i + 2, name: p.label, item: absoluteUrl(p.path) })),
+      { "@type": "ListItem", position: 1, name: "Accueil", item: ctx.siteUrl },
+      ...chain.map((p, i) => ({ "@type": "ListItem", position: i + 2, name: p.label, item: absoluteUrl(ctx, p.path) })),
     ],
   };
 }
 
 /** Balises <head> d'une page du CMS : titre, description, partage, données structurées. */
-export function buildPageHead(page: Page) {
+export function buildPageHead(page: Page, ctx: SiteContext, breadcrumb: { label: string; path: string }[]) {
   const isHome = page.template === "home";
-  const stored = withSite(page.seo.jsonLd ?? []);
+  const stored = resolveJsonLd(page, ctx);
   const schema = isHome
     ? [
-        localBusinessSchema,
+        localBusinessSchema(ctx),
         {
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: site.name,
-          url: SITE_URL,
+          name: ctx.general.name,
+          url: ctx.siteUrl,
           inLanguage: "fr-FR",
-          publisher: { "@id": BUSINESS_ID },
+          publisher: { "@id": businessId(ctx) },
         },
         ...stored,
       ]
-    : [...stored, breadcrumb(page)];
+    : [...stored, breadcrumbSchema(ctx, breadcrumb)];
 
   const head = buildSeoHead({
+    ctx,
     title: page.seo.title,
     description: page.seo.description,
     path: page.path,
@@ -69,5 +66,5 @@ export function buildPageHead(page: Page) {
 }
 
 export const notFoundHead = {
-  meta: [{ title: `Page introuvable — ${site.name}` }, { name: "robots", content: "noindex" }],
+  meta: [{ title: "Page introuvable" }, { name: "robots", content: "noindex" }],
 };

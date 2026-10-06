@@ -16,6 +16,8 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { MobileCta } from "@/components/site/MobileCta";
 import { CookieConsent } from "@/components/site/CookieConsent";
+import { SiteProvider } from "@/cms/context";
+import { getSiteContext } from "@/cms/server-fns";
 
 function NotFoundComponent() {
   return (
@@ -108,6 +110,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", type: "image/png", href: "/favicon.png" },
     ],
   }),
+  loader: () => getSiteContext(),
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
@@ -130,9 +133,11 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const site = Route.useLoaderData();
 
   return (
     <QueryClientProvider client={queryClient}>
+      <SiteProvider value={site}>
       <div className="flex min-h-screen flex-col pb-14 sm:pb-0">
         <Header />
         <main className="flex-1">
@@ -143,6 +148,7 @@ function RootComponent() {
       </div>
       <MobileCta />
       <CookieConsent />
+      </SiteProvider>
     </QueryClientProvider>
   );
 }

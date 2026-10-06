@@ -9,8 +9,6 @@ import { ProjectGallery } from "@/components/site/ProjectGallery";
 import { Rich } from "@/components/site/Rich";
 import { Section, Eyebrow, SectionTitle, CtaPair } from "@/components/site/ui";
 import { Button } from "@/components/ui/button";
-import { realisations } from "@/data/realisations";
-import { zones } from "@/data/zones";
 
 /** Blocs des pages Réalisations : récits de chantier, avant / après, galeries. */
 
@@ -91,7 +89,7 @@ export const heroSplit = defineBlock({
     intro: "Une introduction.",
     image: { src: "/images/hero-interieur.jpg", alt: "Description" },
   },
-  render: ({ data }) => (
+  render: ({ data, ctx }) => (
     <section className="border-b border-line bg-background">
       <div className="mx-auto grid max-w-[1400px] gap-12 px-5 pt-16 pb-20 lg:grid-cols-12 lg:items-center lg:px-10 lg:pt-24 lg:pb-28">
         <div className="lg:col-span-6">
@@ -130,7 +128,7 @@ export const textMedia = defineBlock({
     figures: f.list(figureSchema, { label: "Photos", min: 0, max: 2, itemLabel: "Photo" }),
   }),
   example: { eyebrow: "Surtitre", title: "Un titre", paragraphs: ["Un paragraphe."], layout: "below", figures: [] },
-  render: ({ data, background }) => {
+  render: ({ data, background, ctx }) => {
     const text = (
       <>
         <Eyebrow>{data.eyebrow}</Eyebrow>
@@ -198,7 +196,7 @@ export const beforeAfterWide = defineBlock({
     paragraphs: ["Faites glisser le curseur."],
     comparison: { before: { src: "/images/renovation.jpg", alt: "Avant" }, after: { src: "/images/hero-interieur.jpg", alt: "Après" } },
   },
-  render: ({ data, background }) => (
+  render: ({ data, background, ctx }) => (
     <Section tone={background === "light" ? "light" : "sand"}>
       <div className="max-w-3xl">
         <Eyebrow>{data.eyebrow}</Eyebrow>
@@ -239,7 +237,7 @@ export const zonesLinks = defineBlock({
     paragraphs: paragraphs(3),
   }),
   example: { eyebrow: "Secteur", title: "Où nous intervenons", paragraphs: ["Un paragraphe."] },
-  render: ({ data, background }) => (
+  render: ({ data, background, ctx }) => (
     <Section tone={background === "sand" ? "sand" : "light"}>
       <div className="grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-6">
@@ -256,7 +254,7 @@ export const zonesLinks = defineBlock({
           </div>
         </div>
         <ul className="grid content-start gap-px border border-line bg-line sm:grid-cols-2 lg:col-span-6">
-          {zones.map((z) => (
+          {ctx.zones.map((z) => (
             <li key={z.slug} className="bg-background">
               <Link
                 to="/zones-intervention/$commune"
@@ -284,12 +282,12 @@ export const realisationsDetailed = defineBlock({
     title: f.string({ label: "Titre", max: 120 }),
   }),
   example: { eyebrow: "Chantiers", title: "Explorer les réalisations" },
-  render: ({ data, background }) => (
+  render: ({ data, background, ctx }) => (
     <Section tone={background === "light" ? "light" : "sand"}>
       <Eyebrow>{data.eyebrow}</Eyebrow>
       <SectionTitle>{data.title}</SectionTitle>
       <div className="mt-14 grid gap-10 md:grid-cols-2">
-        {realisations.map((r) => (
+        {ctx.realisations.map((r) => (
           <article key={r.slug} className="flex flex-col bg-background">
             <img src={r.image.src} alt={r.image.alt} loading="lazy" className="aspect-[4/3] w-full object-cover" />
             <div className="flex flex-1 flex-col p-8 lg:p-10">
@@ -339,7 +337,7 @@ export const projectHero = defineBlock({
     image: { src: "/images/renovation.jpg", alt: "Description", width: 1600, height: 1200 },
     focus: "center",
   },
-  render: ({ data }) => (
+  render: ({ data, ctx }) => (
     <section className="bg-background text-ink">
       <div className="mx-auto max-w-[1400px] px-5 pb-10 pt-10 lg:px-10 lg:pb-16 lg:pt-14">
         <Link to="/realisations" className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-ink">
@@ -378,7 +376,7 @@ export const projectFacts = defineBlock({
     ),
   }),
   example: { items: [{ label: "Lieu", value: "Commune" }] },
-  render: ({ data }) => (
+  render: ({ data, ctx }) => (
     <section className="border-y border-line bg-sand text-ink">
       <div className="mx-auto grid max-w-[1400px] gap-px bg-line px-5 sm:grid-cols-3 lg:px-10">
         {data.items.map(({ label, value }) => (
@@ -413,7 +411,7 @@ export const projectStory = defineBlock({
     gallery: f.list(sizedImage, { label: "Galerie", min: 0, max: 12, itemLabel: "Photo" }).optional(),
   }),
   example: { eyebrow: "Le projet", title: "Un titre", paragraphs: ["Un paragraphe."] },
-  render: ({ data, background }) => (
+  render: ({ data, background, ctx }) => (
     <ProjectSection background={background === "sand" ? "sand" : "light"}>
       <div className="grid gap-8 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
@@ -463,7 +461,7 @@ export const projectGallery = defineBlock({
     title: "En images",
     images: [{ src: "/images/renovation.jpg", alt: "Description", width: 1600, height: 1200 }],
   },
-  render: ({ data, background }) => (
+  render: ({ data, background, ctx }) => (
     <ProjectSection background={background === "sand" ? "sand" : "light"}>
       <p className="eyebrow">{data.eyebrow}</p>
       <h2 className="mt-5 text-4xl leading-[1.08] lg:text-5xl">{data.title}</h2>
@@ -491,7 +489,7 @@ export const projectCta = defineBlock({
     }),
   }),
   example: { eyebrow: "Votre projet", title: "Un projet similaire ?", paragraphs: ["Un paragraphe."], links: [] },
-  render: ({ data }) => (
+  render: ({ data, ctx }) => (
     <section className="border-t border-line bg-sand text-ink">
       <div className="mx-auto grid max-w-[1400px] gap-8 px-5 py-16 lg:grid-cols-12 lg:items-center lg:px-10 lg:py-20">
         <div className="lg:col-span-8">

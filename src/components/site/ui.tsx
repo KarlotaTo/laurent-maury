@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ClipboardCheck, Sparkles, UserRoundCheck } from "lucide-react";
 import { useState, type FormEvent, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
-import { site } from "@/data/site";
+import { useSite } from "@/cms/context";
 
 export function Section({
   children,
@@ -137,6 +137,7 @@ export function FinalCta({
   title?: string;
   text?: string;
 }) {
+  const site = useSite().general;
   const [sent, setSent] = useState(false);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
