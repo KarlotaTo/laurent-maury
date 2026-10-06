@@ -5,6 +5,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -134,10 +135,15 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const site = Route.useLoaderData();
+  const isAdmin = useRouterState({ select: (s) => s.location.pathname.startsWith("/admin") });
 
   return (
     <QueryClientProvider client={queryClient}>
       <SiteProvider value={site}>
+      {isAdmin ? (
+        <Outlet />
+      ) : (
+        <>
       <div className="flex min-h-screen flex-col pb-14 sm:pb-0">
         <Header />
         <main className="flex-1">
@@ -148,6 +154,8 @@ function RootComponent() {
       </div>
       <MobileCta />
       <CookieConsent />
+        </>
+      )}
       </SiteProvider>
     </QueryClientProvider>
   );
