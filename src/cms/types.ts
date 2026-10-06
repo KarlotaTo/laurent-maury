@@ -40,6 +40,8 @@ export const pageSchema = z.object({
   /** Nom court : menu, fil d'Ariane, arborescence du back-office. */
   label: z.string().min(1).max(60),
   inMenu: z.boolean(),
+  /** Données propres au modèle (ex. page ville : nom de la commune, texte court, siège). */
+  meta: z.record(z.unknown()).optional(),
   seo: z.object({
     title: z.string().min(1).max(70),
     description: z.string().min(1).max(170),

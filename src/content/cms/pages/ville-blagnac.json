@@ -1,0 +1,218 @@
+{
+  "id": "ville-blagnac",
+  "path": "/zones-intervention/blagnac",
+  "parentId": "zones-intervention",
+  "template": "ville",
+  "status": "published",
+  "order": 107,
+  "label": "Blagnac",
+  "inMenu": false,
+  "meta": {
+    "name": "Blagnac",
+    "hubText": "Peinture intérieure et rénovation d'appartements comme de maisons à Blagnac.",
+    "main": false
+  },
+  "seo": {
+    "title": "Peinture et rénovation intérieure à Blagnac | Laurent Maury",
+    "description": "Peinture et rénovation intérieure à Blagnac : décoration, murs, revêtements, sols et travaux de second œuvre par Laurent Maury.",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Peinture et rénovation intérieure à Blagnac",
+        "description": "Peinture et rénovation intérieure à Blagnac : décoration, murs, revêtements, sols et travaux de second œuvre par Laurent Maury.",
+        "url": "{{site}}/zones-intervention/blagnac",
+        "about": {
+          "@id": "{{site}}/#entreprise"
+        },
+        "spatialCoverage": {
+          "@type": "City",
+          "name": "Blagnac"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "ville-blagnac-1",
+      "type": "zoneHero",
+      "data": {
+        "parentLabel": "Zones d'intervention",
+        "name": "Blagnac",
+        "eyebrow": "Maison & appartement · Blagnac",
+        "title": "Peinture et rénovation intérieure à Blagnac",
+        "intro": "Appartement à remettre au goût du jour ou maison à rénover : à Blagnac, Laurent Maury réalise peinture intérieure, décoration, murs, revêtements et sols, avec un devis détaillé et un planning tenu.",
+        "image": {
+          "src": "/images/renovation.jpg",
+          "alt": "Travaux de maison & appartement par Laurent Maury"
+        }
+      }
+    },
+    {
+      "id": "ville-blagnac-2",
+      "type": "localIntro",
+      "background": "light",
+      "data": {
+        "eyebrow": "Blagnac",
+        "title": "Rénover un appartement ou une maison à Blagnac",
+        "paragraphs": [
+          "À Blagnac, une part importante des demandes concerne des appartements : la contrainte est alors d'intervenir proprement, dans un espace habité ou entre deux locations, avec des délais clairs.",
+          "Protection des sols et du mobilier, rangement quotidien, remise en état en fin de chantier : la tenue du chantier compte autant que la finition. La peinture des murs, des plafonds et des boiseries suit une préparation soignée.",
+          "Pour une rénovation de maison, l'artisan rénovation ajoute placo, isolation, revêtements muraux et sols, toujours avec le même interlocuteur."
+        ],
+        "projects": [
+          {
+            "title": "Rénovation d'appartement",
+            "text": "Peinture, revêtements et sols dans un logement habité."
+          },
+          {
+            "title": "Décoration intérieure",
+            "text": "Mise en couleur et peinture décorative."
+          },
+          {
+            "title": "Murs et sols",
+            "text": "Enduits, papier peint, parquet."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-blagnac-3",
+      "type": "linkedServices",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Savoir-faire",
+        "title": "Vos travaux de rénovation à Blagnac",
+        "items": [
+          {
+            "link": "/peinture-decoration",
+            "label": "Peinture & décoration",
+            "text": "Peinture intérieure et décoration.",
+            "image": {
+              "src": "/images/peinture-decorative.jpg",
+              "alt": "Peinture & décoration — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/renovation-interieure",
+            "label": "Rénovation intérieure",
+            "text": "Rénovation de maison ou d'appartement.",
+            "image": {
+              "src": "/images/renovation.jpg",
+              "alt": "Rénovation intérieure — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/murs-revetements",
+            "label": "Murs & revêtements",
+            "text": "Enduits, placo, isolation et revêtements muraux.",
+            "image": {
+              "src": "/images/murs-enduits.jpg",
+              "alt": "Murs & revêtements — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/sols-parquets",
+            "label": "Sols & parquets",
+            "text": "Pose et rénovation de parquet.",
+            "image": {
+              "src": "/images/parquet.jpg",
+              "alt": "Sols & parquets — savoir-faire de Laurent Maury"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-blagnac-4",
+      "type": "showcase",
+      "background": "light",
+      "data": {
+        "eyebrow": "Exemple · réalisation à Bouloc",
+        "title": "Un chantier de référence, à Bouloc",
+        "lead": "Ce chantier a été réalisé à Bouloc, pas à Blagnac. Il donne une idée concrète du rendu d'une rénovation intérieure menée par Laurent Maury.",
+        "link": {
+          "href": "/realisations/renovation-peinture-interieure-bouloc",
+          "label": "Voir la réalisation"
+        },
+        "before": {
+          "src": "/__l5e/assets-v1/bd1078ae-72ea-47f6-9b6a-23971524a51f/renovation-bouloc-mur-graphique-chantier.jpeg",
+          "alt": "Salon en cours de rénovation à Bouloc, mur graphique en préparation"
+        },
+        "after": {
+          "src": "/__l5e/assets-v1/60f6b79b-bb60-4f78-a65f-8be8e2aab541/renovation-bouloc-mur-graphique-fini.jpeg",
+          "alt": "Salon rénové à Bouloc avec mur graphique noir"
+        },
+        "beforeLabel": "Chantier",
+        "afterLabel": "Après",
+        "extra": {
+          "src": "/__l5e/assets-v1/94b9ffc8-f2e3-42ff-981d-423c7b07800a/renovation-bouloc-chambre-parquet.jpeg",
+          "alt": "Chambre rénovée avec parquet naturel dans une maison de Bouloc"
+        }
+      }
+    },
+    {
+      "id": "ville-blagnac-5",
+      "type": "stepsBand",
+      "data": {
+        "eyebrow": "Un seul interlocuteur",
+        "title": "Une rénovation suivie de A à Z",
+        "text": "Laurent et son fils prennent en charge une rénovation intérieure de la pièce à la maison entière à Blagnac : peinture, placo, isolation, sols et revêtements, sans multiplier les intervenants.",
+        "items": [
+          {
+            "title": "Visite et métrage",
+            "text": "Laurent vient sur place, écoute le projet et relève les surfaces."
+          },
+          {
+            "title": "Devis gratuit détaillé",
+            "text": "Chaque poste chiffré ligne par ligne : préparation, produits, finitions."
+          },
+          {
+            "title": "Planning annoncé",
+            "text": "Les dates sont fixées avant le démarrage, et tenues."
+          },
+          {
+            "title": "Suivi du chantier",
+            "text": "Un interlocuteur unique, présent du premier jour au dernier."
+          },
+          {
+            "title": "Réception des travaux",
+            "text": "Un point complet ensemble, puis l'entreprise reste joignable."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-blagnac-6",
+      "type": "sharedEngagements",
+      "background": "light",
+      "data": {
+        "eyebrow": "Pourquoi Laurent Maury ?",
+        "title": "Les engagements de l'entreprise",
+        "showLinks": true
+      }
+    },
+    {
+      "id": "ville-blagnac-7",
+      "type": "neighbours",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Secteur",
+        "title": "Interventions dans les communes voisines",
+        "communes": [
+          "aucamville",
+          "l-union",
+          "grenade"
+        ]
+      }
+    },
+    {
+      "id": "ville-blagnac-8",
+      "type": "contactCta",
+      "data": {
+        "title": "Un projet de rénovation à Blagnac ?",
+        "text": "Décrivez votre maison ou votre appartement : Laurent vous propose une visite et un devis gratuit détaillé poste par poste."
+      }
+    }
+  ]
+}

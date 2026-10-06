@@ -1,0 +1,218 @@
+{
+  "id": "ville-castelginest",
+  "path": "/zones-intervention/castelginest",
+  "parentId": "zones-intervention",
+  "template": "ville",
+  "status": "published",
+  "order": 103,
+  "label": "Castelginest",
+  "inMenu": false,
+  "meta": {
+    "name": "Castelginest",
+    "hubText": "Peinture intérieure, murs et revêtements pour moderniser les maisons de Castelginest.",
+    "main": false
+  },
+  "seo": {
+    "title": "Peinture et rénovation intérieure à Castelginest | Laurent Maury",
+    "description": "Laurent Maury intervient à Castelginest pour vos travaux de peinture, rénovation intérieure, murs, revêtements et second œuvre.",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Peinture et rénovation intérieure à Castelginest",
+        "description": "Laurent Maury intervient à Castelginest pour vos travaux de peinture, rénovation intérieure, murs, revêtements et second œuvre.",
+        "url": "{{site}}/zones-intervention/castelginest",
+        "about": {
+          "@id": "{{site}}/#entreprise"
+        },
+        "spatialCoverage": {
+          "@type": "City",
+          "name": "Castelginest"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "ville-castelginest-1",
+      "type": "zoneHero",
+      "data": {
+        "parentLabel": "Zones d'intervention",
+        "name": "Castelginest",
+        "eyebrow": "Rénovation intérieure · Castelginest",
+        "title": "Peinture et rénovation intérieure à Castelginest",
+        "intro": "Maison familiale à rafraîchir, pièces à réaménager, murs fatigués : à Castelginest, Laurent Maury accompagne les rénovations intérieures, de la préparation des supports à la dernière couche de peinture.",
+        "image": {
+          "src": "/images/murs-enduits.jpg",
+          "alt": "Travaux de rénovation intérieure par Laurent Maury"
+        }
+      }
+    },
+    {
+      "id": "ville-castelginest-2",
+      "type": "localIntro",
+      "background": "light",
+      "data": {
+        "eyebrow": "Castelginest",
+        "title": "Moderniser une maison à Castelginest",
+        "paragraphs": [
+          "Les maisons de Castelginest ont souvent été construites ou agrandies en plusieurs étapes. Au fil des années, les murs se marquent, les plafonds jaunissent et les pièces ne correspondent plus à la façon dont la famille vit.",
+          "Avant de choisir une couleur, il faut traiter ce qui se voit à la lumière rasante : fissures, anciens raccords, enduits irréguliers. La préparation des supports est le poste qui fait la différence sur le rendu final, et elle est chiffrée à part dans le devis.",
+          "Pour une rénovation de maison plus large, l'entreprise de rénovation intérieure regroupe peinture, placo, isolation et revêtements muraux dans un même planning."
+        ],
+        "projects": [
+          {
+            "title": "Rafraîchir un intérieur",
+            "text": "Murs, plafonds et boiseries repeints dans des tons choisis ensemble."
+          },
+          {
+            "title": "Rénover les murs",
+            "text": "Enduits, reprises de fissures, placo et papier peint."
+          },
+          {
+            "title": "Réaménager une pièce",
+            "text": "Cloisons en placo, isolation et finitions coordonnées."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-castelginest-3",
+      "type": "linkedServices",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Savoir-faire",
+        "title": "Vos travaux de rénovation à Castelginest",
+        "items": [
+          {
+            "link": "/peinture-decoration",
+            "label": "Peinture & décoration",
+            "text": "Peinture intérieure et décoration, du plafond aux boiseries.",
+            "image": {
+              "src": "/images/peinture-decorative.jpg",
+              "alt": "Peinture & décoration — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/murs-revetements",
+            "label": "Murs & revêtements",
+            "text": "Préparation des supports, enduits, placo, isolation et papier peint.",
+            "image": {
+              "src": "/images/murs-enduits.jpg",
+              "alt": "Murs & revêtements — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/renovation-interieure",
+            "label": "Rénovation intérieure",
+            "text": "Rénovation de maison pièce par pièce ou complète.",
+            "image": {
+              "src": "/images/renovation.jpg",
+              "alt": "Rénovation intérieure — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/entretien-bati",
+            "label": "Entretien & bâti",
+            "text": "Reprises et entretien courant du bâti.",
+            "image": {
+              "src": "/images/entretien-bati.jpg",
+              "alt": "Entretien & bâti — savoir-faire de Laurent Maury"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-castelginest-4",
+      "type": "showcase",
+      "background": "light",
+      "data": {
+        "eyebrow": "Exemple · réalisation à Bouloc",
+        "title": "Un exemple de rénovation intérieure, à Bouloc",
+        "lead": "Ce chantier n'a pas été réalisé à Castelginest mais à Bouloc. Il montre la méthode appliquée à chaque rénovation intérieure : préparation, mise en couleur, finitions.",
+        "link": {
+          "href": "/realisations/renovation-peinture-interieure-bouloc",
+          "label": "Voir la réalisation"
+        },
+        "before": {
+          "src": "/__l5e/assets-v1/bd1078ae-72ea-47f6-9b6a-23971524a51f/renovation-bouloc-mur-graphique-chantier.jpeg",
+          "alt": "Salon en cours de rénovation à Bouloc, mur graphique en préparation"
+        },
+        "after": {
+          "src": "/__l5e/assets-v1/60f6b79b-bb60-4f78-a65f-8be8e2aab541/renovation-bouloc-mur-graphique-fini.jpeg",
+          "alt": "Salon rénové à Bouloc avec mur graphique noir"
+        },
+        "beforeLabel": "Chantier",
+        "afterLabel": "Après",
+        "extra": {
+          "src": "/__l5e/assets-v1/94b9ffc8-f2e3-42ff-981d-423c7b07800a/renovation-bouloc-chambre-parquet.jpeg",
+          "alt": "Chambre rénovée avec parquet naturel dans une maison de Bouloc"
+        }
+      }
+    },
+    {
+      "id": "ville-castelginest-5",
+      "type": "stepsBand",
+      "data": {
+        "eyebrow": "Un seul interlocuteur",
+        "title": "Une rénovation suivie de A à Z",
+        "text": "Laurent et son fils prennent en charge une rénovation intérieure de la pièce à la maison entière à Castelginest : peinture, placo, isolation, sols et revêtements, sans multiplier les intervenants.",
+        "items": [
+          {
+            "title": "Visite et métrage",
+            "text": "Laurent vient sur place, écoute le projet et relève les surfaces."
+          },
+          {
+            "title": "Devis gratuit détaillé",
+            "text": "Chaque poste chiffré ligne par ligne : préparation, produits, finitions."
+          },
+          {
+            "title": "Planning annoncé",
+            "text": "Les dates sont fixées avant le démarrage, et tenues."
+          },
+          {
+            "title": "Suivi du chantier",
+            "text": "Un interlocuteur unique, présent du premier jour au dernier."
+          },
+          {
+            "title": "Réception des travaux",
+            "text": "Un point complet ensemble, puis l'entreprise reste joignable."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-castelginest-6",
+      "type": "sharedEngagements",
+      "background": "light",
+      "data": {
+        "eyebrow": "Pourquoi Laurent Maury ?",
+        "title": "Les engagements de l'entreprise",
+        "showLinks": true
+      }
+    },
+    {
+      "id": "ville-castelginest-7",
+      "type": "neighbours",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Secteur",
+        "title": "Interventions dans les communes voisines",
+        "communes": [
+          "bouloc",
+          "aucamville",
+          "fronton"
+        ]
+      }
+    },
+    {
+      "id": "ville-castelginest-8",
+      "type": "contactCta",
+      "data": {
+        "title": "Un projet de rénovation à Castelginest ?",
+        "text": "Décrivez votre maison ou votre appartement : Laurent vous propose une visite et un devis gratuit détaillé poste par poste."
+      }
+    }
+  ]
+}

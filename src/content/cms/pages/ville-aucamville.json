@@ -1,0 +1,218 @@
+{
+  "id": "ville-aucamville",
+  "path": "/zones-intervention/aucamville",
+  "parentId": "zones-intervention",
+  "template": "ville",
+  "status": "published",
+  "order": 104,
+  "label": "Aucamville",
+  "inMenu": false,
+  "meta": {
+    "name": "Aucamville",
+    "hubText": "Revêtements, papier peint, enduits et sols pour les maisons et appartements d'Aucamville.",
+    "main": false
+  },
+  "seo": {
+    "title": "Peintre et rénovation intérieure à Aucamville | Laurent Maury",
+    "description": "Peinture intérieure et rénovation à Aucamville : murs, revêtements, sols et travaux de second œuvre réalisés par Laurent Maury.",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Peintre et rénovation intérieure à Aucamville",
+        "description": "Peinture intérieure et rénovation à Aucamville : murs, revêtements, sols et travaux de second œuvre réalisés par Laurent Maury.",
+        "url": "{{site}}/zones-intervention/aucamville",
+        "about": {
+          "@id": "{{site}}/#entreprise"
+        },
+        "spatialCoverage": {
+          "@type": "City",
+          "name": "Aucamville"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "ville-aucamville-1",
+      "type": "zoneHero",
+      "data": {
+        "parentLabel": "Zones d'intervention",
+        "name": "Aucamville",
+        "eyebrow": "Murs, sols & peinture · Aucamville",
+        "title": "Peintre et rénovation intérieure à Aucamville",
+        "intro": "Aux portes de Toulouse, Aucamville compte maisons et appartements qui changent souvent de propriétaires. Laurent Maury y intervient pour repeindre, changer les revêtements, refaire les sols et rénover l'intérieur avant ou après une installation.",
+        "image": {
+          "src": "/images/parquet.jpg",
+          "alt": "Travaux de murs, sols & peinture par Laurent Maury"
+        }
+      }
+    },
+    {
+      "id": "ville-aucamville-2",
+      "type": "localIntro",
+      "background": "light",
+      "data": {
+        "eyebrow": "Aucamville",
+        "title": "Changer de décor à Aucamville",
+        "paragraphs": [
+          "Un achat récent à Aucamville s'accompagne souvent d'une même liste : retirer d'anciens papiers peints, reprendre les murs, repeindre, et parfois refaire les sols avant d'emménager.",
+          "Le détapissage et la remise en état des murs se font avant toute finition. Viennent ensuite le choix entre peinture, nouveau papier peint ou enduit, puis la pose de parquet si les sols doivent suivre.",
+          "Pour un appartement comme pour une maison, ce peintre en bâtiment et artisan du second œuvre coordonne ces étapes dans un planning annoncé à l'avance."
+        ],
+        "projects": [
+          {
+            "title": "Avant d'emménager",
+            "text": "Détapissage, préparation et peinture de l'ensemble du logement."
+          },
+          {
+            "title": "Nouveaux revêtements",
+            "text": "Papier peint, enduits et revêtements muraux."
+          },
+          {
+            "title": "Refaire les sols",
+            "text": "Pose de parquet et rénovation des sols existants."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-aucamville-3",
+      "type": "linkedServices",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Savoir-faire",
+        "title": "Les savoir-faire proposés à Aucamville",
+        "items": [
+          {
+            "link": "/murs-revetements",
+            "label": "Murs & revêtements",
+            "text": "Détapissage, enduits, papier peint, placo et isolation.",
+            "image": {
+              "src": "/images/murs-enduits.jpg",
+              "alt": "Murs & revêtements — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/peinture-decoration",
+            "label": "Peinture & décoration",
+            "text": "Peinture intérieure des murs, plafonds et boiseries.",
+            "image": {
+              "src": "/images/peinture-decorative.jpg",
+              "alt": "Peinture & décoration — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/sols-parquets",
+            "label": "Sols & parquets",
+            "text": "Parquet massif cloué, point de Hongrie, rénovation de parquet.",
+            "image": {
+              "src": "/images/parquet.jpg",
+              "alt": "Sols & parquets — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/renovation-interieure",
+            "label": "Rénovation intérieure",
+            "text": "Rénovation d'appartement ou de maison, clé en main.",
+            "image": {
+              "src": "/images/renovation.jpg",
+              "alt": "Rénovation intérieure — savoir-faire de Laurent Maury"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-aucamville-4",
+      "type": "showcase",
+      "background": "light",
+      "data": {
+        "eyebrow": "Exemple · réalisation à Bouloc",
+        "title": "Une rénovation menée à Bouloc",
+        "lead": "Réalisé à Bouloc et non à Aucamville, ce chantier associe peinture intérieure et pose de parquet : deux demandes fréquentes sur les logements d'Aucamville.",
+        "link": {
+          "href": "/realisations/renovation-peinture-interieure-bouloc",
+          "label": "Voir la réalisation"
+        },
+        "before": {
+          "src": "/__l5e/assets-v1/bd1078ae-72ea-47f6-9b6a-23971524a51f/renovation-bouloc-mur-graphique-chantier.jpeg",
+          "alt": "Salon en cours de rénovation à Bouloc, mur graphique en préparation"
+        },
+        "after": {
+          "src": "/__l5e/assets-v1/60f6b79b-bb60-4f78-a65f-8be8e2aab541/renovation-bouloc-mur-graphique-fini.jpeg",
+          "alt": "Salon rénové à Bouloc avec mur graphique noir"
+        },
+        "beforeLabel": "Chantier",
+        "afterLabel": "Après",
+        "extra": {
+          "src": "/__l5e/assets-v1/94b9ffc8-f2e3-42ff-981d-423c7b07800a/renovation-bouloc-chambre-parquet.jpeg",
+          "alt": "Chambre rénovée avec parquet naturel dans une maison de Bouloc"
+        }
+      }
+    },
+    {
+      "id": "ville-aucamville-5",
+      "type": "stepsBand",
+      "data": {
+        "eyebrow": "Un seul interlocuteur",
+        "title": "Une rénovation suivie de A à Z",
+        "text": "Laurent et son fils prennent en charge une rénovation intérieure de la pièce à la maison entière à Aucamville : peinture, placo, isolation, sols et revêtements, sans multiplier les intervenants.",
+        "items": [
+          {
+            "title": "Visite et métrage",
+            "text": "Laurent vient sur place, écoute le projet et relève les surfaces."
+          },
+          {
+            "title": "Devis gratuit détaillé",
+            "text": "Chaque poste chiffré ligne par ligne : préparation, produits, finitions."
+          },
+          {
+            "title": "Planning annoncé",
+            "text": "Les dates sont fixées avant le démarrage, et tenues."
+          },
+          {
+            "title": "Suivi du chantier",
+            "text": "Un interlocuteur unique, présent du premier jour au dernier."
+          },
+          {
+            "title": "Réception des travaux",
+            "text": "Un point complet ensemble, puis l'entreprise reste joignable."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-aucamville-6",
+      "type": "sharedEngagements",
+      "background": "light",
+      "data": {
+        "eyebrow": "Pourquoi Laurent Maury ?",
+        "title": "Les engagements de l'entreprise",
+        "showLinks": true
+      }
+    },
+    {
+      "id": "ville-aucamville-7",
+      "type": "neighbours",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Secteur",
+        "title": "Interventions dans les communes voisines",
+        "communes": [
+          "castelginest",
+          "l-union",
+          "bouloc"
+        ]
+      }
+    },
+    {
+      "id": "ville-aucamville-8",
+      "type": "contactCta",
+      "data": {
+        "title": "Un projet de rénovation à Aucamville ?",
+        "text": "Décrivez votre maison ou votre appartement : Laurent vous propose une visite et un devis gratuit détaillé poste par poste."
+      }
+    }
+  ]
+}

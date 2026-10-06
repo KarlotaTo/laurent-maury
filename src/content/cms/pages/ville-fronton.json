@@ -1,0 +1,218 @@
+{
+  "id": "ville-fronton",
+  "path": "/zones-intervention/fronton",
+  "parentId": "zones-intervention",
+  "template": "ville",
+  "status": "published",
+  "order": 102,
+  "label": "Fronton",
+  "inMenu": false,
+  "meta": {
+    "name": "Fronton",
+    "hubText": "Peinture décorative, enduits à la chaux et rénovation intérieure pour les maisons de Fronton.",
+    "main": false
+  },
+  "seo": {
+    "title": "Peintre et rénovation à Fronton | Laurent Maury",
+    "description": "Peinture, décoration et rénovation intérieure à Fronton. Découvrez le savoir-faire de Laurent Maury, artisan de la rénovation et du second œuvre.",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Peintre et entreprise de rénovation à Fronton",
+        "description": "Peinture, décoration et rénovation intérieure à Fronton. Découvrez le savoir-faire de Laurent Maury, artisan de la rénovation et du second œuvre.",
+        "url": "{{site}}/zones-intervention/fronton",
+        "about": {
+          "@id": "{{site}}/#entreprise"
+        },
+        "spatialCoverage": {
+          "@type": "City",
+          "name": "Fronton"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "ville-fronton-1",
+      "type": "zoneHero",
+      "data": {
+        "parentLabel": "Zones d'intervention",
+        "name": "Fronton",
+        "eyebrow": "Peinture & décoration · Fronton",
+        "title": "Peintre et entreprise de rénovation à Fronton",
+        "intro": "Au cœur du vignoble frontonnais, les maisons de caractère comme les pavillons récents demandent des finitions soignées. Laurent Maury y réalise peinture, décoration et rénovation intérieure, avec la même exigence de préparation.",
+        "image": {
+          "src": "/images/peinture-decorative.jpg",
+          "alt": "Travaux de peinture & décoration par Laurent Maury"
+        }
+      }
+    },
+    {
+      "id": "ville-fronton-2",
+      "type": "localIntro",
+      "background": "light",
+      "data": {
+        "eyebrow": "Fronton",
+        "title": "Donner du caractère à une maison de Fronton",
+        "paragraphs": [
+          "À Fronton, beaucoup de projets partent d'une envie de matière : un enduit à la chaux dans une pièce de vie, une peinture à effet pour réchauffer un séjour, une mise en couleur qui accompagne des murs anciens plutôt que de les masquer.",
+          "La chaux et les enduits décoratifs demandent un support bien préparé et un geste régulier. L'artisan peintre commence donc toujours par l'état des murs : rebouchage, traitement des fissures, ponçage, impression adaptée.",
+          "Quand le projet dépasse la décoration, l'entreprise de second œuvre prend aussi en charge placo, isolation, sols et revêtements, pour rénover une pièce ou une maison sans multiplier les intervenants."
+        ],
+        "projects": [
+          {
+            "title": "Peinture décorative",
+            "text": "Effets, textures et chaux pour donner du relief aux murs."
+          },
+          {
+            "title": "Remise en état des murs",
+            "text": "Fissures, enduits et préparation avant toute finition."
+          },
+          {
+            "title": "Rénovation intérieure",
+            "text": "Une pièce ou une maison entière, suivie par un seul interlocuteur."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-fronton-3",
+      "type": "linkedServices",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Savoir-faire",
+        "title": "Les savoir-faire mobilisés à Fronton",
+        "items": [
+          {
+            "link": "/peinture-decoration",
+            "label": "Peinture & décoration",
+            "text": "Peinture décorative, chaux, enduits décoratifs et mise en couleur.",
+            "image": {
+              "src": "/images/peinture-decorative.jpg",
+              "alt": "Peinture & décoration — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/murs-revetements",
+            "label": "Murs & revêtements",
+            "text": "Enduits, placo, isolation et revêtements muraux.",
+            "image": {
+              "src": "/images/murs-enduits.jpg",
+              "alt": "Murs & revêtements — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/renovation-interieure",
+            "label": "Rénovation intérieure",
+            "text": "Rénovation intérieure pièce par pièce ou clé en main.",
+            "image": {
+              "src": "/images/renovation.jpg",
+              "alt": "Rénovation intérieure — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/sols-parquets",
+            "label": "Sols & parquets",
+            "text": "Pose et rénovation de parquet.",
+            "image": {
+              "src": "/images/parquet.jpg",
+              "alt": "Sols & parquets — savoir-faire de Laurent Maury"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-fronton-4",
+      "type": "showcase",
+      "background": "light",
+      "data": {
+        "eyebrow": "Exemple · réalisation à Bouloc",
+        "title": "Le savoir-faire de Laurent Maury, en images",
+        "lead": "Ce chantier a été réalisé à Bouloc, tout près de Fronton : il illustre le soin apporté à la peinture intérieure, à la mise en couleur et aux sols.",
+        "link": {
+          "href": "/realisations/renovation-peinture-interieure-bouloc",
+          "label": "Voir la réalisation"
+        },
+        "before": {
+          "src": "/__l5e/assets-v1/bd1078ae-72ea-47f6-9b6a-23971524a51f/renovation-bouloc-mur-graphique-chantier.jpeg",
+          "alt": "Salon en cours de rénovation à Bouloc, mur graphique en préparation"
+        },
+        "after": {
+          "src": "/__l5e/assets-v1/60f6b79b-bb60-4f78-a65f-8be8e2aab541/renovation-bouloc-mur-graphique-fini.jpeg",
+          "alt": "Salon rénové à Bouloc avec mur graphique noir"
+        },
+        "beforeLabel": "Chantier",
+        "afterLabel": "Après",
+        "extra": {
+          "src": "/__l5e/assets-v1/94b9ffc8-f2e3-42ff-981d-423c7b07800a/renovation-bouloc-chambre-parquet.jpeg",
+          "alt": "Chambre rénovée avec parquet naturel dans une maison de Bouloc"
+        }
+      }
+    },
+    {
+      "id": "ville-fronton-5",
+      "type": "stepsBand",
+      "data": {
+        "eyebrow": "Un seul interlocuteur",
+        "title": "Une rénovation suivie de A à Z",
+        "text": "Laurent et son fils prennent en charge une rénovation intérieure de la pièce à la maison entière à Fronton : peinture, placo, isolation, sols et revêtements, sans multiplier les intervenants.",
+        "items": [
+          {
+            "title": "Visite et métrage",
+            "text": "Laurent vient sur place, écoute le projet et relève les surfaces."
+          },
+          {
+            "title": "Devis gratuit détaillé",
+            "text": "Chaque poste chiffré ligne par ligne : préparation, produits, finitions."
+          },
+          {
+            "title": "Planning annoncé",
+            "text": "Les dates sont fixées avant le démarrage, et tenues."
+          },
+          {
+            "title": "Suivi du chantier",
+            "text": "Un interlocuteur unique, présent du premier jour au dernier."
+          },
+          {
+            "title": "Réception des travaux",
+            "text": "Un point complet ensemble, puis l'entreprise reste joignable."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-fronton-6",
+      "type": "sharedEngagements",
+      "background": "light",
+      "data": {
+        "eyebrow": "Pourquoi Laurent Maury ?",
+        "title": "Les engagements de l'entreprise",
+        "showLinks": true
+      }
+    },
+    {
+      "id": "ville-fronton-7",
+      "type": "neighbours",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Secteur",
+        "title": "Interventions dans les communes voisines",
+        "communes": [
+          "bouloc",
+          "grenade",
+          "castelginest"
+        ]
+      }
+    },
+    {
+      "id": "ville-fronton-8",
+      "type": "contactCta",
+      "data": {
+        "title": "Un projet de rénovation à Fronton ?",
+        "text": "Décrivez votre maison ou votre appartement : Laurent vous propose une visite et un devis gratuit détaillé poste par poste."
+      }
+    }
+  ]
+}

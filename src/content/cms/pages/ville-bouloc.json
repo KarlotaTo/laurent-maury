@@ -1,0 +1,239 @@
+{
+  "id": "ville-bouloc",
+  "path": "/zones-intervention/bouloc",
+  "parentId": "zones-intervention",
+  "template": "ville",
+  "status": "published",
+  "order": 101,
+  "label": "Bouloc",
+  "inMenu": false,
+  "meta": {
+    "name": "Bouloc",
+    "hubText": "Le siège de l'entreprise et son territoire historique : c'est ici que l'activité est née en 1994.",
+    "main": true
+  },
+  "seo": {
+    "title": "Entreprise de rénovation à Bouloc | Peinture & second œuvre",
+    "description": "Entreprise de rénovation à Bouloc depuis 1994 : peinture, décoration, rénovation intérieure, sols et second œuvre. Laurent Maury vous accompagne de A à Z.",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Entreprise de rénovation et peinture à Bouloc",
+        "description": "Entreprise de rénovation à Bouloc depuis 1994 : peinture, décoration, rénovation intérieure, sols et second œuvre. Laurent Maury vous accompagne de A à Z.",
+        "url": "{{site}}/zones-intervention/bouloc",
+        "about": {
+          "@id": "{{site}}/#entreprise"
+        },
+        "spatialCoverage": {
+          "@type": "City",
+          "name": "Bouloc"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "ville-bouloc-1",
+      "type": "zoneHero",
+      "data": {
+        "parentLabel": "Zones d'intervention",
+        "name": "Bouloc",
+        "eyebrow": "Artisan rénovation · Bouloc",
+        "title": "Entreprise de rénovation et peinture à Bouloc",
+        "intro": "Artisan de la rénovation à Bouloc depuis 1994, Laurent Maury rénove maisons et appartements avec son fils : peinture, décoration, sols, placo, isolation et revêtements, avec un seul interlocuteur du premier rendez-vous à la réception.",
+        "image": {
+          "src": "/__l5e/assets-v1/6c0bf8ec-c0ab-49f5-aedd-25a0baeb2668/renovation-bouloc-salon-lumineux.jpeg",
+          "alt": "Salon lumineux rénové par Laurent Maury dans une maison de Bouloc"
+        }
+      }
+    },
+    {
+      "id": "ville-bouloc-2",
+      "type": "localIntro",
+      "background": "light",
+      "data": {
+        "eyebrow": "Bouloc",
+        "title": "Bouloc, là où tout a commencé",
+        "paragraphs": [
+          "L'entreprise a été créée à Bouloc en 1994 et n'en est jamais partie. Elle s'inscrit dans une famille de quatre générations d'artisans ; aujourd'hui, Laurent travaille aux côtés de son fils, qui reprend les gestes et l'exigence du métier.",
+          "Être installé sur place change la manière de conduire un chantier : les visites se calent facilement, les reprises se font sans délai et le suivi ne s'arrête pas le jour de la réception. Beaucoup de projets à Bouloc viennent d'ailleurs de voisins ou de clients qui ont déjà fait appel à l'entreprise.",
+          "Les demandes sont variées : repeindre un intérieur devenu terne, moderniser une pièce, refaire les sols d'une chambre ou mener une rénovation clé en main sur toute une maison. Dans chaque cas, l'entreprise de second œuvre prend en charge les travaux qui relèvent de son savoir-faire et organise le chantier pièce par pièce."
+        ],
+        "projects": [
+          {
+            "title": "Repeindre et éclaircir",
+            "text": "Murs, plafonds et boiseries remis en peinture après une vraie préparation des supports."
+          },
+          {
+            "title": "Rénover pièce par pièce",
+            "text": "Un planning qui permet de continuer à vivre dans la maison pendant les travaux."
+          },
+          {
+            "title": "Refaire les sols",
+            "text": "Préparation du support et pose de parquet pour transformer une chambre ou un séjour."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-bouloc-3",
+      "type": "linkedServices",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Savoir-faire",
+        "title": "Les travaux de rénovation réalisés à Bouloc",
+        "items": [
+          {
+            "link": "/peinture-decoration",
+            "label": "Peinture & décoration",
+            "text": "Peinture intérieure, mise en couleur et peinture décorative, de la teinte douce au mur graphique.",
+            "image": {
+              "src": "/images/peinture-decorative.jpg",
+              "alt": "Peinture & décoration — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/renovation-interieure",
+            "label": "Rénovation intérieure",
+            "text": "Rénovation complète ou ciblée d'une maison, coordonnée de A à Z par un interlocuteur unique.",
+            "image": {
+              "src": "/images/renovation.jpg",
+              "alt": "Rénovation intérieure — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/sols-parquets",
+            "label": "Sols & parquets",
+            "text": "Pose et rénovation de parquet, préparation des sols avant finition.",
+            "image": {
+              "src": "/images/parquet.jpg",
+              "alt": "Sols & parquets — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/murs-revetements",
+            "label": "Murs & revêtements",
+            "text": "Enduits, placo, isolation et papier peint pour des murs sains et nets.",
+            "image": {
+              "src": "/images/murs-enduits.jpg",
+              "alt": "Murs & revêtements — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/facades-exterieur",
+            "label": "Façades & extérieur",
+            "text": "Peinture et rénovation de façade, entretien des boiseries extérieures.",
+            "image": {
+              "src": "/images/facade.jpg",
+              "alt": "Façades & extérieur — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/entretien-bati",
+            "label": "Entretien & bâti",
+            "text": "Petites reprises et entretien du bâti pour les maisons du village.",
+            "image": {
+              "src": "/images/entretien-bati.jpg",
+              "alt": "Entretien & bâti — savoir-faire de Laurent Maury"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-bouloc-4",
+      "type": "showcase",
+      "background": "light",
+      "data": {
+        "eyebrow": "Réalisation à Bouloc",
+        "title": "Une rénovation à Bouloc, en images",
+        "lead": "Salon éclairci, mur graphique noir derrière la télévision et chambre rénovée avec un parquet naturel : un chantier mené pièce par pièce dans une maison de Bouloc.",
+        "link": {
+          "href": "/realisations/renovation-peinture-interieure-bouloc",
+          "label": "Voir la réalisation"
+        },
+        "before": {
+          "src": "/__l5e/assets-v1/bd1078ae-72ea-47f6-9b6a-23971524a51f/renovation-bouloc-mur-graphique-chantier.jpeg",
+          "alt": "Salon en cours de rénovation à Bouloc, mur graphique en préparation"
+        },
+        "after": {
+          "src": "/__l5e/assets-v1/60f6b79b-bb60-4f78-a65f-8be8e2aab541/renovation-bouloc-mur-graphique-fini.jpeg",
+          "alt": "Salon rénové à Bouloc avec mur graphique noir"
+        },
+        "beforeLabel": "Chantier",
+        "afterLabel": "Après",
+        "extra": {
+          "src": "/__l5e/assets-v1/94b9ffc8-f2e3-42ff-981d-423c7b07800a/renovation-bouloc-chambre-parquet.jpeg",
+          "alt": "Chambre rénovée avec parquet naturel dans une maison de Bouloc"
+        }
+      }
+    },
+    {
+      "id": "ville-bouloc-5",
+      "type": "stepsBand",
+      "data": {
+        "eyebrow": "Un seul interlocuteur",
+        "title": "Une rénovation suivie de A à Z",
+        "text": "Laurent et son fils prennent en charge une rénovation intérieure de la pièce à la maison entière à Bouloc : peinture, placo, isolation, sols et revêtements, sans multiplier les intervenants.",
+        "items": [
+          {
+            "title": "Visite et métrage",
+            "text": "Laurent vient sur place, écoute le projet et relève les surfaces."
+          },
+          {
+            "title": "Devis gratuit détaillé",
+            "text": "Chaque poste chiffré ligne par ligne : préparation, produits, finitions."
+          },
+          {
+            "title": "Planning annoncé",
+            "text": "Les dates sont fixées avant le démarrage, et tenues."
+          },
+          {
+            "title": "Suivi du chantier",
+            "text": "Un interlocuteur unique, présent du premier jour au dernier."
+          },
+          {
+            "title": "Réception des travaux",
+            "text": "Un point complet ensemble, puis l'entreprise reste joignable."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-bouloc-6",
+      "type": "sharedEngagements",
+      "background": "light",
+      "data": {
+        "eyebrow": "Pourquoi Laurent Maury ?",
+        "title": "Les engagements de l'entreprise",
+        "showLinks": true
+      }
+    },
+    {
+      "id": "ville-bouloc-7",
+      "type": "neighbours",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Secteur",
+        "title": "Interventions dans les communes voisines",
+        "communes": [
+          "fronton",
+          "castelginest",
+          "aucamville",
+          "grenade",
+          "l-union",
+          "blagnac"
+        ]
+      }
+    },
+    {
+      "id": "ville-bouloc-8",
+      "type": "contactCta",
+      "data": {
+        "title": "Un projet de rénovation à Bouloc ?",
+        "text": "Décrivez votre maison ou votre appartement : Laurent vous propose une visite et un devis gratuit détaillé poste par poste."
+      }
+    }
+  ]
+}

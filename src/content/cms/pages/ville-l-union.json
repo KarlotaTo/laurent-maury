@@ -1,0 +1,218 @@
+{
+  "id": "ville-l-union",
+  "path": "/zones-intervention/l-union",
+  "parentId": "zones-intervention",
+  "template": "ville",
+  "status": "published",
+  "order": 105,
+  "label": "L'Union",
+  "inMenu": false,
+  "meta": {
+    "name": "L'Union",
+    "hubText": "Rénovation clé en main, décoration et sols pour les maisons de L'Union.",
+    "main": false
+  },
+  "seo": {
+    "title": "Entreprise de rénovation intérieure à L'Union | Laurent Maury",
+    "description": "Projet de rénovation à L'Union ? Laurent Maury intervient pour vos travaux de peinture, décoration, sols, revêtements et rénovation intérieure.",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Entreprise de rénovation intérieure à L'Union",
+        "description": "Projet de rénovation à L'Union ? Laurent Maury intervient pour vos travaux de peinture, décoration, sols, revêtements et rénovation intérieure.",
+        "url": "{{site}}/zones-intervention/l-union",
+        "about": {
+          "@id": "{{site}}/#entreprise"
+        },
+        "spatialCoverage": {
+          "@type": "City",
+          "name": "L'Union"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "ville-l-union-1",
+      "type": "zoneHero",
+      "data": {
+        "parentLabel": "Zones d'intervention",
+        "name": "L'Union",
+        "eyebrow": "Rénovation clé en main · L'Union",
+        "title": "Entreprise de rénovation intérieure à L'Union",
+        "intro": "Rénover plusieurs pièces à L'Union sans jongler entre les artisans : Laurent Maury prend en charge peinture, décoration, sols et revêtements dans un seul chantier, suivi de A à Z.",
+        "image": {
+          "src": "/images/renovation.jpg",
+          "alt": "Travaux de rénovation clé en main par Laurent Maury"
+        }
+      }
+    },
+    {
+      "id": "ville-l-union-2",
+      "type": "localIntro",
+      "background": "light",
+      "data": {
+        "eyebrow": "L'Union",
+        "title": "Coordonner plusieurs travaux à L'Union",
+        "paragraphs": [
+          "À L'Union, les projets portent souvent sur plusieurs pièces à la fois : un séjour à moderniser, des chambres à refaire, des sols usés à remplacer. La difficulté n'est pas chaque tâche, mais leur enchaînement.",
+          "Une entreprise de rénovation qui réalise elle-même peinture, placo, isolation, sols et revêtements évite les temps morts entre corps de métier et garde une seule responsabilité sur le résultat.",
+          "Le devis est détaillé poste par poste, le planning annoncé avant le démarrage, et Laurent reste votre interlocuteur jusqu'à la réception des travaux."
+        ],
+        "projects": [
+          {
+            "title": "Rénovation clé en main",
+            "text": "Plusieurs pièces coordonnées dans un seul planning."
+          },
+          {
+            "title": "Décoration intérieure",
+            "text": "Mise en couleur, peintures à effet et enduits décoratifs."
+          },
+          {
+            "title": "Sols et parquets",
+            "text": "Parquet posé ou rénové pour accompagner la nouvelle décoration."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-l-union-3",
+      "type": "linkedServices",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Savoir-faire",
+        "title": "Les travaux de rénovation à L'Union",
+        "items": [
+          {
+            "link": "/renovation-interieure",
+            "label": "Rénovation intérieure",
+            "text": "Rénovation intérieure complète, un seul interlocuteur.",
+            "image": {
+              "src": "/images/renovation.jpg",
+              "alt": "Rénovation intérieure — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/peinture-decoration",
+            "label": "Peinture & décoration",
+            "text": "Peinture et décoration, de la teinte au mur graphique.",
+            "image": {
+              "src": "/images/peinture-decorative.jpg",
+              "alt": "Peinture & décoration — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/sols-parquets",
+            "label": "Sols & parquets",
+            "text": "Pose et rénovation de parquet.",
+            "image": {
+              "src": "/images/parquet.jpg",
+              "alt": "Sols & parquets — savoir-faire de Laurent Maury"
+            }
+          },
+          {
+            "link": "/murs-revetements",
+            "label": "Murs & revêtements",
+            "text": "Placo, isolation, enduits et revêtements muraux.",
+            "image": {
+              "src": "/images/murs-enduits.jpg",
+              "alt": "Murs & revêtements — savoir-faire de Laurent Maury"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-l-union-4",
+      "type": "showcase",
+      "background": "light",
+      "data": {
+        "eyebrow": "Exemple · réalisation à Bouloc",
+        "title": "Une rénovation pièce par pièce, à Bouloc",
+        "lead": "Ce chantier a été réalisé à Bouloc. Il illustre une rénovation intérieure coordonnée : peinture du salon, mur graphique et parquet dans la chambre.",
+        "link": {
+          "href": "/realisations/renovation-peinture-interieure-bouloc",
+          "label": "Voir la réalisation"
+        },
+        "before": {
+          "src": "/__l5e/assets-v1/bd1078ae-72ea-47f6-9b6a-23971524a51f/renovation-bouloc-mur-graphique-chantier.jpeg",
+          "alt": "Salon en cours de rénovation à Bouloc, mur graphique en préparation"
+        },
+        "after": {
+          "src": "/__l5e/assets-v1/60f6b79b-bb60-4f78-a65f-8be8e2aab541/renovation-bouloc-mur-graphique-fini.jpeg",
+          "alt": "Salon rénové à Bouloc avec mur graphique noir"
+        },
+        "beforeLabel": "Chantier",
+        "afterLabel": "Après",
+        "extra": {
+          "src": "/__l5e/assets-v1/94b9ffc8-f2e3-42ff-981d-423c7b07800a/renovation-bouloc-chambre-parquet.jpeg",
+          "alt": "Chambre rénovée avec parquet naturel dans une maison de Bouloc"
+        }
+      }
+    },
+    {
+      "id": "ville-l-union-5",
+      "type": "stepsBand",
+      "data": {
+        "eyebrow": "Un seul interlocuteur",
+        "title": "Une rénovation suivie de A à Z",
+        "text": "Laurent et son fils prennent en charge une rénovation intérieure de la pièce à la maison entière à L'Union : peinture, placo, isolation, sols et revêtements, sans multiplier les intervenants.",
+        "items": [
+          {
+            "title": "Visite et métrage",
+            "text": "Laurent vient sur place, écoute le projet et relève les surfaces."
+          },
+          {
+            "title": "Devis gratuit détaillé",
+            "text": "Chaque poste chiffré ligne par ligne : préparation, produits, finitions."
+          },
+          {
+            "title": "Planning annoncé",
+            "text": "Les dates sont fixées avant le démarrage, et tenues."
+          },
+          {
+            "title": "Suivi du chantier",
+            "text": "Un interlocuteur unique, présent du premier jour au dernier."
+          },
+          {
+            "title": "Réception des travaux",
+            "text": "Un point complet ensemble, puis l'entreprise reste joignable."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ville-l-union-6",
+      "type": "sharedEngagements",
+      "background": "light",
+      "data": {
+        "eyebrow": "Pourquoi Laurent Maury ?",
+        "title": "Les engagements de l'entreprise",
+        "showLinks": true
+      }
+    },
+    {
+      "id": "ville-l-union-7",
+      "type": "neighbours",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Secteur",
+        "title": "Interventions dans les communes voisines",
+        "communes": [
+          "aucamville",
+          "blagnac",
+          "castelginest"
+        ]
+      }
+    },
+    {
+      "id": "ville-l-union-8",
+      "type": "contactCta",
+      "data": {
+        "title": "Un projet de rénovation à L'Union ?",
+        "text": "Décrivez votre maison ou votre appartement : Laurent vous propose une visite et un devis gratuit détaillé poste par poste."
+      }
+    }
+  ]
+}
