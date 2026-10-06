@@ -1,0 +1,220 @@
+{
+  "id": "accueil",
+  "path": "/",
+  "parentId": null,
+  "template": "home",
+  "status": "published",
+  "order": 0,
+  "label": "Accueil",
+  "inMenu": false,
+  "seo": {
+    "title": "Artisan rénovation et peinture à Bouloc | Maury Laurent",
+    "description": "Rénovation clé en main ou travaux ciblés : peinture, sols, placo, façades. Artisan à Bouloc depuis 1994, à Fronton, Blagnac, L'Union et alentour."
+  },
+  "blocks": [
+    {
+      "id": "accueil-1",
+      "type": "heroHome",
+      "data": {
+        "eyebrow": "Artisan rénovation · Bouloc · depuis 1994",
+        "titleSeoPrefix": "Artisan rénovation à Bouloc",
+        "title": "L'art de rénover,\n*transmis* depuis\nquatre générations",
+        "intro": "Il y a des maisons qu'on repeint et d'autres qu'on réinvente. Rénovation clé en main ou chantier ciblé : Laurent Maury et son fils mènent votre projet de A à Z, avec un seul interlocuteur, à Bouloc et dans tout le nord de Toulouse.",
+        "image": {
+          "src": "/images/hero-interieur.jpg",
+          "alt": "Séjour rénové avec mur peint en bleu nuit, murs clairs et parquet en chêne"
+        }
+      }
+    },
+    {
+      "id": "accueil-2",
+      "type": "textTitle",
+      "background": "light",
+      "data": {
+        "eyebrow": "Notre approche",
+        "title": "Qu'est-ce qui distingue une rénovation réussie d'une rénovation *juste* terminée ?",
+        "lead": "Le jour de la livraison, rien. C'est des mois plus tard que tout se révèle : une fissure qui revient, une peinture qui farine, un raccord qui bouge. Chez nous, la finition n'est que la dernière étape. **Tout se joue avant** : le support, la préparation, l'ordre des travaux.",
+        "text": "Que vous nous confiiez une pièce ou une maison entière, la personne qui vous reçoit est celle qui réalise les travaux."
+      }
+    },
+    {
+      "id": "accueil-3",
+      "type": "serviceCards",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Savoir-faire",
+        "title": "Six expertises, une même obsession du détail",
+        "items": [
+          {
+            "link": "/peinture-decoration",
+            "label": "Peinture & décoration",
+            "text": "Peintures à effet, textures, chaux, home staging.",
+            "image": {
+              "src": "/images/peinture-decorative.jpg",
+              "alt": "Application d'un enduit à la chaux au spalter sur un mur intérieur"
+            }
+          },
+          {
+            "link": "/sols-parquets",
+            "label": "Sols & parquets",
+            "text": "Parquet massif cloué, point de Hongrie, rénovation.",
+            "image": {
+              "src": "/images/parquet.jpg",
+              "alt": "Parquet en chêne massif rénové posé en point de Hongrie"
+            }
+          },
+          {
+            "link": "/murs-revetements",
+            "label": "Murs & revêtements",
+            "text": "Enduits, placo, isolation.",
+            "image": {
+              "src": "/images/murs-enduits.jpg",
+              "alt": "Mur intérieur enduit et poncé avant mise en peinture"
+            }
+          },
+          {
+            "link": "/renovation-interieure",
+            "label": "Rénovation intérieure",
+            "text": "De la pièce à la maison, clé en main.",
+            "image": {
+              "src": "/images/renovation.jpg",
+              "alt": "Chantier de rénovation intérieure avec sols protégés et cloisons neuves"
+            }
+          },
+          {
+            "link": "/facades-exterieur",
+            "label": "Façades & extérieur",
+            "text": "Ravalement, fissures, peinture de façade.",
+            "image": {
+              "src": "/images/facade.jpg",
+              "alt": "Façade de maison en cours de ravalement"
+            }
+          },
+          {
+            "link": "/entretien-bati",
+            "label": "Entretien & bâti",
+            "text": "Clôtures, boiseries, entretien extérieur.",
+            "image": {
+              "src": "/images/entretien-bati.jpg",
+              "alt": "Entretien extérieur d'une maison : toiture et clôture"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "accueil-4",
+      "type": "feature",
+      "data": {
+        "eyebrow": "Rénovation globale",
+        "title": "Clé en main ou chantier ciblé,\nun seul numéro à retenir",
+        "text": "Une maison entière ou une seule pièce : Laurent et son fils mènent votre chantier de A à Z, **sans faire appel à un autre prestataire**. Peinture, placo, isolation, sols : tout est pensé, planifié et réalisé par la même équipe.",
+        "steps": [
+          "Visite et métrage chez vous",
+          "Devis gratuit, poste par poste",
+          "Planning annoncé, puis tenu",
+          "Un référent unique sur le chantier",
+          "Réception ensemble, pièce par pièce"
+        ],
+        "link": {
+          "href": "/renovation-interieure",
+          "label": "Découvrir la rénovation intérieure"
+        },
+        "image": {
+          "src": "/images/atelier.jpg",
+          "alt": "Outils d'artisan peintre : brosses, couteaux et nuancier sur un établi"
+        }
+      }
+    },
+    {
+      "id": "accueil-5",
+      "type": "realisationsList",
+      "background": "light",
+      "data": {
+        "eyebrow": "Réalisations",
+        "title": "Des réalisations qui parlent d'elles-mêmes",
+        "linkLabel": "Toutes les réalisations",
+        "limit": 6
+      }
+    },
+    {
+      "id": "accueil-6",
+      "type": "textTitle",
+      "background": "sand",
+      "data": {
+        "eyebrow": "L'entreprise",
+        "title": "Artisans de père en fils, depuis quatre générations",
+        "lead": "Un arrière-grand-père contremaître, un père et un oncle dans le métier. Finaliste d'un concours national d'apprentis en 1990, Laurent crée son entreprise à Bouloc en 1994.",
+        "text": "Aujourd'hui, il travaille avec son fils : deux générations, **une même exigence**.",
+        "link": {
+          "href": "/entreprise",
+          "label": "Notre histoire"
+        }
+      }
+    },
+    {
+      "id": "accueil-7",
+      "type": "engagements",
+      "background": "light",
+      "data": {
+        "eyebrow": "Engagements",
+        "title": "Ce sur quoi vous pouvez compter",
+        "items": [
+          {
+            "title": "Un interlocuteur unique",
+            "text": "Laurent suit chaque chantier, de la première visite à la réception. Un seul contact, une seule responsabilité."
+          },
+          {
+            "title": "La préparation avant tout",
+            "text": "Un mur détapissé reçoit toujours un enduit. Une finition n'est belle que si le fond est juste."
+          },
+          {
+            "title": "Chantier propre",
+            "text": "Protections chaque matin, rangement chaque soir. Vous retrouvez votre maison comme avant, en plus belle."
+          },
+          {
+            "title": "Devis gratuit, sans rajout",
+            "text": "Chiffré ligne par ligne, pièce par pièce. Ce qui est écrit est ce qui sera facturé."
+          },
+          {
+            "title": "Respect des délais",
+            "text": "Rendez-vous honorés, planning tenu. En cas d'aléa, vous êtes prévenu le jour même."
+          },
+          {
+            "title": "Suivi après travaux",
+            "text": "Nous savons revenir en cas de souci. Travaux couverts par la garantie décennale."
+          }
+        ]
+      }
+    },
+    {
+      "id": "accueil-8",
+      "type": "reviews",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Avis clients",
+        "title": "La parole de nos clients",
+        "note": "Avis Google · 5/5"
+      }
+    },
+    {
+      "id": "accueil-9",
+      "type": "communesSummary",
+      "background": "light",
+      "data": {
+        "eyebrow": "Zones d'intervention",
+        "title": "Autour de Bouloc, au nord de Toulouse",
+        "lead": "Un secteur volontairement resserré, pour être vraiment présents : du vignoble de Fronton à la bastide de Grenade, jusqu'aux bords de Garonne à Blagnac.",
+        "linkLabel": "Voir toutes les communes"
+      }
+    },
+    {
+      "id": "accueil-10",
+      "type": "contactCta",
+      "data": {
+        "title": "Parlons de votre maison",
+        "text": "Une visite chez vous, un échange sur vos envies, puis un devis gratuit, détaillé poste par poste."
+      }
+    }
+  ]
+}

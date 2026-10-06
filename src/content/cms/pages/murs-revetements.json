@@ -1,0 +1,112 @@
+{
+  "id": "murs-revetements",
+  "path": "/murs-revetements",
+  "parentId": null,
+  "template": "service",
+  "status": "published",
+  "order": 3,
+  "label": "Murs et revêtements",
+  "inMenu": true,
+  "seo": {
+    "title": "Enduits, placo et isolation à Bouloc | Maury Laurent",
+    "description": "Enduits, reprise de murs, placo et isolation intérieure à Bouloc, Aucamville et Castelginest. Un support sain avant toute finition.",
+    "ogType": "article",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Enduits, placo et isolation intérieure",
+        "name": "Murs & revêtements",
+        "description": "Enduits de rebouchage, de lissage et à la chaux, reprise de murs abîmés et après dégât des eaux, cloisons, doublages et plafonds en placo, isolation thermique et acoustique par l'intérieur.",
+        "provider": {
+          "@id": "{{site}}/#entreprise"
+        },
+        "areaServed": [
+          "Bouloc",
+          "Fronton",
+          "Castelginest",
+          "Aucamville",
+          "L'Union",
+          "Grenade",
+          "Blagnac"
+        ]
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "murs-revetements-1",
+      "type": "hero",
+      "data": {
+        "eyebrow": "Savoir-faire",
+        "titleSeoPrefix": "Enduits, placo et isolation à Bouloc",
+        "title": "Murs & revêtements",
+        "intro": "Personne n'admire un enduit de lissage, personne ne photographie une bande de placo. Pourtant, c'est grâce à eux qu'un mur paraît parfait. Enduits, placo, isolation : nous travaillons ce que vous ne verrez jamais, à Bouloc, Aucamville, Castelginest et dans tout le nord de Toulouse.",
+        "image": {
+          "src": "/images/murs-enduits.jpg",
+          "alt": "Murs fraîchement enduits et lissés dans une pièce lumineuse en cours de rénovation"
+        },
+        "chantier": [
+          {
+            "title": "Le support, d'abord écouté",
+            "text": "Fissures, humidité, ancien enduit : on diagnostique le mur avant de le couvrir. Un beau revêtement sur un support malade ne dure pas."
+          },
+          {
+            "title": "La finition, à la main",
+            "text": "Enduits talochés, placo monté et jointé dans les règles, angles soignés. Le résultat se juge au ras du mur, à la lumière rasante."
+          },
+          {
+            "title": "La maison, respectée",
+            "text": "Sols et meubles protégés chaque matin, poussière maîtrisée, chantier rangé le soir. Vous vivez dedans, on le sait."
+          }
+        ]
+      }
+    },
+    {
+      "id": "murs-revetements-2",
+      "type": "prestations",
+      "background": "light",
+      "data": {
+        "eyebrow": "Prestations",
+        "title": "Ce qui se cache derrière une belle finition",
+        "items": [
+          {
+            "title": "Enduits",
+            "text": "Rebouchage, lissage, ratissage, enduits traditionnels ou à la chaux. Un mur détapissé reçoit toujours un enduit, pour garantir un support optimal. Le matériau se choisit selon le mur, jamais l'inverse."
+          },
+          {
+            "title": "Murs",
+            "text": "Murs abîmés, arrachés, marqués par un ancien dégât des eaux : nous traitons, assainissons puis reconstituons une surface saine. Les fissures sont ouvertes et comprises, pas simplement rebouchées."
+          },
+          {
+            "title": "Placo",
+            "text": "Cloisons, doublages, faux plafonds : créer une chambre, redresser un mur, cacher des réseaux. Ossature d'aplomb, joints invisibles, angles francs. Des surfaces prêtes à peindre, sans surprise sous la lumière rasante."
+          },
+          {
+            "title": "Isolation",
+            "text": "Isolation thermique et acoustique des murs et plafonds par l'intérieur, contre le froid de janvier comme la chaleur de juillet. Elle est pensée en même temps que les finitions, pour ne rien sacrifier à l'esthétique."
+          }
+        ]
+      }
+    },
+    {
+      "id": "murs-revetements-3",
+      "type": "textTitle",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Méthode",
+        "title": "Que raconte une fissure ?",
+        "lead": "Une fissure a une direction, une ouverture, un âge. Dans le nord toulousain, les sols argileux gonflent l'hiver et se rétractent l'été : les maisons bougent au rythme des saisons. Reboucher sans comprendre, c'est être certain de revoir la fissure l'année suivante.",
+        "text": "Chaque chantier commence donc par un diagnostic du support. Sur les murs anciens, nous privilégions la chaux, qui laisse respirer la brique. Et quand les murs ne sont qu'une étape de votre projet, nous menons la rénovation de A à Z."
+      }
+    },
+    {
+      "id": "murs-revetements-4",
+      "type": "contactCta",
+      "data": {
+        "title": "Des murs à redresser, à créer ou à réparer ?",
+        "text": "Décrivez-nous l'état de vos murs (fissures, humidité, anciennes finitions) et le résultat attendu. Nous venons diagnostiquer, prenons le métrage et vous remettons un devis gratuit et détaillé."
+      }
+    }
+  ]
+}

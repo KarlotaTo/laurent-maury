@@ -1,31 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ServicePage, type ServiceContent } from "@/components/site/ServicePage";
-import data from "@/content/pages/renovation-interieure.json";
-import { buildSeoHead, BUSINESS_ID } from "@/lib/seo";
-
-const content = data as ServiceContent;
+import { cmsRouteOptions, CmsPageView } from "@/cms/route";
 
 export const Route = createFileRoute("/renovation-interieure")({
-  head: () => buildSeoHead({
-    title: content.seo.title,
-    description: content.seo.description,
-    path: "/renovation-interieure",
-    ogType: "article",
-    breadcrumbLabel: "Rénovation intérieure",
-    schema: {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      serviceType: "Rénovation intérieure clé en main",
-      name: "Rénovation intérieure",
-      description:
-        "Rénovation de maison ou d'appartement de A à Z, clé en main ou par travaux ciblés : dépose, préparation des supports, placo, isolation, sols, faïence, peinture et finitions, sans sous-traitance.",
-      provider: { "@id": BUSINESS_ID },
-      areaServed: ["Bouloc", "Fronton", "Castelginest", "Aucamville", "L'Union", "Grenade", "Blagnac"],
-    },
-  }),
-  component: Page,
+  ...cmsRouteOptions(() => "/renovation-interieure"),
+  component: () => <CmsPageView page={Route.useLoaderData()} />,
 });
-
-function Page() {
-  return <ServicePage content={content} />;
-}

@@ -1,0 +1,120 @@
+{
+  "id": "peinture-decoration",
+  "path": "/peinture-decoration",
+  "parentId": null,
+  "template": "service",
+  "status": "published",
+  "order": 1,
+  "label": "Peinture intérieure et décoration",
+  "inMenu": true,
+  "seo": {
+    "title": "Peintre décorateur à Bouloc et Fronton | Maury Laurent",
+    "description": "Peintures à effet, textures, chaux, home staging et conseil couleurs à Bouloc, Fronton et L'Union. Artisan peintre décorateur, devis gratuit.",
+    "ogType": "article",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Peinture intérieure et décoration",
+        "name": "Peinture & décoration",
+        "description": "Peinture intérieure, peintures à effet, textures et mouvement, enduits à la chaux, conseil couleurs et home staging, en rénovation comme dans le neuf.",
+        "provider": {
+          "@id": "{{site}}/#entreprise"
+        },
+        "areaServed": [
+          "Bouloc",
+          "Fronton",
+          "Castelginest",
+          "Aucamville",
+          "L'Union",
+          "Grenade",
+          "Blagnac"
+        ]
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "peinture-decoration-1",
+      "type": "hero",
+      "data": {
+        "eyebrow": "Savoir-faire",
+        "titleSeoPrefix": "Peintre décorateur à Bouloc",
+        "title": "Peinture & décoration",
+        "intro": "Le cœur de notre métier. Une couleur ne se choisit pas sur un nuancier : elle se choisit sur votre mur, sous votre lumière. Peinture intérieure, effets, textures, chaux, home staging : nous travaillons la teinte comme une matière, en rénovation comme dans le neuf, à Bouloc, Fronton et dans tout le nord de Toulouse.",
+        "image": {
+          "src": "/images/peinture-decorative.jpg",
+          "alt": "Artisan appliquant un enduit à la chaux au spalter sur un mur intérieur"
+        },
+        "chantier": [
+          {
+            "title": "La teinte, testée sur place",
+            "text": "Un échantillon posé sur votre mur, regardé le matin puis le soir. On ne valide qu'une fois la lumière acceptée."
+          },
+          {
+            "title": "La matière, choisie pour durer",
+            "text": "Peintures de fabrication française, enduits à la chaux, finitions travaillées à la main. Le support est préparé avant la première couche."
+          },
+          {
+            "title": "La maison, respectée",
+            "text": "Habité ou vide, les protections sont posées chaque matin et retirées le soir. On laisse le chantier propre, jour après jour."
+          }
+        ]
+      }
+    },
+    {
+      "id": "peinture-decoration-2",
+      "type": "prestations",
+      "background": "light",
+      "data": {
+        "eyebrow": "Prestations",
+        "title": "Six façons de travailler la couleur",
+        "items": [
+          {
+            "title": "Peinture intérieure",
+            "text": "Murs, plafonds, boiseries, portes. Mat, velours ou satiné : la finition se choisit selon la pièce et la lumière. Nous travaillons avec des peintures de qualité, de fabrication française, et des peintures bio pour un intérieur plus sain."
+          },
+          {
+            "title": "Peinture décorative",
+            "text": "Patines, glacis, camaïeux, murs d'accent : l'art de donner de la profondeur à une surface plane. Un bleu nuit derrière une tête de lit, un soubassement terracotta dans une entrée. Chaque effet est d'abord testé sur place."
+          },
+          {
+            "title": "Effets, textures et mouvement",
+            "text": "Peintures à mouvement qui font onduler la lumière, textures qui donnent du relief sous la main, effets sablés ou métallisés, béton ciré, stuc. Des rendus travaillés à la main, sur des supports préparés en conséquence."
+          },
+          {
+            "title": "Enduits à la chaux",
+            "text": "Chaux aérienne ou hydraulique, badigeons, stucs. Une matière vivante, qui respire et vieillit avec noblesse. Idéale pour les maisons anciennes en brique du Frontonnais, elle apporte aussi une profondeur rare aux intérieurs contemporains."
+          },
+          {
+            "title": "Conseil couleurs",
+            "text": "Orientation des pièces, matériaux existants, circulation entre les espaces : nous analysons, puis nous proposons une palette cohérente, pièce par pièce. Les teintes sont testées sur vos murs, le matin et le soir, avant validation."
+          },
+          {
+            "title": "Home staging",
+            "text": "Vendre, louer ou redécouvrir sa maison : quelques teintes bien choisies, un mur d'accent et des finitions reprises suffisent à changer la première impression. Nous sommes force de proposition, de l'idée au résultat, à Blagnac, L'Union ou Castelginest."
+          }
+        ]
+      }
+    },
+    {
+      "id": "peinture-decoration-3",
+      "type": "textTitle",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Méthode",
+        "title": "Pourquoi l'essentiel se joue avant la première couche ?",
+        "lead": "Rebouchage, ponçage, dépoussiérage, traitement des fissures, impression adaptée : la plus grande partie d'un chantier de peinture se passe à préparer. Sur un mur détapissé, nous passons systématiquement un enduit, pour un support parfaitement lisse. C'est cette part invisible qui fait qu'une peinture reste belle après dix hivers.",
+        "text": "Sur les logements habités, les protections sont posées chaque matin et retirées le soir. Et si votre projet va au-delà de la peinture, nous pouvons le mener de A à Z, en rénovation clé en main."
+      }
+    },
+    {
+      "id": "peinture-decoration-4",
+      "type": "contactCta",
+      "data": {
+        "title": "Une pièce à réinventer ?",
+        "text": "Dites-nous quelles pièces vous voulez transformer et l'atmosphère que vous recherchez, même en trois mots. Nous venons voir, prenons les mesures, puis vous remettons un devis gratuit et détaillé."
+      }
+    }
+  ]
+}

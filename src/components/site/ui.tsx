@@ -86,8 +86,8 @@ export function PageHero({
   eyebrow: string;
   title: ReactNode;
   intro: string;
-  image?: string;
-  imageAlt?: string;
+  image?: string | undefined;
+  imageAlt?: string | undefined;
   extra?: ReactNode;
 }) {
   return (

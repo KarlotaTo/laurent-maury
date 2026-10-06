@@ -1,31 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ServicePage, type ServiceContent } from "@/components/site/ServicePage";
-import data from "@/content/pages/peinture-decoration.json";
-import { buildSeoHead, BUSINESS_ID } from "@/lib/seo";
-
-const content = data as ServiceContent;
+import { cmsRouteOptions, CmsPageView } from "@/cms/route";
 
 export const Route = createFileRoute("/peinture-decoration")({
-  head: () => buildSeoHead({
-    title: content.seo.title,
-    description: content.seo.description,
-    path: "/peinture-decoration",
-    ogType: "article",
-    breadcrumbLabel: "Peinture intérieure et décoration",
-    schema: {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      serviceType: "Peinture intérieure et décoration",
-      name: "Peinture & décoration",
-      description:
-        "Peinture intérieure, peintures à effet, textures et mouvement, enduits à la chaux, conseil couleurs et home staging, en rénovation comme dans le neuf.",
-      provider: { "@id": BUSINESS_ID },
-      areaServed: ["Bouloc", "Fronton", "Castelginest", "Aucamville", "L'Union", "Grenade", "Blagnac"],
-    },
-  }),
-  component: Page,
+  ...cmsRouteOptions(() => "/peinture-decoration"),
+  component: () => <CmsPageView page={Route.useLoaderData()} />,
 });
-
-function Page() {
-  return <ServicePage content={content} />;
-}

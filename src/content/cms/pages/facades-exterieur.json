@@ -1,0 +1,107 @@
+{
+  "id": "facades-exterieur",
+  "path": "/facades-exterieur",
+  "parentId": null,
+  "template": "service",
+  "status": "published",
+  "order": 5,
+  "label": "Façades et extérieur",
+  "inMenu": true,
+  "seo": {
+    "title": "Ravalement de façade à Bouloc, Grenade | Maury Laurent",
+    "description": "Ravalement, réparation des fissures et peinture de façade épaisse, sans crépi, à Bouloc, Grenade, Fronton et au nord de Toulouse. Devis gratuit.",
+    "ogType": "article",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Ravalement et rénovation de façade",
+        "name": "Façades & extérieur",
+        "description": "Ravalement de façade, préparation des supports, réparation des fissures, peinture de façade épaisse sans crépi, rénovation des murs extérieurs et mise en peinture des menuiseries extérieures.",
+        "provider": {
+          "@id": "{{site}}/#entreprise"
+        },
+        "areaServed": [
+          "Bouloc",
+          "Fronton",
+          "Castelginest",
+          "Aucamville",
+          "L'Union",
+          "Grenade",
+          "Blagnac"
+        ]
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "facades-exterieur-1",
+      "type": "hero",
+      "data": {
+        "eyebrow": "Savoir-faire",
+        "titleSeoPrefix": "Ravalement de façade à Bouloc",
+        "title": "Façades & extérieur",
+        "intro": "Une façade, c'est la seule partie de votre maison que tout le monde voit, sauf vous. C'est aussi elle qui encaisse le vent d'autan, les orages et les étés brûlants. Préparation, réparation des fissures, peinture de façade : nous la soignons autant que nous l'embellissons, à Bouloc, Grenade, Fronton et dans tout le nord de Toulouse.",
+        "image": {
+          "src": "/images/facade.jpg",
+          "alt": "Façade de maison rénovée avec enduit clair et volets bleus"
+        },
+        "chantier": []
+      }
+    },
+    {
+      "id": "facades-exterieur-2",
+      "type": "prestations",
+      "background": "light",
+      "data": {
+        "eyebrow": "Prestations",
+        "title": "Préparer, réparer, protéger",
+        "items": [
+          {
+            "title": "Ravalement",
+            "text": "Nettoyage, reprise des enduits, réparation des fissures puis application d'une peinture de façade adaptée au support et à l'exposition. Un ravalement réussi ne se contente pas de rafraîchir : il reconstitue une protection durable."
+          },
+          {
+            "title": "Rénovation des murs extérieurs",
+            "text": "Reprise des enduits dégradés, des soubassements et des points sensibles aux remontées d'humidité, la zone la plus exposée et souvent la plus négligée."
+          },
+          {
+            "title": "Préparation des supports",
+            "text": "Diagnostic, décapage, brossage, traitement anti-mousse. Un support mal préparé fait cloquer et peler la finition au bout de quelques années : c'est l'étape que nous ne bâclons jamais."
+          },
+          {
+            "title": "Réparation des fissures",
+            "text": "Chaque fissure est ouverte, traitée et pontée selon sa nature avant la finition. Une fissure traitée en surface réapparaît toujours ; une fissure comprise disparaît."
+          },
+          {
+            "title": "Peinture extérieure",
+            "text": "Une peinture de façade épaisse, dite plastifiée, qui forme une véritable peau protectrice et tient aux UV comme aux intempéries. Nous ne faisons pas de crépi : nous privilégions une finition peinte, nette et durable."
+          },
+          {
+            "title": "Menuiseries extérieures",
+            "text": "Volets, portails, boiseries : des volets écaillés suffisent à vieillir une façade impeccable. Nous les préparons, les protégeons et les repeignons pour que l'ensemble raconte la même histoire."
+          }
+        ]
+      }
+    },
+    {
+      "id": "facades-exterieur-3",
+      "type": "textTitle",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Avant les travaux",
+        "title": "Que fait le vent d'autan à votre façade ?",
+        "lead": "Chaud et sec, il dessèche les enduits, accélère le farinage des peintures et peut faire sécher une couche trop vite en plein chantier. Nous choisissons donc les produits et les jours d'application selon le climat réel, quitte à décaler un chantier de 48 heures plutôt que de le compromettre pour dix ans.",
+        "text": "Avant toute chose, nous examinons le support, son exposition et l'origine des fissures. Dans les centres anciens, comme à Grenade ou Fronton, nous vous accompagnons dans le choix des teintes selon les règles d'urbanisme locales."
+      }
+    },
+    {
+      "id": "facades-exterieur-4",
+      "type": "contactCta",
+      "data": {
+        "title": "Votre façade a besoin d'une seconde peau ?",
+        "text": "Envoyez-nous quelques photos et l'adresse de votre maison : nous venons établir un diagnostic précis et vous remettons un devis gratuit et détaillé."
+      }
+    }
+  ]
+}

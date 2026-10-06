@@ -1,0 +1,65 @@
+{
+  "id": "zones-intervention",
+  "path": "/zones-intervention",
+  "parentId": null,
+  "template": "zonesHub",
+  "status": "published",
+  "order": 11,
+  "label": "Zones d’intervention",
+  "inMenu": true,
+  "seo": {
+    "title": "Peintre à Bouloc et au nord de Toulouse | Maury Laurent",
+    "description": "Peinture et rénovation à Bouloc, Fronton, Castelginest, Aucamville, L’Union, Grenade et Blagnac. Découvrez nos zones d’intervention.",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Zones d’intervention",
+        "description": "Peinture et rénovation à Bouloc, Fronton, Castelginest, Aucamville, L’Union, Grenade et Blagnac. Découvrez nos zones d’intervention.",
+        "url": "{{site}}/zones-intervention",
+        "about": {
+          "@id": "{{site}}/#entreprise"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "zones-1",
+      "type": "hero",
+      "data": {
+        "eyebrow": "Secteurs",
+        "titleSeoPrefix": "",
+        "title": "Zones d'intervention",
+        "intro": "Basée à Bouloc, l'entreprise intervient au nord de Toulouse, sur un secteur resserré qui garantit des déplacements rapides et un vrai suivi de chantier.",
+        "chantier": []
+      }
+    },
+    {
+      "id": "zones-2",
+      "type": "communesGrid",
+      "data": {
+        "eyebrow": "Communes",
+        "title": "Où nous travaillons"
+      }
+    },
+    {
+      "id": "zones-3",
+      "type": "textTitle",
+      "background": "sand",
+      "data": {
+        "eyebrow": "Au-delà ?",
+        "title": "Votre commune n'est pas listée",
+        "lead": "Ce périmètre est celui des interventions courantes. Pour un projet situé en dehors — notamment les rénovations complètes — contactez-nous : chaque demande est étudiée."
+      }
+    },
+    {
+      "id": "zones-4",
+      "type": "contactCta",
+      "data": {
+        "title": "Un projet sur l'une de ces communes ?",
+        "text": "Décrivez votre maison ou votre appartement : nous vous proposons une visite et un devis détaillé."
+      }
+    }
+  ]
+}
