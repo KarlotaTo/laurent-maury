@@ -111,7 +111,8 @@ export function buildSeoHead({
     meta: [
       { title },
       { name: "description", content: description },
-      { name: "robots", content: "index, follow, max-image-preview:large" },
+      // Site provisoire (maury-laurent.lnkio.fr) : hors de Google jusqu'à la mise en ligne sur maury-laurent.fr.
+      { name: "robots", content: "noindex, follow" },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: ogType },
