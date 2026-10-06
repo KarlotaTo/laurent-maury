@@ -93,9 +93,19 @@ await expectOk("l'admin client modifie les coordonnées", ids.adminA, `insert in
 await expectDenied("l'admin client ne crée pas de réglage technique", ids.adminA, `insert into site_settings (site_id,key,value,technical) values ($1,'technique','{}',true)`, [ids.siteA]);
 await expectDenied("l'admin client ne crée pas de redirection", ids.adminA, `insert into redirects (site_id,from_path,to_path,status) values ($1,'/a','/b',301)`, [ids.siteA]);
 
+console.log("Médiathèque");
+const mediaRow = (site, path, by) => [`insert into media (site_id, storage_path, url, name, width, height, bytes, created_by) values ($1,$2,'https://x/y.webp','photo',10,10,100,$3)`, [site, path, by]];
+await expectOk("le contributeur ajoute une photo à son site", ids.contribA, ...mediaRow(ids.siteA, `${ids.siteA}/2026/a.webp`, ids.contribA), (r) => r.rowCount === 1);
+await expectDenied("une photo rangée dans le dossier d'un autre site est refusée", ids.adminA, ...mediaRow(ids.siteA, `${ids.siteB}/2026/a.webp`, ids.adminA));
+await expectDenied("l'admin du site B n'ajoute pas de photo au site A", ids.adminB, ...mediaRow(ids.siteA, `${ids.siteA}/2026/b.webp`, ids.adminB));
+await expectOk("l'admin du site A envoie un fichier dans son dossier", ids.adminA, `insert into storage.objects (bucket_id, name) values ('media', $1)`, [`${ids.siteA}/2026/test.webp`], (r) => r.rowCount === 1);
+await expectDenied("l'admin du site B n'envoie pas de fichier dans le dossier du site A", ids.adminB, `insert into storage.objects (bucket_id, name) values ('media', $1)`, [`${ids.siteA}/2026/intrus.webp`]);
+await expectDenied("un visiteur n'envoie pas de fichier", "anon", `insert into storage.objects (bucket_id, name) values ('media', $1)`, [`${ids.siteA}/2026/anon.webp`]);
+
 console.log("Visiteur anonyme");
-await expectOk("le visiteur lit la version publiée", "anon", "select id from page_versions", [], (r) => r.rows.length === 1);
+await expectOk("le visiteur lit la version publiée", "anon", "select id from page_versions where site_id = $1", [ids.siteA], (r) => r.rows.length === 1);
 await expectOk("le visiteur ne voit aucun brouillon", "anon", "select id from pages", [], (r) => r.rows.length === 0);
+await expectOk("le visiteur ne voit pas l'historique des versions non publiées", "anon", "select id from page_versions where site_id = $1 and id <> $2", [ids.siteA, ids.versionA], (r) => r.rows.length === 0);
 await expectOk("le visiteur envoie un message", "anon", `insert into messages (site_id,name,email,body) values ($1,'Nom','a@b.fr','Bonjour')`, [ids.siteA], (r) => r.rowCount === 1);
 await expectOk("le visiteur ne lit pas les messages", "anon", "select id from messages", [], (r) => r.rows.length === 0);
 await expectDenied("le visiteur ne marque pas un message comme traité", "anon", `insert into messages (site_id,name,email,body,status) values ($1,'Nom','a@b.fr','Bonjour','done')`, [ids.siteA]);

@@ -1,5 +1,7 @@
 import { ArrowDown, ArrowUp, Lock, Plus, Trash2 } from "lucide-react";
+import { useState } from "react";
 import { z } from "zod";
+import { MediaPickerDialog } from "@/admin/MediaLibrary";
 import { fieldMeta, type FieldMeta } from "@/cms/fields";
 import { inputCls } from "@/admin/ui";
 
@@ -224,7 +226,7 @@ function ImageField({ id, label, value, onChange, locked, env, path, optional }:
   id: string; label: string; value: unknown; onChange: (v: unknown) => void; locked: boolean; env: FormEnv; path: string; optional: boolean;
 }) {
   const img = (value ?? { src: "", alt: "" }) as { src: string; alt: string };
-  const listId = `${id}-photos`;
+  const [picking, setPicking] = useState(false);
   return (
     <fieldset className="rounded-xl border border-line p-4">
       <legend className="flex items-center gap-2 px-1 text-[13px] font-medium text-ink">
@@ -237,9 +239,21 @@ function ImageField({ id, label, value, onChange, locked, env, path, optional }:
         </div>
         <div className="min-w-[220px] flex-1 space-y-3">
           <div>
-            <label htmlFor={`${id}-src`} className="mb-1.5 block text-[12px] text-muted-foreground">Photo (choisir dans la liste ; la médiathèque arrive bientôt)</label>
-            <input id={`${id}-src`} list={listId} value={img.src} readOnly={locked} onChange={(e) => onChange({ ...img, src: e.target.value })} className={inputCls} />
-            <datalist id={listId}>{env.images.map((src) => <option key={src} value={src} />)}</datalist>
+            {!locked ? (
+              <button type="button" onClick={() => setPicking(true)} className="inline-flex min-h-10 items-center rounded-lg bg-primary px-4 text-[13px] font-medium text-primary-foreground hover:bg-ink">
+                {img.src ? "Changer de photo" : "Choisir une photo"}
+              </button>
+            ) : null}
+            <MediaPickerDialog open={picking} onClose={() => setPicking(false)} siteImages={env.images}
+              onPick={(picked) => {
+                const next: Record<string, unknown> = { ...img, src: picked.src, alt: picked.alt || img.alt };
+                if ("width" in img) {
+                  // Photo avec dimensions : celles de la photo choisie, sinon un format paysage par défaut.
+                  next["width"] = picked.width ?? 1600;
+                  next["height"] = picked.height ?? 1200;
+                }
+                onChange(next);
+              }} />
             <ErrorText message={env.errors.get(`${path}.src`)} />
           </div>
           <div>

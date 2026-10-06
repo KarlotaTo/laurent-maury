@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ClipboardCheck, Sparkles, UserRoundCheck } from "lucide-react";
 import { useState, type FormEvent, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
-import { useSite } from "@/cms/context";
+import { submitContact } from "@/cms/contact-server";
 
 export function Section({
   children,
@@ -137,32 +137,35 @@ export function FinalCta({
   title?: string;
   text?: string;
 }) {
-  const site = useSite().general;
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [openedAt] = useState(() => Date.now());
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
-    const data = new FormData(form);
-    const name = String(data.get("name") ?? "")
-      .trim()
-      .slice(0, 100);
-    const email = String(data.get("email") ?? "")
-      .trim()
-      .slice(0, 255);
-    const message = String(data.get("message") ?? "")
-      .trim()
-      .slice(0, 1200);
-
-    if (!name || !email || !message || !form.checkValidity()) {
+    if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
-
-    const subject = encodeURIComponent(`Demande de devis — ${name}`);
-    const body = encodeURIComponent(`Nom : ${name}\nEmail : ${email}\n\nProjet :\n${message}`);
-    window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
-    setSent(true);
+    const data = new FormData(form);
+    const get = (k: string) => String(data.get(k) ?? "").trim();
+    setSending(true);
+    setError(null);
+    try {
+      const result = await submitContact({
+        data: { name: get("name"), email: get("email"), message: get("message"), website: get("website"), elapsedMs: Date.now() - openedAt },
+      });
+      if (result.ok) {
+        setSent(true);
+        form.reset();
+      } else setError(result.error);
+    } catch {
+      setError("L'envoi n'a pas abouti. Réessayez ou appelez-nous directement.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const reassurances = [
@@ -201,7 +204,7 @@ export function FinalCta({
           </div>
 
           <form
-            onSubmit={onSubmit}
+            onSubmit={(e) => void onSubmit(e)}
             className="grid gap-4 lg:col-span-6 lg:col-start-7 sm:grid-cols-2"
           >
             <label className="sr-only" htmlFor="final-contact-name">
@@ -246,15 +249,25 @@ export function FinalCta({
             />
 
             <div className="sm:col-span-2">
+              <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+                <label htmlFor="final-contact-website">Ne pas remplir</label>
+                <input id="final-contact-website" name="website" tabIndex={-1} autoComplete="off" />
+              </div>
               <Button
                 type="submit"
+                disabled={sending}
                 className="h-auto w-full rounded-none bg-accent px-8 py-4 text-[11px] uppercase tracking-[0.2em] text-accent-foreground shadow-none hover:bg-accent/90"
               >
-                Envoyer ma demande
+                {sending ? "Envoi en cours…" : "Envoyer ma demande"}
               </Button>
               {sent && (
                 <p className="mt-3 text-sm text-muted-foreground" role="status">
-                  Votre messagerie s'est ouverte avec la demande préparée.
+                  Merci, votre demande est envoyée : nous revenons vers vous rapidement.
+                </p>
+              )}
+              {error && (
+                <p className="mt-3 text-sm text-accent" role="alert">
+                  {error}
                 </p>
               )}
             </div>

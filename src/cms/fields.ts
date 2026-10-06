@@ -98,6 +98,17 @@ export function image(o: Common) {
   return tag(schema, { kind: "image", label: o.label, help: o.help, locked: o.locked });
 }
 
+/** Photo avec ses dimensions d'origine (galeries, grandes photos) : reprises automatiquement au choix. */
+export function sizedImage(o: Common) {
+  const schema = z.object({
+    src: imagePath,
+    alt: z.string().trim().min(1, "Description de la photo obligatoire").max(160),
+    width: z.number().int().min(1).max(10000),
+    height: z.number().int().min(1).max(10000),
+  });
+  return tag(schema, { kind: "image", label: o.label, help: o.help, locked: o.locked });
+}
+
 /** Lien vers une page du site (adresse commençant par /) ou vers le téléphone. */
 export function link(o: Common & { optional: true }): z.ZodOptional<z.ZodEffects<z.ZodString>>;
 export function link(o: Common & { optional?: false }): z.ZodEffects<z.ZodEffects<z.ZodString>>;

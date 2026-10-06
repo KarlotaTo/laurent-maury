@@ -93,7 +93,7 @@ const saveInput = z.object({
 
 /** Enregistre le brouillon d'une page (sans la publier). */
 export const savePageDraft = createServerFn({ method: "POST" })
-  .inputValidator((input: z.input<typeof saveInput>) => saveInput.parse(input))
+  .validator((input: z.input<typeof saveInput>) => saveInput.parse(input))
   .handler(async ({ data }) => {
     const { userId, role } = await caller(data.token);
     const row = await loadRow(data.token, data.pageId);
@@ -119,7 +119,7 @@ const publishInput = z.object({ token: z.string().min(10), pageId: z.string().uu
 
 /** Publie le brouillon : version figée dans l'historique, en ligne sous 30 secondes. */
 export const publishPage = createServerFn({ method: "POST" })
-  .inputValidator((input: z.input<typeof publishInput>) => publishInput.parse(input))
+  .validator((input: z.input<typeof publishInput>) => publishInput.parse(input))
   .handler(async ({ data }) => {
     const { userId, role } = await caller(data.token);
     if (role === "contributor") return { ok: false as const, problems: ["La publication est réservée aux éditeurs et administrateurs."] };
@@ -165,7 +165,7 @@ const settingInput = z.object({
 
 /** Enregistre un réglage du site (avis, questions fréquentes…), en ligne sous 30 secondes. */
 export const saveSetting = createServerFn({ method: "POST" })
-  .inputValidator((input: z.input<typeof settingInput>) => settingInput.parse(input))
+  .validator((input: z.input<typeof settingInput>) => settingInput.parse(input))
   .handler(async ({ data }) => {
     const { userId, role } = await caller(data.token);
     if (role !== "super" && role !== "admin") return { ok: false as const, problems: ["Réservé aux administrateurs du site."] };

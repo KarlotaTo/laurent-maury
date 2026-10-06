@@ -17,7 +17,7 @@ export const getSiteContext = createServerFn({ method: "GET" }).handler(async ()
 
 /** Une page publiée, son fil d'Ariane et le contexte du site ; null si l'adresse n'existe pas. */
 export const getPublishedPage = createServerFn({ method: "GET" })
-  .inputValidator((path: string) => path)
+  .validator((path: string) => path)
   .handler(async ({ data: path }) => {
     const site = await loadSiteData();
     const page = site.pages.find((p) => p.path === path && p.status === "published");

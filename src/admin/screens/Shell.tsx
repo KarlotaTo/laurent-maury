@@ -15,8 +15,8 @@ const NAV: NavGroup[] = [
       { label: "Questions fréquentes", to: "/admin/questions" },
     ],
   },
-  { title: "Vos contacts", items: [{ label: "Messages", soon: true }] },
-  { title: "Vos médias", items: [{ label: "Médiathèque", soon: true }] },
+  { title: "Vos contacts", items: [{ label: "Messages", to: "/admin/messages" }] },
+  { title: "Vos médias", items: [{ label: "Médiathèque", to: "/admin/medias" }] },
   { title: "Navigation", items: [{ label: "Menus du site", soon: true }], superOnly: true },
 ];
 

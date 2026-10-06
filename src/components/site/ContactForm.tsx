@@ -1,7 +1,8 @@
-import { useState, useEffect, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Check, Clock } from "lucide-react";
 import { Section } from "@/components/site/ui";
 import { useSite } from "@/cms/context";
+import { submitContact } from "@/cms/contact-server";
 import { hasPhone, telHref, isOpen } from "@/cms/site-data";
 
 function OpenBadge({ className = "" }: { className?: string }) {
@@ -35,11 +36,36 @@ const inputClass =
 export function ContactForm({ horairesNote, bonASavoir }: { horairesNote: string; bonASavoir: string[] }) {
   const { general: site, zones: communes } = useSite();
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const openedAt = useRef(Date.now());
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO : brancher l'envoi réel (messages du back-office + e-mail).
-    setSent(true);
+    const form = new FormData(e.currentTarget);
+    const get = (k: string) => String(form.get(k) ?? "");
+    setSending(true);
+    setError(null);
+    try {
+      const result = await submitContact({
+        data: {
+          name: get("name"),
+          email: get("email"),
+          phone: get("phone"),
+          city: get("city"),
+          workType: get("type"),
+          message: get("message"),
+          website: get("website"),
+          elapsedMs: Date.now() - openedAt.current,
+        },
+      });
+      if (result.ok) setSent(true);
+      else setError(result.error);
+    } catch {
+      setError("L'envoi n'a pas abouti. Réessayez ou appelez-nous directement.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -49,14 +75,17 @@ export function ContactForm({ horairesNote, bonASavoir }: { horairesNote: string
             {sent ? (
               <div className="border border-line bg-sand p-10">
                 <Check className="h-8 w-8 text-accent" aria-hidden="true" />
-                <h2 className="mt-5 text-3xl">Votre message est prêt</h2>
+                <h2 className="mt-5 text-3xl">Votre demande est envoyée</h2>
                 <p className="mt-4 max-w-md text-[17px] leading-relaxed text-muted-foreground">
-                  Le formulaire sera relié à la messagerie de l'entreprise dès que l'adresse email
-                  définitive nous aura été transmise. Merci de votre demande.
+                  Merci ! Nous revenons vers vous rapidement pour organiser une visite sur place.
                 </p>
               </div>
             ) : (
-              <form onSubmit={onSubmit} className="space-y-6">
+              <form onSubmit={(e) => void onSubmit(e)} className="space-y-6">
+                <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+                  <label htmlFor="website">Ne pas remplir</label>
+                  <input id="website" name="website" tabIndex={-1} autoComplete="off" />
+                </div>
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div>
                     <label htmlFor="name" className="mb-2 block text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
@@ -122,11 +151,15 @@ export function ContactForm({ horairesNote, bonASavoir }: { horairesNote: string
                     className={inputClass}
                   />
                 </div>
+                {error ? (
+                  <p role="alert" className="text-[15px] text-accent">{error}</p>
+                ) : null}
                 <button
                   type="submit"
-                  className="bg-accent px-8 py-4 text-[11px] uppercase tracking-[0.2em] text-accent-foreground transition-opacity hover:opacity-90"
+                  disabled={sending}
+                  className="bg-accent px-8 py-4 text-[11px] uppercase tracking-[0.2em] text-accent-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
                 >
-                  Envoyer ma demande
+                  {sending ? "Envoi en cours…" : "Envoyer ma demande"}
                 </button>
               </form>
             )}

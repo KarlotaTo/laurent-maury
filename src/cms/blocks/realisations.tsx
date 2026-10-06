@@ -22,12 +22,7 @@ const paragraphs = (max: number) =>
     itemLabel: "Paragraphe",
   });
 
-const sizedImage = z.object({
-  src: f.image({ label: "Photo" }).shape.src,
-  alt: f.image({ label: "Photo" }).shape.alt,
-  width: f.number({ label: "Largeur d'origine (px)", min: 1, max: 10000, locked: true }),
-  height: f.number({ label: "Hauteur d'origine (px)", min: 1, max: 10000, locked: true }),
-});
+const sizedImage = f.sizedImage({ label: "Photo" });
 
 const beforeAfterSchema = z.object({
   before: f.image({ label: "Photo avant" }),

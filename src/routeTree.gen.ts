@@ -27,6 +27,8 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SolsParquetsRouteImport } from './routes/sols-parquets'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminAvisRouteImport } from './routes/admin.avis'
+import { Route as AdminMediasRouteImport } from './routes/admin.medias'
+import { Route as AdminMessagesRouteImport } from './routes/admin.messages'
 import { Route as AdminQuestionsRouteImport } from './routes/admin.questions'
 import { Route as RealisationsIndexRouteImport } from './routes/realisations/index'
 import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
@@ -125,6 +127,16 @@ const AdminAvisRoute = AdminAvisRouteImport.update({
   path: '/avis',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminMediasRoute = AdminMediasRouteImport.update({
+  id: '/medias',
+  path: '/medias',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMessagesRoute = AdminMessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminQuestionsRoute = AdminQuestionsRouteImport.update({
   id: '/questions',
   path: '/questions',
@@ -180,6 +192,8 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sols-parquets': typeof SolsParquetsRoute
   '/admin/avis': typeof AdminAvisRoute
+  '/admin/medias': typeof AdminMediasRoute
+  '/admin/messages': typeof AdminMessagesRoute
   '/admin/questions': typeof AdminQuestionsRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/zones-intervention/$commune': typeof ZonesInterventionCommuneRoute
@@ -205,6 +219,8 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sols-parquets': typeof SolsParquetsRoute
   '/admin/avis': typeof AdminAvisRoute
+  '/admin/medias': typeof AdminMediasRoute
+  '/admin/messages': typeof AdminMessagesRoute
   '/admin/questions': typeof AdminQuestionsRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/zones-intervention/$commune': typeof ZonesInterventionCommuneRoute
@@ -233,6 +249,8 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sols-parquets': typeof SolsParquetsRoute
   '/admin/avis': typeof AdminAvisRoute
+  '/admin/medias': typeof AdminMediasRoute
+  '/admin/messages': typeof AdminMessagesRoute
   '/admin/questions': typeof AdminQuestionsRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/zones-intervention/$commune': typeof ZonesInterventionCommuneRoute
@@ -262,6 +280,8 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sols-parquets'
     | '/admin/avis'
+    | '/admin/medias'
+    | '/admin/messages'
     | '/admin/questions'
     | '/realisations/$slug'
     | '/zones-intervention/$commune'
@@ -287,6 +307,8 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sols-parquets'
     | '/admin/avis'
+    | '/admin/medias'
+    | '/admin/messages'
     | '/admin/questions'
     | '/realisations/$slug'
     | '/zones-intervention/$commune'
@@ -314,6 +336,8 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sols-parquets'
     | '/admin/avis'
+    | '/admin/medias'
+    | '/admin/messages'
     | '/admin/questions'
     | '/realisations/$slug'
     | '/zones-intervention/$commune'
@@ -473,6 +497,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminAvisRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/medias': {
+      id: '/admin/medias'
+      path: '/medias'
+      fullPath: '/admin/medias'
+      preLoaderRoute: typeof AdminMediasRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/messages': {
+      id: '/admin/messages'
+      path: '/messages'
+      fullPath: '/admin/messages'
+      preLoaderRoute: typeof AdminMessagesRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/questions': {
       id: '/admin/questions'
       path: '/questions'
@@ -527,6 +565,8 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteChildren {
   AdminAvisRoute: typeof AdminAvisRoute
+  AdminMediasRoute: typeof AdminMediasRoute
+  AdminMessagesRoute: typeof AdminMessagesRoute
   AdminQuestionsRoute: typeof AdminQuestionsRoute
   AdminIndexRoute: typeof AdminIndexRoute
   AdminPagesIdRoute: typeof AdminPagesIdRoute
@@ -535,6 +575,8 @@ interface AdminRouteChildren {
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminAvisRoute: AdminAvisRoute,
+  AdminMediasRoute: AdminMediasRoute,
+  AdminMessagesRoute: AdminMessagesRoute,
   AdminQuestionsRoute: AdminQuestionsRoute,
   AdminIndexRoute: AdminIndexRoute,
   AdminPagesIdRoute: AdminPagesIdRoute,
