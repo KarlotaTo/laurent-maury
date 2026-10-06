@@ -26,11 +26,12 @@ import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SolsParquetsRouteImport } from './routes/sols-parquets'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
-import { Route as AdminPagesRouteImport } from './routes/admin.pages'
 import { Route as RealisationsIndexRouteImport } from './routes/realisations/index'
 import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
 import { Route as ZonesInterventionIndexRouteImport } from './routes/zones-intervention.index'
 import { Route as ZonesInterventionCommuneRouteImport } from './routes/zones-intervention.$commune'
+import { Route as AdminPagesIndexRouteImport } from './routes/admin.pages.index'
+import { Route as AdminPagesIdRouteImport } from './routes/admin.pages.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -117,11 +118,6 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminRoute,
 } as any)
-const AdminPagesRoute = AdminPagesRouteImport.update({
-  id: '/pages',
-  path: '/pages',
-  getParentRoute: () => AdminRoute,
-} as any)
 const RealisationsIndexRoute = RealisationsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -143,6 +139,16 @@ const ZonesInterventionCommuneRoute =
     path: '/zones-intervention/$commune',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AdminPagesIndexRoute = AdminPagesIndexRouteImport.update({
+  id: '/pages/',
+  path: '/pages/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPagesIdRoute = AdminPagesIdRouteImport.update({
+  id: '/pages/$id',
+  path: '/pages/$id',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -161,12 +167,13 @@ export interface FileRoutesByFullPath {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sols-parquets': typeof SolsParquetsRoute
-  '/admin/pages': typeof AdminPagesRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/zones-intervention/$commune': typeof ZonesInterventionCommuneRoute
   '/admin/': typeof AdminIndexRoute
   '/realisations/': typeof RealisationsIndexRoute
   '/zones-intervention/': typeof ZonesInterventionIndexRoute
+  '/admin/pages/$id': typeof AdminPagesIdRoute
+  '/admin/pages/': typeof AdminPagesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -183,12 +190,13 @@ export interface FileRoutesByTo {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sols-parquets': typeof SolsParquetsRoute
-  '/admin/pages': typeof AdminPagesRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/zones-intervention/$commune': typeof ZonesInterventionCommuneRoute
   '/admin': typeof AdminIndexRoute
   '/realisations': typeof RealisationsIndexRoute
   '/zones-intervention': typeof ZonesInterventionIndexRoute
+  '/admin/pages/$id': typeof AdminPagesIdRoute
+  '/admin/pages': typeof AdminPagesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -208,12 +216,13 @@ export interface FileRoutesById {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sols-parquets': typeof SolsParquetsRoute
-  '/admin/pages': typeof AdminPagesRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/zones-intervention/$commune': typeof ZonesInterventionCommuneRoute
   '/admin/': typeof AdminIndexRoute
   '/realisations/': typeof RealisationsIndexRoute
   '/zones-intervention/': typeof ZonesInterventionIndexRoute
+  '/admin/pages/$id': typeof AdminPagesIdRoute
+  '/admin/pages/': typeof AdminPagesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -234,12 +243,13 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/sols-parquets'
-    | '/admin/pages'
     | '/realisations/$slug'
     | '/zones-intervention/$commune'
     | '/admin/'
     | '/realisations/'
     | '/zones-intervention/'
+    | '/admin/pages/$id'
+    | '/admin/pages/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -256,12 +266,13 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/sols-parquets'
-    | '/admin/pages'
     | '/realisations/$slug'
     | '/zones-intervention/$commune'
     | '/admin'
     | '/realisations'
     | '/zones-intervention'
+    | '/admin/pages/$id'
+    | '/admin/pages'
   id:
     | '__root__'
     | '/'
@@ -280,12 +291,13 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/sols-parquets'
-    | '/admin/pages'
     | '/realisations/$slug'
     | '/zones-intervention/$commune'
     | '/admin/'
     | '/realisations/'
     | '/zones-intervention/'
+    | '/admin/pages/$id'
+    | '/admin/pages/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -430,13 +442,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/admin/pages': {
-      id: '/admin/pages'
-      path: '/pages'
-      fullPath: '/admin/pages'
-      preLoaderRoute: typeof AdminPagesRouteImport
-      parentRoute: typeof AdminRoute
-    }
     '/realisations/': {
       id: '/realisations/'
       path: '/'
@@ -465,17 +470,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ZonesInterventionCommuneRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/pages/': {
+      id: '/admin/pages/'
+      path: '/pages'
+      fullPath: '/admin/pages/'
+      preLoaderRoute: typeof AdminPagesIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/pages/$id': {
+      id: '/admin/pages/$id'
+      path: '/pages/$id'
+      fullPath: '/admin/pages/$id'
+      preLoaderRoute: typeof AdminPagesIdRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
 interface AdminRouteChildren {
-  AdminPagesRoute: typeof AdminPagesRoute
   AdminIndexRoute: typeof AdminIndexRoute
+  AdminPagesIdRoute: typeof AdminPagesIdRoute
+  AdminPagesIndexRoute: typeof AdminPagesIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
-  AdminPagesRoute: AdminPagesRoute,
   AdminIndexRoute: AdminIndexRoute,
+  AdminPagesIdRoute: AdminPagesIdRoute,
+  AdminPagesIndexRoute: AdminPagesIndexRoute,
 }
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)

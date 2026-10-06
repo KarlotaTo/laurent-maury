@@ -1,8 +1,9 @@
+import { Link } from "@tanstack/react-router";
 import { Lock } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { fetchPages, toTree, type PageRow } from "@/admin/pages-data";
 import { useAdminSession } from "@/admin/session";
-import { TEMPLATE_LABELS } from "@/admin/templates";
+import { TEMPLATE_LABELS } from "@/cms/templates";
 import { ErrorNote, inputCls } from "@/admin/ui";
 
 const date = (iso: string) => new Date(iso).toLocaleDateString("fr-FR");
@@ -87,16 +88,20 @@ export function PagesTreeScreen() {
                     <td className="px-4 py-3 text-[14px]">{p.in_menu ? "Oui" : "—"}</td>
                     <td className="px-4 py-3 text-[14px] text-muted-foreground">{date(p.updated_at)}</td>
                     <td className="px-4 py-3 text-right">
-                      <span className="inline-flex min-h-9 cursor-not-allowed items-center rounded-lg border border-line px-3 text-[13px] text-muted-foreground" title="L'éditeur de pages arrive à l'étape suivante">
-                        {locked ? "Verrouillée" : "Modifier"}
-                      </span>
+                      {locked ? (
+                        <span className="inline-flex min-h-9 cursor-not-allowed items-center rounded-lg border border-line px-3 text-[13px] text-muted-foreground">Verrouillée</span>
+                      ) : (
+                        <Link to="/admin/pages/$id" params={{ id: p.id }} className="inline-flex min-h-9 items-center rounded-lg border border-line px-3 text-[13px] text-ink hover:bg-sand">
+                          Modifier
+                        </Link>
+                      )}
                     </td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
-          <p className="mt-4 text-[13px] text-muted-foreground">{pages.length} pages · l'éditeur de pages arrive à l'étape suivante.</p>
+          <p className="mt-4 text-[13px] text-muted-foreground">{pages.length} pages.</p>
         </div>
       ) : null}
     </section>
