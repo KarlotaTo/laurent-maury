@@ -1,4 +1,4 @@
-import type { SiteContext } from "@/cms/site-data";
+import { faqItems, type SiteContext } from "@/cms/site-data";
 import type { Page } from "@/cms/types";
 import { absoluteUrl, buildSeoHead, businessId, localBusinessSchema } from "@/lib/seo";
 
@@ -50,6 +50,24 @@ export function buildPageHead(page: Page, ctx: SiteContext, breadcrumb: { label:
         ...stored,
       ]
     : [...stored, breadcrumbSchema(ctx, breadcrumb)];
+
+  // Questions fréquentes affichées sur la page : données Google « FAQPage ».
+  const faqBlocks = page.blocks.filter((b) => b.type === "faq" && !b.hidden);
+  const questions = faqBlocks.flatMap((b) => {
+    const d = (b.data ?? {}) as { category?: string; limit?: number };
+    return faqItems(ctx.faq, d.category, d.limit ?? 30);
+  });
+  if (questions.length > 0) {
+    schema.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: questions.map((q) => ({
+        "@type": "Question",
+        name: q.question,
+        acceptedAnswer: { "@type": "Answer", text: q.answer.replace(/\*\*|\*/g, "").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") },
+      })),
+    });
+  }
 
   const head = buildSeoHead({
     ctx,

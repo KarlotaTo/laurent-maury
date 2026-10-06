@@ -4,19 +4,20 @@ import { ROLE_LABELS, useAdminSession } from "@/admin/session";
 import { btnGhost, SiteWordmark } from "@/admin/ui";
 
 type NavItem = { label: string; to?: string; soon?: boolean };
-const NAV: { title: string; items: NavItem[] }[] = [
+type NavGroup = { title: string; items: NavItem[]; superOnly?: boolean };
+const NAV: NavGroup[] = [
   { title: "Tableau de bord", items: [{ label: "Accueil du back-office", to: "/admin" }] },
   {
     title: "Votre site",
     items: [
       { label: "Pages", to: "/admin/pages" },
-      { label: "Avis clients", soon: true },
-      { label: "Questions fréquentes", soon: true },
+      { label: "Avis clients", to: "/admin/avis" },
+      { label: "Questions fréquentes", to: "/admin/questions" },
     ],
   },
   { title: "Vos contacts", items: [{ label: "Messages", soon: true }] },
   { title: "Vos médias", items: [{ label: "Médiathèque", soon: true }] },
-  { title: "Navigation", items: [{ label: "Menus du site", soon: true }] },
+  { title: "Navigation", items: [{ label: "Menus du site", soon: true }], superOnly: true },
 ];
 
 export function AdminShell({ children }: { children: ReactNode }) {
@@ -49,7 +50,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
 
       <div className="mx-auto flex max-w-[1440px] flex-wrap items-start gap-6 px-6 py-6">
         <nav aria-label="Menu du back-office" className="w-full max-w-[280px] flex-[1_1_240px] rounded-2xl border border-line bg-background p-4">
-          {NAV.map((group) => (
+          {NAV.filter((group) => !group.superOnly || role === "super").map((group) => (
             <div key={group.title} className="mb-5">
               <p className="mb-2 px-3 font-display text-xl font-semibold text-[#8A6A4F]">{group.title}</p>
               {group.items.map((item) =>
@@ -72,9 +73,11 @@ export function AdminShell({ children }: { children: ReactNode }) {
               )}
             </div>
           ))}
-          <span className="flex min-h-11 items-center justify-center rounded-lg bg-[#8A6A4F]/60 text-[14px] font-medium text-white">
-            Configuration · bientôt
-          </span>
+          {role === "super" ? (
+            <span className="flex min-h-11 items-center justify-center rounded-lg bg-[#8A6A4F]/60 text-[14px] font-medium text-white">
+              Configuration · bientôt
+            </span>
+          ) : null}
         </nav>
         <main className="min-w-0 flex-[999_1_560px]">{children}</main>
       </div>

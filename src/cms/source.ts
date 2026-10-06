@@ -33,6 +33,7 @@ async function fetchSiteData(): Promise<SiteData> {
     general: setting("general", fallbackData.general),
     avis: setting<{ avis: SiteData["avis"] }>("avis", { avis: fallbackData.avis }).avis,
     engagements: setting<{ engagements: SiteData["engagements"] }>("engagements", { engagements: fallbackData.engagements }).engagements,
+    faq: setting<{ items: SiteData["faq"] }>("faq", { items: fallbackData.faq }).items,
     technique: setting("technique", fallbackData.technique),
     source: "base",
   };

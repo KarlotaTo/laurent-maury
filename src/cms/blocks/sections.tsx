@@ -8,7 +8,7 @@ import { Rich } from "@/components/site/Rich";
 import { Section, Eyebrow, SectionTitle, Lead, CtaPair, PageHero, PrestationList, FinalCta } from "@/components/site/ui";
 import { InterventionMap } from "@/components/site/InterventionMap";
 import { expertises } from "@/data/navigation";
-import { hasPhone, telHref } from "@/cms/site-data";
+import { faqItems, hasPhone, telHref } from "@/cms/site-data";
 import { BeforeAfterSlider } from "@/components/site/BeforeAfterSlider";
 import { ContactForm } from "@/components/site/ContactForm";
 
@@ -1054,4 +1054,47 @@ export const legalText = defineBlock({
       </div>
     </Section>
   ),
+});
+
+/* ---------- Questions fréquentes ---------- */
+
+export const faq = defineBlock({
+  type: "faq",
+  label: "Questions fréquentes",
+  description: "Questions et réponses dépliables, tirées de la liste « Questions fréquentes » (avec données Google)",
+  backgrounds: ["light", "sand"],
+  schema: z.object({
+    eyebrow: f.string({ label: "Surtitre", max: 40 }),
+    title: f.string({ label: "Titre", max: 120 }),
+    category: f.string({ label: "Thème à afficher (vide = toutes les questions)", max: 40, optional: true }),
+    limit: f.number({ label: "Nombre maximum de questions", min: 1, max: 30 }),
+  }),
+  example: { eyebrow: "Questions fréquentes", title: "Vos questions, nos réponses", category: "", limit: 8 },
+  render: ({ data, background, ctx }) => {
+    const items = faqItems(ctx.faq, data.category, data.limit);
+    if (items.length === 0) return null;
+    return (
+      <Section tone={background === "sand" ? "sand" : "light"}>
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <Eyebrow>{data.eyebrow}</Eyebrow>
+            <SectionTitle>{data.title}</SectionTitle>
+          </div>
+          <div className="divide-y divide-line border-y border-line lg:col-span-6 lg:col-start-7">
+            {items.map((item) => (
+              <details key={item.question} className="group py-5">
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-[17px] font-medium text-ink">
+                  {item.question}
+                  <span className="mt-1 text-accent transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                </summary>
+                <p className="mt-4 text-[16px] leading-relaxed text-muted-foreground">
+                  <Rich text={item.answer} linkClassName="text-accent underline underline-offset-4" />
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </Section>
+    );
+  },
 });

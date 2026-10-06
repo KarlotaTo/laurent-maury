@@ -26,6 +26,8 @@ import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SolsParquetsRouteImport } from './routes/sols-parquets'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminAvisRouteImport } from './routes/admin.avis'
+import { Route as AdminQuestionsRouteImport } from './routes/admin.questions'
 import { Route as RealisationsIndexRouteImport } from './routes/realisations/index'
 import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
 import { Route as ZonesInterventionIndexRouteImport } from './routes/zones-intervention.index'
@@ -118,6 +120,16 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminAvisRoute = AdminAvisRouteImport.update({
+  id: '/avis',
+  path: '/avis',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminQuestionsRoute = AdminQuestionsRouteImport.update({
+  id: '/questions',
+  path: '/questions',
+  getParentRoute: () => AdminRoute,
+} as any)
 const RealisationsIndexRoute = RealisationsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -167,6 +179,8 @@ export interface FileRoutesByFullPath {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sols-parquets': typeof SolsParquetsRoute
+  '/admin/avis': typeof AdminAvisRoute
+  '/admin/questions': typeof AdminQuestionsRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/zones-intervention/$commune': typeof ZonesInterventionCommuneRoute
   '/admin/': typeof AdminIndexRoute
@@ -190,6 +204,8 @@ export interface FileRoutesByTo {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sols-parquets': typeof SolsParquetsRoute
+  '/admin/avis': typeof AdminAvisRoute
+  '/admin/questions': typeof AdminQuestionsRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/zones-intervention/$commune': typeof ZonesInterventionCommuneRoute
   '/admin': typeof AdminIndexRoute
@@ -216,6 +232,8 @@ export interface FileRoutesById {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sols-parquets': typeof SolsParquetsRoute
+  '/admin/avis': typeof AdminAvisRoute
+  '/admin/questions': typeof AdminQuestionsRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/zones-intervention/$commune': typeof ZonesInterventionCommuneRoute
   '/admin/': typeof AdminIndexRoute
@@ -243,6 +261,8 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/sols-parquets'
+    | '/admin/avis'
+    | '/admin/questions'
     | '/realisations/$slug'
     | '/zones-intervention/$commune'
     | '/admin/'
@@ -266,6 +286,8 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/sols-parquets'
+    | '/admin/avis'
+    | '/admin/questions'
     | '/realisations/$slug'
     | '/zones-intervention/$commune'
     | '/admin'
@@ -291,6 +313,8 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/sols-parquets'
+    | '/admin/avis'
+    | '/admin/questions'
     | '/realisations/$slug'
     | '/zones-intervention/$commune'
     | '/admin/'
@@ -442,6 +466,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/avis': {
+      id: '/admin/avis'
+      path: '/avis'
+      fullPath: '/admin/avis'
+      preLoaderRoute: typeof AdminAvisRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/questions': {
+      id: '/admin/questions'
+      path: '/questions'
+      fullPath: '/admin/questions'
+      preLoaderRoute: typeof AdminQuestionsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/realisations/': {
       id: '/realisations/'
       path: '/'
@@ -488,12 +526,16 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdminRouteChildren {
+  AdminAvisRoute: typeof AdminAvisRoute
+  AdminQuestionsRoute: typeof AdminQuestionsRoute
   AdminIndexRoute: typeof AdminIndexRoute
   AdminPagesIdRoute: typeof AdminPagesIdRoute
   AdminPagesIndexRoute: typeof AdminPagesIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminAvisRoute: AdminAvisRoute,
+  AdminQuestionsRoute: AdminQuestionsRoute,
   AdminIndexRoute: AdminIndexRoute,
   AdminPagesIdRoute: AdminPagesIdRoute,
   AdminPagesIndexRoute: AdminPagesIndexRoute,

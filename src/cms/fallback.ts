@@ -26,6 +26,7 @@ export const fallbackData: SiteData = {
   general,
   avis: avisContent.avis,
   engagements: engagementsContent.engagements,
+  faq: [],
   technique,
   source: "secours",
 };

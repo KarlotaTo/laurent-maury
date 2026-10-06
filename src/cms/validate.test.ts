@@ -115,3 +115,21 @@ describe("informations propres au modèle", () => {
     expect(validateDraft("realisation", d, r, "super").join(" ")).toMatch(/Photo/);
   });
 });
+
+describe("listes du site", () => {
+  it("les avis actuels respectent les règles de la liste", async () => {
+    const { SETTINGS_SCHEMAS } = await import("@/cms/settings");
+    expect(SETTINGS_SCHEMAS.avis.safeParse({ avis: fallbackData.avis }).success).toBe(true);
+  });
+
+  it("une question sans réponse est refusée", async () => {
+    const { SETTINGS_SCHEMAS } = await import("@/cms/settings");
+    expect(SETTINGS_SCHEMAS.faq.safeParse({ items: [{ question: "Combien de temps ?", answer: "" }] }).success).toBe(false);
+  });
+
+  it("une note hors de 1 à 5 est refusée", async () => {
+    const { SETTINGS_SCHEMAS } = await import("@/cms/settings");
+    const avis = [{ ...fallbackData.avis[0]!, rating: 6 }];
+    expect(SETTINGS_SCHEMAS.avis.safeParse({ avis }).success).toBe(false);
+  });
+});

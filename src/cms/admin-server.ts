@@ -3,6 +3,7 @@ import { z } from "zod";
 import { CMS_CONFIG } from "@/cms/config";
 import { draftSchema, validateDraft as validate, type Draft, type Role } from "@/cms/validate";
 import { forgetSiteData } from "@/cms/source";
+import { SETTINGS_SCHEMAS, type SettingKey } from "@/cms/settings";
 import { pageSchema } from "@/cms/types";
 
 /**
@@ -153,5 +154,32 @@ export const publishPage = createServerFn({ method: "POST" })
     });
     forgetSiteData();
     await log(data.token, userId, "publish", row.path);
+    return { ok: true as const };
+  });
+
+const settingInput = z.object({
+  token: z.string().min(10),
+  key: z.enum(Object.keys(SETTINGS_SCHEMAS) as [SettingKey, ...SettingKey[]]),
+  value: z.unknown(),
+});
+
+/** Enregistre un réglage du site (avis, questions fréquentes…), en ligne sous 30 secondes. */
+export const saveSetting = createServerFn({ method: "POST" })
+  .inputValidator((input: z.input<typeof settingInput>) => settingInput.parse(input))
+  .handler(async ({ data }) => {
+    const { userId, role } = await caller(data.token);
+    if (role !== "super" && role !== "admin") return { ok: false as const, problems: ["Réservé aux administrateurs du site."] };
+    const parsed = SETTINGS_SCHEMAS[data.key].safeParse(data.value);
+    if (!parsed.success) {
+      const issue = parsed.error.issues[0];
+      return { ok: false as const, problems: [`${issue?.path.map((p) => (typeof p === "number" ? p + 1 : p)).join(" › ")} : ${issue?.message}`] };
+    }
+    await rest(data.token, "site_settings?on_conflict=site_id,key", {
+      method: "POST",
+      body: JSON.stringify({ site_id: CMS_CONFIG.siteId, key: data.key, value: parsed.data, technical: false }),
+      headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+    });
+    forgetSiteData();
+    await log(data.token, userId, "save_setting", data.key);
     return { ok: true as const };
   });

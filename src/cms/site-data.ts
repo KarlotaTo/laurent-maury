@@ -19,6 +19,7 @@ export type General = {
 };
 export type Review = { author: string; rating: number; date: string; text: string };
 export type Engagement = { title: string; text: string };
+export type FaqItem = { question: string; answer: string; category?: string | undefined };
 export type Technique = { siteUrl: string; indexable: boolean } & Record<string, unknown>;
 
 /** Tout le contenu d'un site : pages publiées et réglages. */
@@ -27,6 +28,7 @@ export type SiteData = {
   general: General;
   avis: Review[];
   engagements: Engagement[];
+  faq: FaqItem[];
   technique: Technique;
   /** "base" : contenus lus dans la base ; "secours" : contenus livrés avec le site. */
   source: "base" | "secours";
@@ -48,6 +50,7 @@ export type SiteContext = {
   general: General;
   avis: Review[];
   engagements: Engagement[];
+  faq: FaqItem[];
   siteUrl: string;
   indexable: boolean;
   zones: ZoneSummary[];
@@ -96,6 +99,7 @@ export function contextOf(data: SiteData): SiteContext {
     general: data.general,
     avis: data.avis,
     engagements: data.engagements,
+    faq: data.faq,
     siteUrl: data.technique.siteUrl,
     indexable: data.technique.indexable === true,
     zones: zonesOf(data.pages),
@@ -122,4 +126,10 @@ export function isOpen(g: General, date = new Date()): boolean {
   const day = date.getDay();
   const hour = date.getHours();
   return day >= 1 && day <= 5 && hour >= g.hours.openHour && hour < g.hours.closeHour;
+}
+
+/** Questions retenues pour un bloc : thème éventuel, puis nombre maximum. */
+export function faqItems(all: { question: string; answer: string; category?: string | undefined }[], category: string | undefined, limit: number) {
+  const theme = category?.trim().toLowerCase();
+  return all.filter((q) => !theme || q.category?.trim().toLowerCase() === theme).slice(0, limit);
 }
