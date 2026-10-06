@@ -2,8 +2,9 @@
   "siteUrl": "https://maury-laurent.lnkio.fr",
   "backOffice": "/admin",
   "hebergement": "Lovable (rendu serveur, certificat HTTPS automatique)",
-  "indexation": "Autorisée pour tous les moteurs (Google, Bing)",
+  "indexation": "Désactivée tant que le site est sur son adresse provisoire ; à activer lors de la mise en ligne sur maury-laurent.fr",
   "sitemap": "/sitemap.xml",
   "donneesStructurees": "Fiche entreprise (HomeAndConstructionBusiness) et fil d'Ariane sur chaque page",
-  "cookies": "Bandeau de consentement actif : refus par défaut des cookies non essentiels"
+  "cookies": "Bandeau de consentement actif : refus par défaut des cookies non essentiels",
+  "indexable": false
 }

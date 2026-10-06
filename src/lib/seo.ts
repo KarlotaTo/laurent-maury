@@ -6,6 +6,17 @@ export const SITE_URL = technique.siteUrl;
 /** Site de test : jamais indexé par les moteurs de recherche (compilé avec VITE_STAGING=1). */
 export const IS_STAGING = import.meta.env["VITE_STAGING"] === "1";
 
+/**
+ * Indexation par les moteurs de recherche :
+ * - site de test : jamais ;
+ * - site en ligne : selon le réglage technique « indexable » (désactivé tant que
+ *   le site est sur son adresse provisoire maury-laurent.lnkio.fr).
+ */
+export function robotsContent() {
+  if (IS_STAGING) return "noindex, nofollow";
+  return technique.indexable ? "index, follow, max-image-preview:large" : "noindex, follow";
+}
+
 export const BUSINESS_ID = `${SITE_URL}/#entreprise`;
 
 type Schema = Record<string, unknown>;
@@ -116,7 +127,7 @@ export function buildSeoHead({
     meta: [
       { title },
       { name: "description", content: description },
-      { name: "robots", content: IS_STAGING ? "noindex, nofollow" : "index, follow, max-image-preview:large" },
+      { name: "robots", content: robotsContent() },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: ogType },
