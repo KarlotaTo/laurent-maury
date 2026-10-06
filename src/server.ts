@@ -2,6 +2,8 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
+import { findRedirect, isRedirectable, redirectResponse } from "./cms/redirects";
+import { loadSiteData } from "./cms/source";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -47,6 +49,14 @@ function isH3SwallowedErrorBody(body: string): boolean {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      // Redirections gérées dans le back-office, appliquées avant tout affichage.
+      if (request.method === "GET" || request.method === "HEAD") {
+        const url = new URL(request.url);
+        if (isRedirectable(url.pathname)) {
+          const redirect = findRedirect((await loadSiteData()).redirects, url.pathname);
+          if (redirect) return redirectResponse(redirect, url);
+        }
+      }
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);

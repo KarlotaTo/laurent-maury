@@ -3,7 +3,7 @@ import { Cookie, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
-const CONSENT_KEY = "maury-laurent-cookie-consent";
+import { CONSENT_EVENT, CONSENT_KEY } from "@/components/site/Tracking";
 
 type ConsentChoice = "accepted" | "refused";
 
@@ -11,11 +11,20 @@ export function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    setVisible(window.localStorage.getItem(CONSENT_KEY) === null);
+    try {
+      setVisible(window.localStorage.getItem(CONSENT_KEY) === null);
+    } catch {
+      setVisible(true);
+    }
   }, []);
 
   const saveChoice = (choice: ConsentChoice) => {
-    window.localStorage.setItem(CONSENT_KEY, choice);
+    try {
+      window.localStorage.setItem(CONSENT_KEY, choice);
+    } catch {
+      // stockage indisponible (navigation privée) : le choix vaut pour la page en cours
+    }
+    window.dispatchEvent(new Event(CONSENT_EVENT));
     setVisible(false);
   };
 

@@ -3,6 +3,7 @@ import { z } from "zod";
 import { CMS_CONFIG } from "@/cms/config";
 import { draftSchema, validateDraft as validate, type Draft, type Role } from "@/cms/validate";
 import { forgetSiteData } from "@/cms/source";
+import { changedLockedFields } from "@/cms/locks";
 import { SETTINGS_SCHEMAS, type SettingKey } from "@/cms/settings";
 import { pageSchema } from "@/cms/types";
 
@@ -173,6 +174,11 @@ export const saveSetting = createServerFn({ method: "POST" })
     if (!parsed.success) {
       const issue = parsed.error.issues[0];
       return { ok: false as const, problems: [`${issue?.path.map((p) => (typeof p === "number" ? p + 1 : p)).join(" › ")} : ${issue?.message}`] };
+    }
+    if (role !== "super") {
+      const previous = (await rest(data.token, `site_settings?select=value&site_id=eq.${CMS_CONFIG.siteId}&key=eq.${data.key}`)) as { value: unknown }[];
+      const changed = changedLockedFields(SETTINGS_SCHEMAS[data.key], previous[0]?.value ?? {}, parsed.data);
+      if (previous[0] && changed.length) return { ok: false as const, problems: [`Champ verrouillé modifié (${changed.join(", ")}).`] };
     }
     await rest(data.token, "site_settings?on_conflict=site_id,key", {
       method: "POST",

@@ -60,6 +60,19 @@ export function string(o: Common & { max: number; optional?: boolean }): z.ZodTy
   return tag(schema, { kind: "string", label: o.label, help: o.help, max: o.max, locked: o.locked });
 }
 
+/**
+ * Identifiant technique (Google Analytics, Tag Manager…) : format contrôlé au caractère près,
+ * jamais de code libre — rien d'autre ne peut être injecté dans le site.
+ */
+export function identifier(o: Common & { pattern: RegExp; example: string }) {
+  const schema = z
+    .string()
+    .trim()
+    .refine((v) => v === "" || o.pattern.test(v), `Format attendu : ${o.example}`)
+    .optional();
+  return tag(schema, { kind: "string", label: o.label, help: o.help ?? `Exemple : ${o.example}`, max: 100, locked: o.locked });
+}
+
 /** Paragraphe sans mise en forme. */
 export function text(o: Common & { max: number; optional: true }): z.ZodOptional<z.ZodString>;
 export function text(o: Common & { max: number; optional?: false }): z.ZodString;

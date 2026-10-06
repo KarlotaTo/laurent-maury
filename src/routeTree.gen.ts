@@ -34,6 +34,10 @@ import { Route as RealisationsIndexRouteImport } from './routes/realisations/ind
 import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
 import { Route as ZonesInterventionIndexRouteImport } from './routes/zones-intervention.index'
 import { Route as ZonesInterventionCommuneRouteImport } from './routes/zones-intervention.$commune'
+import { Route as AdminConfigurationIndexRouteImport } from './routes/admin.configuration.index'
+import { Route as AdminConfigurationCoordonneesRouteImport } from './routes/admin.configuration.coordonnees'
+import { Route as AdminConfigurationOutilsRouteImport } from './routes/admin.configuration.outils'
+import { Route as AdminConfigurationRedirectionsRouteImport } from './routes/admin.configuration.redirections'
 import { Route as AdminPagesIndexRouteImport } from './routes/admin.pages.index'
 import { Route as AdminPagesIdRouteImport } from './routes/admin.pages.$id'
 
@@ -163,6 +167,29 @@ const ZonesInterventionCommuneRoute =
     path: '/zones-intervention/$commune',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AdminConfigurationIndexRoute = AdminConfigurationIndexRouteImport.update({
+  id: '/configuration/',
+  path: '/configuration/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminConfigurationCoordonneesRoute =
+  AdminConfigurationCoordonneesRouteImport.update({
+    id: '/configuration/coordonnees',
+    path: '/configuration/coordonnees',
+    getParentRoute: () => AdminRoute,
+  } as any)
+const AdminConfigurationOutilsRoute =
+  AdminConfigurationOutilsRouteImport.update({
+    id: '/configuration/outils',
+    path: '/configuration/outils',
+    getParentRoute: () => AdminRoute,
+  } as any)
+const AdminConfigurationRedirectionsRoute =
+  AdminConfigurationRedirectionsRouteImport.update({
+    id: '/configuration/redirections',
+    path: '/configuration/redirections',
+    getParentRoute: () => AdminRoute,
+  } as any)
 const AdminPagesIndexRoute = AdminPagesIndexRouteImport.update({
   id: '/pages/',
   path: '/pages/',
@@ -200,7 +227,11 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminIndexRoute
   '/realisations/': typeof RealisationsIndexRoute
   '/zones-intervention/': typeof ZonesInterventionIndexRoute
+  '/admin/configuration/coordonnees': typeof AdminConfigurationCoordonneesRoute
+  '/admin/configuration/outils': typeof AdminConfigurationOutilsRoute
+  '/admin/configuration/redirections': typeof AdminConfigurationRedirectionsRoute
   '/admin/pages/$id': typeof AdminPagesIdRoute
+  '/admin/configuration/': typeof AdminConfigurationIndexRoute
   '/admin/pages/': typeof AdminPagesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -227,7 +258,11 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminIndexRoute
   '/realisations': typeof RealisationsIndexRoute
   '/zones-intervention': typeof ZonesInterventionIndexRoute
+  '/admin/configuration/coordonnees': typeof AdminConfigurationCoordonneesRoute
+  '/admin/configuration/outils': typeof AdminConfigurationOutilsRoute
+  '/admin/configuration/redirections': typeof AdminConfigurationRedirectionsRoute
   '/admin/pages/$id': typeof AdminPagesIdRoute
+  '/admin/configuration': typeof AdminConfigurationIndexRoute
   '/admin/pages': typeof AdminPagesIndexRoute
 }
 export interface FileRoutesById {
@@ -257,7 +292,11 @@ export interface FileRoutesById {
   '/admin/': typeof AdminIndexRoute
   '/realisations/': typeof RealisationsIndexRoute
   '/zones-intervention/': typeof ZonesInterventionIndexRoute
+  '/admin/configuration/coordonnees': typeof AdminConfigurationCoordonneesRoute
+  '/admin/configuration/outils': typeof AdminConfigurationOutilsRoute
+  '/admin/configuration/redirections': typeof AdminConfigurationRedirectionsRoute
   '/admin/pages/$id': typeof AdminPagesIdRoute
+  '/admin/configuration/': typeof AdminConfigurationIndexRoute
   '/admin/pages/': typeof AdminPagesIndexRoute
 }
 export interface FileRouteTypes {
@@ -288,7 +327,11 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/realisations/'
     | '/zones-intervention/'
+    | '/admin/configuration/coordonnees'
+    | '/admin/configuration/outils'
+    | '/admin/configuration/redirections'
     | '/admin/pages/$id'
+    | '/admin/configuration/'
     | '/admin/pages/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -315,7 +358,11 @@ export interface FileRouteTypes {
     | '/admin'
     | '/realisations'
     | '/zones-intervention'
+    | '/admin/configuration/coordonnees'
+    | '/admin/configuration/outils'
+    | '/admin/configuration/redirections'
     | '/admin/pages/$id'
+    | '/admin/configuration'
     | '/admin/pages'
   id:
     | '__root__'
@@ -344,7 +391,11 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/realisations/'
     | '/zones-intervention/'
+    | '/admin/configuration/coordonnees'
+    | '/admin/configuration/outils'
+    | '/admin/configuration/redirections'
     | '/admin/pages/$id'
+    | '/admin/configuration/'
     | '/admin/pages/'
   fileRoutesById: FileRoutesById
 }
@@ -546,6 +597,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ZonesInterventionCommuneRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/configuration/': {
+      id: '/admin/configuration/'
+      path: '/configuration'
+      fullPath: '/admin/configuration/'
+      preLoaderRoute: typeof AdminConfigurationIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/configuration/coordonnees': {
+      id: '/admin/configuration/coordonnees'
+      path: '/configuration/coordonnees'
+      fullPath: '/admin/configuration/coordonnees'
+      preLoaderRoute: typeof AdminConfigurationCoordonneesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/configuration/outils': {
+      id: '/admin/configuration/outils'
+      path: '/configuration/outils'
+      fullPath: '/admin/configuration/outils'
+      preLoaderRoute: typeof AdminConfigurationOutilsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/configuration/redirections': {
+      id: '/admin/configuration/redirections'
+      path: '/configuration/redirections'
+      fullPath: '/admin/configuration/redirections'
+      preLoaderRoute: typeof AdminConfigurationRedirectionsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/pages/': {
       id: '/admin/pages/'
       path: '/pages'
@@ -569,7 +648,11 @@ interface AdminRouteChildren {
   AdminMessagesRoute: typeof AdminMessagesRoute
   AdminQuestionsRoute: typeof AdminQuestionsRoute
   AdminIndexRoute: typeof AdminIndexRoute
+  AdminConfigurationCoordonneesRoute: typeof AdminConfigurationCoordonneesRoute
+  AdminConfigurationOutilsRoute: typeof AdminConfigurationOutilsRoute
+  AdminConfigurationRedirectionsRoute: typeof AdminConfigurationRedirectionsRoute
   AdminPagesIdRoute: typeof AdminPagesIdRoute
+  AdminConfigurationIndexRoute: typeof AdminConfigurationIndexRoute
   AdminPagesIndexRoute: typeof AdminPagesIndexRoute
 }
 
@@ -579,7 +662,11 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminMessagesRoute: AdminMessagesRoute,
   AdminQuestionsRoute: AdminQuestionsRoute,
   AdminIndexRoute: AdminIndexRoute,
+  AdminConfigurationCoordonneesRoute: AdminConfigurationCoordonneesRoute,
+  AdminConfigurationOutilsRoute: AdminConfigurationOutilsRoute,
+  AdminConfigurationRedirectionsRoute: AdminConfigurationRedirectionsRoute,
   AdminPagesIdRoute: AdminPagesIdRoute,
+  AdminConfigurationIndexRoute: AdminConfigurationIndexRoute,
   AdminPagesIndexRoute: AdminPagesIndexRoute,
 }
 

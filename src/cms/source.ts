@@ -21,9 +21,10 @@ async function rest<T>(path: string): Promise<T> {
 
 async function fetchSiteData(): Promise<SiteData> {
   const site = `site_id=eq.${CMS_CONFIG.siteId}`;
-  const [versions, settings] = await Promise.all([
+  const [versions, settings, redirects] = await Promise.all([
     rest<{ snapshot: unknown }[]>(`page_versions?select=snapshot&${site}`),
     rest<{ key: string; value: unknown }[]>(`site_settings?select=key,value&${site}`),
+    rest<SiteData["redirects"]>(`redirects?select=from_path,to_path,status&${site}`).catch(() => []),
   ]);
   const pages = validPages(versions.map((v, i) => [`version ${i}`, v.snapshot] as [string, unknown]));
   if (pages.length === 0) throw new Error("aucune page publiée dans la base");
@@ -34,6 +35,8 @@ async function fetchSiteData(): Promise<SiteData> {
     avis: setting<{ avis: SiteData["avis"] }>("avis", { avis: fallbackData.avis }).avis,
     engagements: setting<{ engagements: SiteData["engagements"] }>("engagements", { engagements: fallbackData.engagements }).engagements,
     faq: setting<{ items: SiteData["faq"] }>("faq", { items: fallbackData.faq }).items,
+    tracking: setting("tracking", fallbackData.tracking),
+    redirects,
     technique: setting("technique", fallbackData.technique),
     source: "base",
   };

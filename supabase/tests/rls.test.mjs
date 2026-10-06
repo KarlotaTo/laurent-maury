@@ -91,7 +91,10 @@ await expectOk("l'admin client invite un éditeur", ids.adminA, "insert into sit
 console.log("Réglages");
 await expectOk("l'admin client modifie les coordonnées", ids.adminA, `insert into site_settings (site_id,key,value) values ($1,'general','{}')`, [ids.siteA], (r) => r.rowCount === 1);
 await expectDenied("l'admin client ne crée pas de réglage technique", ids.adminA, `insert into site_settings (site_id,key,value,technical) values ($1,'technique','{}',true)`, [ids.siteA]);
-await expectDenied("l'admin client ne crée pas de redirection", ids.adminA, `insert into redirects (site_id,from_path,to_path,status) values ($1,'/a','/b',301)`, [ids.siteA]);
+await expectOk("l'admin client crée une redirection sur son site", ids.adminA, `insert into redirects (site_id,from_path,to_path,status) values ($1,'/a','/b',301)`, [ids.siteA], (r) => r.rowCount === 1);
+await expectDenied("l'admin du site B ne crée pas de redirection sur le site A", ids.adminB, `insert into redirects (site_id,from_path,to_path,status) values ($1,'/c','/d',301)`, [ids.siteA]);
+await expectDenied("l'éditeur ne crée pas de redirection", ids.editorA, `insert into redirects (site_id,from_path,to_path,status) values ($1,'/e','/f',301)`, [ids.siteA]);
+await expectDenied("une redirection 410 avec destination est refusée", ids.adminA, `insert into redirects (site_id,from_path,to_path,status) values ($1,'/g','/h',410)`, [ids.siteA]);
 
 console.log("Médiathèque");
 const mediaRow = (site, path, by) => [`insert into media (site_id, storage_path, url, name, width, height, bytes, created_by) values ($1,$2,'https://x/y.webp','photo',10,10,100,$3)`, [site, path, by]];

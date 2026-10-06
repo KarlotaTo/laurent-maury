@@ -20,6 +20,8 @@ export type General = {
 export type Review = { author: string; rating: number; date: string; text: string };
 export type Engagement = { title: string; text: string };
 export type FaqItem = { question: string; answer: string; category?: string | undefined };
+export type Tracking = { gtm?: string; ga4?: string; clarity?: string; googleVerification?: string; bingVerification?: string };
+export type Redirect = { from_path: string; to_path: string | null; status: 301 | 302 | 410 };
 export type Technique = { siteUrl: string; indexable: boolean } & Record<string, unknown>;
 
 /** Tout le contenu d'un site : pages publiées et réglages. */
@@ -29,6 +31,8 @@ export type SiteData = {
   avis: Review[];
   engagements: Engagement[];
   faq: FaqItem[];
+  tracking: Tracking;
+  redirects: Redirect[];
   technique: Technique;
   /** "base" : contenus lus dans la base ; "secours" : contenus livrés avec le site. */
   source: "base" | "secours";
@@ -51,6 +55,7 @@ export type SiteContext = {
   avis: Review[];
   engagements: Engagement[];
   faq: FaqItem[];
+  tracking: Tracking;
   siteUrl: string;
   indexable: boolean;
   zones: ZoneSummary[];
@@ -100,6 +105,7 @@ export function contextOf(data: SiteData): SiteContext {
     avis: data.avis,
     engagements: data.engagements,
     faq: data.faq,
+    tracking: data.tracking,
     siteUrl: data.technique.siteUrl,
     indexable: data.technique.indexable === true,
     zones: zonesOf(data.pages),

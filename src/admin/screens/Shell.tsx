@@ -73,10 +73,13 @@ export function AdminShell({ children }: { children: ReactNode }) {
               )}
             </div>
           ))}
-          {role === "super" ? (
-            <span className="flex min-h-11 items-center justify-center rounded-lg bg-[#8A6A4F]/60 text-[14px] font-medium text-white">
-              Configuration · bientôt
-            </span>
+          {role === "super" || role === "admin" ? (
+            <Link
+              to="/admin/configuration"
+              className={`flex min-h-11 items-center justify-center rounded-lg text-[14px] font-medium text-white ${path.startsWith("/admin/configuration") ? "bg-[#6F543E]" : "bg-[#8A6A4F] hover:bg-[#7A5D45]"}`}
+            >
+              Configuration
+            </Link>
           ) : null}
         </nav>
         <main className="min-w-0 flex-[999_1_560px]">{children}</main>

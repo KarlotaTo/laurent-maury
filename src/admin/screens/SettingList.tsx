@@ -9,6 +9,8 @@ import { SETTINGS_SCHEMAS, SETTING_LABELS, type SettingKey } from "@/cms/setting
 
 const INTRO: Record<SettingKey, string> = {
   avis: "Les avis affichés sur le site (page d'accueil et blocs « Avis clients »). Recopiez-les fidèlement depuis votre fiche Google : un avis inventé est interdit et sanctionné.",
+  general: "Coordonnées reprises partout sur le site : en-tête, pied de page, page Contact, mentions légales et fiche entreprise lue par Google.",
+  tracking: "Connectez vos outils de mesure. Saisissez seulement les identifiants : le site les installe lui-même, et ne les active qu'après l'acceptation des cookies par le visiteur (RGPD). Les codes de validation Search Console et Bing sont ajoutés aux pages pour prouver que le site vous appartient.",
   faq: "Les questions et réponses affichées par les blocs « Questions fréquentes ». Le thème permet d'afficher sur une page seulement les questions qui la concernent. Google peut les montrer directement dans ses résultats.",
 };
 
@@ -30,7 +32,8 @@ export function SettingListScreen({ settingKey }: { settingKey: SettingKey }) {
       .eq("key", settingKey)
       .maybeSingle()
       .then(({ data }) => {
-        const initial = data?.value ?? (settingKey === "avis" ? { avis: [] } : { items: [] });
+        const empty: Record<SettingKey, unknown> = { avis: { avis: [] }, faq: { items: [] }, tracking: {}, general: {} };
+        const initial = data?.value ?? empty[settingKey];
         setSaved(initial);
         setValue(structuredClone(initial));
       });

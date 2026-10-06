@@ -17,6 +17,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { MobileCta } from "@/components/site/MobileCta";
 import { CookieConsent } from "@/components/site/CookieConsent";
+import { TrackingScripts, verificationMeta } from "@/components/site/Tracking";
 import { SiteProvider } from "@/cms/context";
 import { getSiteContext } from "@/cms/server-fns";
 
@@ -81,8 +82,9 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
+  head: ({ loaderData }) => ({
     meta: [
+      ...verificationMeta(loaderData?.tracking ?? {}),
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Maury Laurent — Peinture, décoration et rénovation à Bouloc (31)" },
@@ -154,6 +156,7 @@ function RootComponent() {
       </div>
       <MobileCta />
       <CookieConsent />
+      <TrackingScripts />
         </>
       )}
       </SiteProvider>
