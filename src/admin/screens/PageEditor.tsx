@@ -10,7 +10,7 @@ import { deleteDraftPage, DUPLICABLE_TEMPLATES, duplicatePage, publishPage, save
 import { CMS_CONFIG } from "@/cms/config";
 import { outlineOf } from "@/cms/outline";
 import { blockRegistry } from "@/cms/registry";
-import { seoScore } from "@/cms/seo-score";
+import { seoScore, suggestKeyword } from "@/cms/seo-score";
 import { PageBlocks } from "@/cms/render";
 import { TEMPLATE_LABELS, TEMPLATE_META } from "@/cms/templates";
 import type { BlockInstance, Page } from "@/cms/types";
@@ -163,12 +163,12 @@ export function PageEditorScreen({ pageId }: { pageId: string }) {
     }
   };
 
-  const duplicate = async (title: string) => {
+  const duplicate = async (title: string, focusKeyword: string) => {
     if (dirty && !confirm("Les modifications non enregistrées de cette page ne seront pas reprises dans la copie. Continuer ?")) return;
     setBusy("save");
     setProblems([]);
     try {
-      const result = await duplicatePage({ data: { token: await token(), pageId: row.id, title } });
+      const result = await duplicatePage({ data: { token: await token(), pageId: row.id, title, focusKeyword } });
       if (!result.ok) return setProblems(result.problems);
       setDuplicating(false);
       await navigate({ to: "/admin/pages/$id", params: { id: result.pageId } });
@@ -267,7 +267,8 @@ export function PageEditorScreen({ pageId }: { pageId: string }) {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            void duplicate(String(new FormData(e.currentTarget).get("title") ?? ""));
+            const form = new FormData(e.currentTarget);
+            void duplicate(String(form.get("title") ?? ""), String(form.get("keyword") ?? ""));
           }}
           className="rounded-2xl border border-accent/40 bg-background p-5"
         >
@@ -278,8 +279,18 @@ export function PageEditorScreen({ pageId }: { pageId: string }) {
           <div className="mt-4 flex flex-wrap items-end gap-3">
             <div className="min-w-[280px] flex-1">
               <label htmlFor="dup-title" className="mb-1.5 block text-[13px] font-medium">Titre de la nouvelle page</label>
-              <input id="dup-title" name="title" required minLength={3} maxLength={90} autoFocus placeholder="Rénovation d'une salle de bains à Fronton" className={inputCls} />
+              <input id="dup-title" name="title" required minLength={3} maxLength={90} autoFocus placeholder="Rénovation d'une salle de bains à Fronton" className={inputCls}
+                onInput={(e) => {
+                  const keyword = e.currentTarget.form?.elements.namedItem("keyword") as HTMLInputElement | null;
+                  if (keyword && keyword.dataset["edited"] !== "1") keyword.value = suggestKeyword(e.currentTarget.value);
+                }} />
               <p className="mt-1.5 text-[12px] text-muted-foreground">L'adresse de la page est créée à partir du titre.</p>
+            </div>
+            <div className="min-w-[240px] flex-1">
+              <label htmlFor="dup-keyword" className="mb-1.5 block text-[13px] font-medium">Expression clé visée <span className="text-accent">★</span></label>
+              <input id="dup-keyword" name="keyword" maxLength={80} placeholder="salle de bains Fronton" className={inputCls}
+                onInput={(e) => { e.currentTarget.dataset["edited"] = "1"; }} />
+              <p className="mt-1.5 text-[12px] text-muted-foreground">Proposée à partir du titre : ajustez-la (le métier et la ville).</p>
             </div>
             <button type="submit" disabled={!!busy} className={btnPrimary}>{busy ? "Création…" : "Créer la copie"}</button>
             <button type="button" onClick={() => setDuplicating(false)} className={btnGhost}>Annuler</button>

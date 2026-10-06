@@ -209,6 +209,7 @@ const duplicateInput = z.object({
   token: z.string().min(10),
   pageId: z.string().uuid(),
   title: z.string().trim().min(3, "Titre trop court").max(90, "90 caractères maximum"),
+  focusKeyword: z.string().trim().max(80).optional(),
 });
 
 /**
@@ -238,11 +239,15 @@ export const duplicatePage = createServerFn({ method: "POST" })
       if ((b.type === "projectHero" || b.type === "hero") && typeof d["title"] === "string") d["title"] = data.title;
       return copy;
     });
-    const { jsonLd: _jsonLd, noindex: _noindex, ...seo } = row.draft.seo;
+    const { jsonLd: _jsonLd, noindex: _noindex, focusKeyword: _keyword, ...seo } = row.draft.seo;
     const meta = { ...(row.draft.meta ?? {}) } as Record<string, unknown>;
     if (row.template === "realisation") meta["cardTitle"] = data.title;
     const draft = {
-      seo: { ...seo, title: `${data.title} | ${seo.title.split("|").pop()?.trim() ?? ""}`.slice(0, 70) },
+      seo: {
+        ...seo,
+        title: `${data.title} | ${seo.title.split("|").pop()?.trim() ?? ""}`.slice(0, 70),
+        ...(data.focusKeyword ? { focusKeyword: data.focusKeyword } : {}),
+      },
       blocks,
       meta,
     };

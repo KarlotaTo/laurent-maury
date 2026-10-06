@@ -73,3 +73,11 @@ describe("score SEO", () => {
     }
   });
 });
+
+describe("expression clé suggérée pour une nouvelle page", () => {
+  it("retire les petits mots du titre", async () => {
+    const { suggestKeyword } = await import("@/cms/seo-score");
+    expect(suggestKeyword("Rénovation d'une salle de bains à Fronton")).toBe("rénovation salle bains fronton");
+    expect(suggestKeyword("Peinture du séjour et de l’entrée")).toBe("peinture séjour entrée");
+  });
+});

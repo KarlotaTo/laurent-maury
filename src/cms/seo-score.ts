@@ -152,3 +152,16 @@ export function seoScore(page: ScoredPage, otherPages: ScoredPage[] = []): SeoSc
 }
 
 export const scoreColor = (score: number) => (score >= 80 ? "vert" : score >= 50 ? "orange" : "rouge");
+
+const STOP = new Set(["d", "l", "de", "du", "des", "la", "le", "les", "un", "une", "et", "en", "pour", "avec", "sur", "au", "aux", "a", "à", "chez", "dans"]);
+
+/** Expression clé suggérée à partir d'un titre (« Rénovation d'une salle de bains à Fronton » → « rénovation salle bains fronton »). */
+export function suggestKeyword(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[’']/g, " ")
+    .split(/[^\p{L}\p{N}]+/u)
+    .filter((w) => w && !STOP.has(w))
+    .slice(0, 5)
+    .join(" ");
+}
