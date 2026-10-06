@@ -8,7 +8,9 @@ import { adminDb } from "@/admin/supabase";
 import { btnDark, btnGhost, btnPrimary, ErrorNote, inputCls, SuccessNote } from "@/admin/ui";
 import { deleteDraftPage, DUPLICABLE_TEMPLATES, duplicatePage, publishPage, savePageDraft } from "@/cms/admin-server";
 import { CMS_CONFIG } from "@/cms/config";
+import { outlineOf } from "@/cms/outline";
 import { blockRegistry } from "@/cms/registry";
+import { seoScore } from "@/cms/seo-score";
 import { PageBlocks } from "@/cms/render";
 import { TEMPLATE_LABELS, TEMPLATE_META } from "@/cms/templates";
 import type { BlockInstance, Page } from "@/cms/types";
@@ -55,7 +57,7 @@ export function PageEditorScreen({ pageId }: { pageId: string }) {
   const [draft, setDraft] = useState<Draft | null>(null);
   const [label, setLabel] = useState("");
   const [inMenu, setInMenu] = useState(false);
-  const [pages, setPages] = useState<{ path: string; label: string; id: string }[]>([]);
+  const [pages, setPages] = useState<{ path: string; label: string; id: string; seo?: Page["seo"] }[]>([]);
   const [images, setImages] = useState<string[]>([]);
   const [published, setPublished] = useState<Page | null>(null);
   const [versions, setVersions] = useState<Version[] | null>(null);
@@ -81,7 +83,7 @@ export function PageEditorScreen({ pageId }: { pageId: string }) {
     setInMenu(r.in_menu);
     const all = await db.from("pages").select("id,path,label,draft").eq("site_id", CMS_CONFIG.siteId).is("deleted_at", null).order("sort_order");
     const list = (all.data ?? []) as { id: string; path: string; label: string; draft: Draft }[];
-    setPages(list.map(({ id, path, label }) => ({ id, path, label })));
+    setPages(list.map(({ id, path, label, draft }) => ({ id, path, label, seo: draft?.seo })));
     const found = new Set<string>();
     JSON.stringify(list.map((p) => p.draft)).replace(/"(\/images\/[^"]+\.(?:jpe?g|png|webp))"/g, (_, src: string) => (found.add(src), ""));
     setImages([...found].sort());
@@ -195,6 +197,12 @@ export function PageEditorScreen({ pageId }: { pageId: string }) {
     setNotice(`Version du ${new Date(v.created_at).toLocaleString("fr-FR")} remise dans le brouillon. Enregistrez puis publiez pour la remettre en ligne.`);
   };
 
+  const score = seoScore(
+    { path: row.path, seo: draft.seo, blocks: draft.blocks },
+    pages.filter((p) => p.id !== row.id && p.seo).map((p) => ({ path: p.path, seo: p.seo!, blocks: [] })),
+  );
+  const scoreCls = score.score >= 80 ? "bg-emerald-50 text-emerald-800" : score.score >= 50 ? "bg-amber-50 text-amber-800" : "bg-rose-50 text-rose-800";
+
   const status = !row.published_version_id ? (
     <span className="rounded-full bg-amber-50 px-2.5 py-1 text-[12px] font-medium text-amber-800">Brouillon</span>
   ) : unpublished || dirty ? (
@@ -213,6 +221,9 @@ export function PageEditorScreen({ pageId }: { pageId: string }) {
           <div className="mt-1 flex flex-wrap items-center gap-3">
             <h1 className="font-display text-4xl">{row.label}</h1>
             {status}
+            <button type="button" onClick={() => { setPreview(false); setTab("seo"); }} className={`rounded-full px-2.5 py-1 text-[12px] font-medium ${scoreCls}`} title="Voir le détail du score SEO">
+              SEO {score.score}/100
+            </button>
             {dirty ? <span className="text-[13px] text-muted-foreground">· modifications non enregistrées</span> : null}
           </div>
         </div>
@@ -354,7 +365,7 @@ export function PageEditorScreen({ pageId }: { pageId: string }) {
                             </select>
                           </div>
                         ) : null}
-                        <FieldEditor schema={def.schema} value={block.data} path="" env={{ ...env, errors }}
+                        <FieldEditor schema={def.schema} value={block.data} path="" env={{ ...env, errors, blockType: block.type }}
                           inheritedLock={lockedPage}
                           onChange={(data) => updateBlock(block.id, { data })} />
                       </div>
@@ -381,7 +392,15 @@ export function PageEditorScreen({ pageId }: { pageId: string }) {
             </div>
           ) : null}
 
-          {tab === "seo" ? <SeoTab draft={draft} setDraft={setDraft} path={row.path} isSuper={isSuper} locked={lockedPage} /> : null}
+          {tab === "seo" ? (
+            <div className="space-y-8">
+              <SeoTab draft={draft} setDraft={setDraft} path={row.path} isSuper={isSuper} locked={lockedPage} />
+              <div className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]">
+                <ScorePanel score={score} />
+                <OutlinePanel blocks={draft.blocks} />
+              </div>
+            </div>
+          ) : null}
 
           {tab === "reglages" ? (
             <div className="grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))]">
@@ -431,11 +450,20 @@ function SeoTab({ draft, setDraft, path, isSuper, locked }: { draft: Draft; setD
     <div className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]">
       <div className="space-y-5">
         <div>
-          <div className="mb-1.5 flex justify-between"><label htmlFor="seo-title" className="text-[13px] font-medium">Titre dans Google</label><span className={`text-[12px] ${seo.title.length > 60 ? "text-accent" : "text-muted-foreground"}`}>{seo.title.length} / 60 conseillés</span></div>
+          <label htmlFor="seo-keyword" className="mb-1.5 block text-[13px] font-medium">Expression clé visée <span className="text-accent">★</span></label>
+          <input id="seo-keyword" value={seo.focusKeyword ?? ""} maxLength={80} readOnly={locked} placeholder="ex. parquet Bouloc"
+            onChange={(e) => {
+              const { focusKeyword: _old, ...rest } = seo;
+              setDraft({ ...draft, seo: e.target.value ? { ...rest, focusKeyword: e.target.value } : rest });
+            }} className={inputCls} />
+          <p className="mt-1.5 text-[12px] text-muted-foreground">Ce que vos clients tapent dans Google pour trouver cette page : le métier et la ville. Une expression différente par page.</p>
+        </div>
+        <div>
+          <div className="mb-1.5 flex justify-between"><label htmlFor="seo-title" className="text-[13px] font-medium">Titre dans Google <span className="text-accent">★</span></label><span className={`text-[12px] ${seo.title.length > 60 ? "text-accent" : "text-muted-foreground"}`}>{seo.title.length} / 60 conseillés</span></div>
           <input id="seo-title" value={seo.title} maxLength={70} readOnly={locked} onChange={(e) => set({ title: e.target.value })} className={inputCls} />
         </div>
         <div>
-          <div className="mb-1.5 flex justify-between"><label htmlFor="seo-desc" className="text-[13px] font-medium">Description dans Google</label><span className={`text-[12px] ${seo.description.length > 160 ? "text-accent" : "text-muted-foreground"}`}>{seo.description.length} / 160 conseillés</span></div>
+          <div className="mb-1.5 flex justify-between"><label htmlFor="seo-desc" className="text-[13px] font-medium">Description dans Google <span className="text-accent">★</span></label><span className={`text-[12px] ${seo.description.length > 160 ? "text-accent" : "text-muted-foreground"}`}>{seo.description.length} / 160 conseillés</span></div>
           <textarea id="seo-desc" rows={4} value={seo.description} maxLength={200} readOnly={locked} onChange={(e) => set({ description: e.target.value })} className={inputCls} />
         </div>
         <div>
@@ -468,5 +496,53 @@ function SeoTab({ draft, setDraft, path, isSuper, locked }: { draft: Draft; setD
         </div>
       </div>
     </div>
+  );
+}
+
+function ScorePanel({ score }: { score: ReturnType<typeof seoScore> }) {
+  const color = score.score >= 80 ? "text-emerald-700" : score.score >= 50 ? "text-amber-700" : "text-rose-700";
+  const bar = score.score >= 80 ? "bg-emerald-600" : score.score >= 50 ? "bg-amber-500" : "bg-rose-600";
+  return (
+    <section className="rounded-xl border border-line p-5">
+      <div className="flex items-baseline justify-between">
+        <h3 className="text-[15px] font-medium">Score SEO de la page</h3>
+        <span className={`font-display text-4xl ${color}`}>{score.score}<span className="text-lg text-muted-foreground">/100</span></span>
+      </div>
+      <div className="mt-2 h-2 overflow-hidden rounded-full bg-sand" role="progressbar" aria-valuenow={score.score} aria-valuemin={0} aria-valuemax={100}>
+        <div className={`h-full ${bar}`} style={{ width: `${score.score}%` }} />
+      </div>
+      <ul className="mt-4 space-y-2.5">
+        {score.checks.map((c) => (
+          <li key={c.id} className="flex gap-2.5 text-[14px]">
+            <span aria-hidden="true" className={c.ok ? "text-emerald-600" : c.points > 0 ? "text-amber-600" : "text-rose-600"}>{c.ok ? "✓" : c.points > 0 ? "◐" : "✗"}</span>
+            <span className="flex-1">
+              <span className="font-medium">{c.label}</span> <span className="text-muted-foreground">({c.points}/{c.max})</span>
+              <span className="block text-[13px] text-muted-foreground">{c.advice}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-4 text-[12px] text-muted-foreground">Le score évalue ce qui dépend de la page. Le classement dans Google dépend aussi de la concurrence, des avis et de l'ancienneté du site.</p>
+    </section>
+  );
+}
+
+function OutlinePanel({ blocks }: { blocks: BlockInstance[] }) {
+  const outline = outlineOf(blocks);
+  const h1 = outline.filter((h) => h.level === "h1").length;
+  return (
+    <section className="rounded-xl border border-line p-5">
+      <h3 className="text-[15px] font-medium">Plan de la page, tel que Google le lit</h3>
+      {h1 !== 1 ? <p className="mt-2 rounded-lg bg-rose-50 px-3 py-2 text-[13px] text-rose-800">{h1 === 0 ? "Aucun titre H1 : ajoutez un bloc « Haut de page »." : `${h1} titres H1 : une page ne doit en avoir qu'un.`}</p> : null}
+      <ol className="mt-3 space-y-1.5">
+        {outline.map((h, i) => (
+          <li key={i} className="flex items-start gap-2 text-[14px]" style={{ paddingLeft: h.level === "h1" ? 0 : h.level === "h2" ? 16 : 32 }}>
+            <span className={`mt-0.5 rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase ${h.level === "h1" ? "bg-accent text-accent-foreground" : "bg-primary/10 text-primary"}`}>{h.level}</span>
+            <span className={h.text ? "" : "italic text-rose-700"}>{h.text || "titre vide"}</span>
+          </li>
+        ))}
+      </ol>
+      <p className="mt-4 text-[12px] text-muted-foreground">Les niveaux de titres sont fixés par chaque bloc pour garantir une structure correcte. Les listes automatiques (réalisations, communes, avis) ajoutent leurs propres titres H3.</p>
+    </section>
   );
 }

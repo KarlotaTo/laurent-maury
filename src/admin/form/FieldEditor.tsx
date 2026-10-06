@@ -3,6 +3,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { MediaPickerDialog } from "@/admin/MediaLibrary";
 import { fieldMeta, type FieldMeta } from "@/cms/fields";
+import { headingOf } from "@/cms/outline";
 import { inputCls } from "@/admin/ui";
 
 /**
@@ -19,7 +20,24 @@ export type FormEnv = {
   pages: { path: string; label: string }[];
   /** Photos déjà utilisées sur le site, proposées dans les champs photo. */
   images: string[];
+  /** Type du bloc édité : sert à afficher le niveau de titre (H1, H2, H3) des champs. */
+  blockType?: string | undefined;
 };
+
+/** Étiquette SEO d'un champ : niveau de titre, et étoile si le champ compte beaucoup pour Google. */
+function SeoBadge({ level, star }: { level?: "h1" | "h2" | "h3" | undefined; star?: boolean | undefined }) {
+  if (!level && !star) return null;
+  return (
+    <span className="ml-2 inline-flex items-center gap-1 align-middle">
+      {level ? (
+        <span className={`rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase ${level === "h1" ? "bg-accent text-accent-foreground" : "bg-primary/10 text-primary"}`} title={`Titre de niveau ${level.toUpperCase()} sur le site`}>
+          {level}
+        </span>
+      ) : null}
+      {star ? <span className="text-accent" title="Important pour Google">★</span> : null}
+    </span>
+  );
+}
 
 export function unwrap(schema: z.ZodTypeAny): z.ZodTypeAny {
   let current = schema;
@@ -117,7 +135,11 @@ export function FieldEditor({ schema, value, onChange, path, env, fallbackLabel,
       return (
         <div>
           <div className="mb-1.5 flex items-baseline justify-between gap-3">
-            <label htmlFor={id} className="text-[13px] font-medium text-ink">{label}</label>
+            <label htmlFor={id} className="text-[13px] font-medium text-ink">
+              {label}
+              <SeoBadge level={env.blockType ? headingOf(env.blockType, path) : undefined}
+                star={(env.blockType ? headingOf(env.blockType, path) === "h1" : false) || path === "intro"} />
+            </label>
             <Counter value={v} max={meta.max} />
           </div>
           {multiline ? (
@@ -257,7 +279,7 @@ function ImageField({ id, label, value, onChange, locked, env, path, optional }:
             <ErrorText message={env.errors.get(`${path}.src`)} />
           </div>
           <div>
-            <label htmlFor={`${id}-alt`} className="mb-1.5 block text-[12px] text-muted-foreground">Description de la photo (lue par Google et les personnes malvoyantes)</label>
+            <label htmlFor={`${id}-alt`} className="mb-1.5 block text-[12px] text-muted-foreground">Description de la photo (lue par Google et les personnes malvoyantes) <span className="text-accent" title="Important pour Google">★</span></label>
             <input id={`${id}-alt`} value={img.alt} readOnly={locked} onChange={(e) => onChange({ ...img, alt: e.target.value })} className={inputCls} />
             <ErrorText message={env.errors.get(`${path}.alt`)} />
           </div>

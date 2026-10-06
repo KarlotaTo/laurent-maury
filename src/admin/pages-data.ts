@@ -12,20 +12,21 @@ export type PageRow = {
   in_menu: boolean;
   published_version_id: string | null;
   updated_at: string;
+  draft?: { seo: import("@/cms/types").Page["seo"]; blocks: import("@/cms/types").BlockInstance[] };
 };
 
 export type TreeRow = PageRow & { depth: number };
 
 /** Pages du site (brouillons compris), lues avec les droits de l'utilisateur connecté. */
-export async function fetchPages(): Promise<PageRow[]> {
+export async function fetchPages(withDrafts = false): Promise<PageRow[]> {
   const { data, error } = await adminDb()
     .from("pages")
-    .select("id,key,path,parent_id,template,sort_order,label,in_menu,published_version_id,updated_at")
+    .select(`id,key,path,parent_id,template,sort_order,label,in_menu,published_version_id,updated_at${withDrafts ? ",draft" : ""}`)
     .eq("site_id", CMS_CONFIG.siteId)
     .is("deleted_at", null)
     .order("sort_order");
   if (error) throw new Error(error.message);
-  return data as PageRow[];
+  return data as unknown as PageRow[];
 }
 
 /** Ordonne les pages en arbre : chaque page suivie de ses enfants, sans limite de profondeur. */
