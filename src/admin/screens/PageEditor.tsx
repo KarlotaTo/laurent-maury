@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { ArrowDown, ArrowUp, ChevronDown, ChevronRight, Copy, Eye, EyeOff, Lock, Plus, Trash2 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { z } from "zod";
@@ -6,7 +6,7 @@ import { FieldEditor, type FormEnv } from "@/admin/form/FieldEditor";
 import { useAdminSession } from "@/admin/session";
 import { adminDb } from "@/admin/supabase";
 import { btnDark, btnGhost, btnPrimary, ErrorNote, inputCls, SuccessNote } from "@/admin/ui";
-import { publishPage, savePageDraft } from "@/cms/admin-server";
+import { deleteDraftPage, DUPLICABLE_TEMPLATES, duplicatePage, publishPage, savePageDraft } from "@/cms/admin-server";
 import { CMS_CONFIG } from "@/cms/config";
 import { blockRegistry } from "@/cms/registry";
 import { PageBlocks } from "@/cms/render";
@@ -67,6 +67,8 @@ export function PageEditorScreen({ pageId }: { pageId: string }) {
   const [problems, setProblems] = useState<string[]>([]);
   const [notice, setNotice] = useState<string | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const [duplicating, setDuplicating] = useState(false);
+  const navigate = useNavigate();
 
   const load = useCallback(async () => {
     const db = adminDb();
@@ -159,6 +161,29 @@ export function PageEditorScreen({ pageId }: { pageId: string }) {
     }
   };
 
+  const duplicate = async (title: string) => {
+    if (dirty && !confirm("Les modifications non enregistrées de cette page ne seront pas reprises dans la copie. Continuer ?")) return;
+    setBusy("save");
+    setProblems([]);
+    try {
+      const result = await duplicatePage({ data: { token: await token(), pageId: row.id, title } });
+      if (!result.ok) return setProblems(result.problems);
+      setDuplicating(false);
+      await navigate({ to: "/admin/pages/$id", params: { id: result.pageId } });
+    } catch (e) {
+      setProblems([e instanceof Error ? e.message : "Duplication impossible."]);
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  const removeDraft = async () => {
+    if (!confirm(`Supprimer définitivement la page « ${row.label} » ? Elle n'a jamais été publiée.`)) return;
+    const result = await deleteDraftPage({ data: { token: await token(), pageId: row.id } });
+    if (!result.ok) return setProblems(result.problems);
+    await navigate({ to: "/admin/pages" });
+  };
+
   const openHistory = async () => {
     const { data } = await adminDb().from("page_versions").select("id,created_at,note,snapshot").eq("page_id", row.id).order("created_at", { ascending: false }).limit(30);
     setVersions((data ?? []) as Version[]);
@@ -195,6 +220,12 @@ export function PageEditorScreen({ pageId }: { pageId: string }) {
           <a href={row.path} target="_blank" rel="noreferrer" className={btnGhost}>Voir en ligne ↗</a>
           <button type="button" onClick={() => setPreview((p) => !p)} className={btnGhost}>{preview ? "Revenir à l'édition" : "Aperçu"}</button>
           <button type="button" onClick={() => void openHistory()} className={btnGhost}>Historique</button>
+          {(DUPLICABLE_TEMPLATES as readonly string[]).includes(row.template) && role !== "contributor" ? (
+            <button type="button" onClick={() => setDuplicating(true)} className={btnGhost}>Dupliquer la page</button>
+          ) : null}
+          {!row.published_version_id && role !== "contributor" ? (
+            <button type="button" onClick={() => void removeDraft()} className={`${btnGhost} text-accent`}>Supprimer la page</button>
+          ) : null}
           <button type="button" disabled={!dirty || !!busy || lockedPage} onClick={() => void save()} className={btnDark}>
             {busy === "save" ? "Enregistrement…" : "Enregistrer le brouillon"}
           </button>
@@ -220,6 +251,30 @@ export function PageEditorScreen({ pageId }: { pageId: string }) {
       ) : null}
       {notice ? <SuccessNote>{notice}</SuccessNote> : null}
       {invalidCount > 0 ? <ErrorNote>{invalidCount} bloc(s) à compléter avant de pouvoir enregistrer : ils sont signalés en rouge ci-dessous.</ErrorNote> : null}
+
+      {duplicating ? (
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            void duplicate(String(new FormData(e.currentTarget).get("title") ?? ""));
+          }}
+          className="rounded-2xl border border-accent/40 bg-background p-5"
+        >
+          <h2 className="text-lg font-medium">Dupliquer cette page</h2>
+          <p className="mt-1 text-[14px] text-muted-foreground">
+            La copie reprend tous les blocs et toutes les photos de cette page, pour que vous n'ayez plus qu'à remplacer textes et photos. Elle est créée en brouillon : invisible sur le site tant que vous ne la publiez pas.
+          </p>
+          <div className="mt-4 flex flex-wrap items-end gap-3">
+            <div className="min-w-[280px] flex-1">
+              <label htmlFor="dup-title" className="mb-1.5 block text-[13px] font-medium">Titre de la nouvelle page</label>
+              <input id="dup-title" name="title" required minLength={3} maxLength={90} autoFocus placeholder="Rénovation d'une salle de bains à Fronton" className={inputCls} />
+              <p className="mt-1.5 text-[12px] text-muted-foreground">L'adresse de la page est créée à partir du titre.</p>
+            </div>
+            <button type="submit" disabled={!!busy} className={btnPrimary}>{busy ? "Création…" : "Créer la copie"}</button>
+            <button type="button" onClick={() => setDuplicating(false)} className={btnGhost}>Annuler</button>
+          </div>
+        </form>
+      ) : null}
 
       {versions ? (
         <section className="rounded-2xl border border-line bg-background p-5">

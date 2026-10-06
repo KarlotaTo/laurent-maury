@@ -189,3 +189,94 @@ export const saveSetting = createServerFn({ method: "POST" })
     await log(data.token, userId, "save_setting", data.key);
     return { ok: true as const };
   });
+
+/** Modèles de pages qu'on peut dupliquer (pages « uniques » exclues : accueil, contact…). */
+export const DUPLICABLE_TEMPLATES = ["realisation", "free"] as const;
+
+function slugify(text: string) {
+  return text
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/[’']/g, "-")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 70)
+    .replace(/-+$/, "");
+}
+
+const duplicateInput = z.object({
+  token: z.string().min(10),
+  pageId: z.string().uuid(),
+  title: z.string().trim().min(3, "Titre trop court").max(90, "90 caractères maximum"),
+});
+
+/**
+ * Duplique une page (réalisation, page libre) en brouillon : même structure et mêmes blocs,
+ * nouveau titre et nouvelle adresse. Invisible sur le site tant qu'elle n'est pas publiée.
+ */
+export const duplicatePage = createServerFn({ method: "POST" })
+  .validator((input: z.input<typeof duplicateInput>) => duplicateInput.parse(input))
+  .handler(async ({ data }) => {
+    const { userId, role } = await caller(data.token);
+    if (role === "contributor") return { ok: false as const, problems: ["La création de pages est réservée aux éditeurs et administrateurs."] };
+    const row = await loadRow(data.token, data.pageId);
+    if (!(DUPLICABLE_TEMPLATES as readonly string[]).includes(row.template)) {
+      return { ok: false as const, problems: ["Ce type de page ne peut pas être dupliqué."] };
+    }
+    const base = slugify(data.title);
+    if (!base) return { ok: false as const, problems: ["Le titre doit contenir des lettres ou des chiffres."] };
+    const parentPath = row.path.split("/").slice(0, -1).join("/");
+    const existing = (await rest(data.token, `pages?select=key,path&site_id=eq.${CMS_CONFIG.siteId}`)) as { key: string; path: string }[];
+    let slug = base;
+    for (let i = 2; existing.some((p) => p.path === `${parentPath}/${slug}` || p.key === slug); i++) slug = `${base}-${i}`;
+
+    // Nouveaux identifiants de blocs ; titres principaux remplacés ; données Google régénérées automatiquement.
+    const blocks = row.draft.blocks.map((b, i) => {
+      const copy = { ...structuredClone(b), id: `${slug}-${i + 1}` };
+      const d = copy.data as Record<string, unknown>;
+      if ((b.type === "projectHero" || b.type === "hero") && typeof d["title"] === "string") d["title"] = data.title;
+      return copy;
+    });
+    const { jsonLd: _jsonLd, noindex: _noindex, ...seo } = row.draft.seo;
+    const meta = { ...(row.draft.meta ?? {}) } as Record<string, unknown>;
+    if (row.template === "realisation") meta["cardTitle"] = data.title;
+    const draft = {
+      seo: { ...seo, title: `${data.title} | ${seo.title.split("|").pop()?.trim() ?? ""}`.slice(0, 70) },
+      blocks,
+      meta,
+    };
+    const inserted = (await rest(data.token, "pages", {
+      method: "POST",
+      body: JSON.stringify({
+        site_id: CMS_CONFIG.siteId,
+        key: slug,
+        path: `${parentPath}/${slug}`,
+        parent_id: row.parent_id,
+        template: row.template,
+        sort_order: row.sort_order + 1,
+        label: data.title.slice(0, 60),
+        in_menu: false,
+        draft,
+      }),
+    })) as { id: string }[];
+    await log(data.token, userId, "duplicate_page", `${row.path} → ${parentPath}/${slug}`);
+    return { ok: true as const, pageId: inserted[0]!.id };
+  });
+
+const deleteInput = z.object({ token: z.string().min(10), pageId: z.string().uuid() });
+
+/** Supprime une page jamais publiée (brouillon créé par erreur). */
+export const deleteDraftPage = createServerFn({ method: "POST" })
+  .validator((input: z.input<typeof deleteInput>) => deleteInput.parse(input))
+  .handler(async ({ data }) => {
+    const { userId, role } = await caller(data.token);
+    if (role === "contributor") return { ok: false as const, problems: ["Réservé aux éditeurs et administrateurs."] };
+    const row = await loadRow(data.token, data.pageId);
+    if (row.published_version_id) {
+      return { ok: false as const, problems: ["Cette page est en ligne : sa suppression se fera avec une redirection, depuis l'administratrice du site."] };
+    }
+    await rest(data.token, `pages?id=eq.${row.id}`, { method: "PATCH", body: JSON.stringify({ deleted_at: new Date().toISOString() }) });
+    await log(data.token, userId, "delete_draft", row.path);
+    return { ok: true as const };
+  });

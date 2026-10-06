@@ -20,6 +20,33 @@ function resolveJsonLd(page: Page, ctx: SiteContext) {
   ) as Record<string, unknown>[];
 }
 
+/**
+ * Données Google générées automatiquement quand la page n'en a pas d'enregistrées
+ * (pages créées depuis le back-office) : toujours cohérentes avec le contenu.
+ */
+function generatedJsonLd(page: Page, ctx: SiteContext): Record<string, unknown>[] {
+  const url = absoluteUrl(ctx, page.path);
+  const hero = page.blocks.find((b) => b.type === "projectHero" || b.type === "hero")?.data as { title?: string } | undefined;
+  const name = hero?.title ?? page.label;
+  if (page.template === "realisation") {
+    const meta = (page.meta ?? {}) as { city?: string; type?: string };
+    const facts = page.blocks.find((b) => b.type === "projectFacts")?.data as { items?: { label: string; value: string }[] } | undefined;
+    const prestations = facts?.items?.find((i) => /prestation/i.test(i.label))?.value.split("·").map((v) => v.trim()).filter(Boolean);
+    return [{
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      name,
+      description: page.seo.description,
+      url,
+      ...(meta.type ? { genre: meta.type } : {}),
+      creator: { "@id": businessId(ctx) },
+      ...(prestations?.length ? { about: prestations } : {}),
+      ...(meta.city ? { contentLocation: { "@type": "Place", name: meta.city, address: { "@type": "PostalAddress", addressLocality: meta.city, addressCountry: "FR" } } } : {}),
+    }];
+  }
+  return [{ "@context": "https://schema.org", "@type": "WebPage", name, description: page.seo.description, url, about: { "@id": businessId(ctx) } }];
+}
+
 /** Fil d'Ariane de Google : Accueil, puis chaque page parente, puis la page. */
 function breadcrumbSchema(ctx: SiteContext, chain: { label: string; path: string }[]) {
   return {
@@ -35,7 +62,7 @@ function breadcrumbSchema(ctx: SiteContext, chain: { label: string; path: string
 /** Balises <head> d'une page du CMS : titre, description, partage, données structurées. */
 export function buildPageHead(page: Page, ctx: SiteContext, breadcrumb: { label: string; path: string }[]) {
   const isHome = page.template === "home";
-  const stored = resolveJsonLd(page, ctx);
+  const stored = page.seo.jsonLd?.length ? resolveJsonLd(page, ctx) : page.template === "home" ? [] : generatedJsonLd(page, ctx);
   const schema = isHome
     ? [
         localBusinessSchema(ctx),
