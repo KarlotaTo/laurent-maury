@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRightLeft, BarChart3, Building2, Cookie, DatabaseBackup, Globe, LayoutTemplate, Lock, ScrollText, Search, Users } from "lucide-react";
+import { ArrowRightLeft, BarChart3, GraduationCap, Building2, Cookie, DatabaseBackup, Globe, LayoutTemplate, Lock, ScrollText, Search, Users } from "lucide-react";
 import type { ComponentType } from "react";
 import { useAdminSession } from "@/admin/session";
 
@@ -9,6 +9,7 @@ const SITE: Tile[] = [
   { title: "Coordonnées et horaires", text: "Téléphone, e-mail, adresse, horaires, pied de page", icon: Building2, to: "/admin/configuration/coordonnees" },
   { title: "Outils d'analyse et de suivi", text: "Google Analytics 4, Tag Manager, Search Console, Clarity, Bing", icon: BarChart3, to: "/admin/configuration/outils" },
   { title: "Redirections", text: "Rediriger une ancienne adresse (301, 302) ou signaler une page supprimée (410)", icon: ArrowRightLeft, to: "/admin/configuration/redirections" },
+  { title: "Comprendre le score SEO", text: "Le barème critère par critère, et ce que le score ne mesure pas", icon: GraduationCap, to: "/admin/configuration/score-seo" },
   { title: "Utilisateurs", text: "Inviter un éditeur ou un contributeur", icon: Users, soon: true },
 ];
 

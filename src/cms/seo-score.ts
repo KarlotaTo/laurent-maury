@@ -6,6 +6,96 @@ import type { BlockInstance, Page } from "@/cms/types";
  * Barème validé par Charlotte (06/10/2026).
  */
 
+/**
+ * Barème du score, avec son explication : source unique pour le calcul et pour la page
+ * pédagogique du back-office (Configuration › Comprendre le score SEO).
+ */
+export const SCORE_CRITERIA = [
+  {
+    id: "keyword",
+    label: "Expression clé bien placée",
+    max: 25,
+    rule: "5 points par emplacement où l'expression apparaît : titre Google, titre principal (H1), description Google, premier paragraphe, adresse de la page.",
+    why: "Google vérifie que la page répond clairement à la recherche. Ces cinq emplacements sont ceux qu'il lit en priorité pour comprendre le sujet de la page.",
+    how: "Choisissez ce que vos clients tapent vraiment (le métier et la ville, ex. « parquet Bouloc »), puis glissez-la naturellement dans ces emplacements. Les mots de même famille comptent (« peintre » ≈ « peinture ») ; le nom de la commune n'est pas exigé dans l'adresse d'une page qui couvre tout le secteur.",
+  },
+  {
+    id: "title",
+    label: "Titre Google entre 30 et 60 caractères",
+    max: 15,
+    rule: "15 points entre 30 et 60 caractères, 8 points entre 20 et 70, sinon 0.",
+    why: "C'est le lien bleu cliquable dans Google : trop court, il ne dit pas assez ; trop long, Google le coupe.",
+    how: "Le métier, la ville, puis le nom de l'entreprise : « Parquet massif et pose de sols à Bouloc | Maury Laurent ».",
+  },
+  {
+    id: "h1",
+    label: "Un seul titre principal (H1)",
+    max: 15,
+    rule: "15 points si la page a exactement un H1, non vide.",
+    why: "Le H1 annonce le sujet de la page. Zéro ou plusieurs H1 brouillent ce signal.",
+    how: "Gardez un seul bloc « Haut de page » par page. Son titre et son début de titre invisible forment le H1.",
+  },
+  {
+    id: "description",
+    label: "Description Google entre 120 et 160 caractères",
+    max: 10,
+    rule: "10 points entre 120 et 160 caractères, 5 points entre 70 et 200, sinon 0.",
+    why: "Elle s'affiche sous le titre dans Google. Elle ne fait pas monter la page, mais elle donne envie (ou non) de cliquer.",
+    how: "Ce que vous faites, où, et un argument concret (devis gratuit, depuis 1994, un seul interlocuteur).",
+  },
+  {
+    id: "alt",
+    label: "Toutes les photos ont une description",
+    max: 10,
+    rule: "Points proportionnels au nombre de photos décrites (5 caractères minimum).",
+    why: "Google ne voit pas les photos : il lit leur description. Elle sert aussi aux personnes malvoyantes et à Google Images.",
+    how: "Décrivez ce qu'on voit, avec le lieu si possible : « Salon rénové avec mur graphique noir à Bouloc ».",
+  },
+  {
+    id: "words",
+    label: "Au moins 300 mots",
+    max: 10,
+    rule: "10 points à partir de 300 mots, proportionnel en dessous. Les questions fréquentes affichées sur la page comptent.",
+    why: "Une page trop courte répond rarement bien à une question. 300 mots est une convention, pas une loi : la qualité compte plus que la longueur.",
+    how: "Expliquez votre façon de travailler, vos chantiers, les questions de vos clients. Évitez le remplissage.",
+  },
+  {
+    id: "h2",
+    label: "Au moins 2 sections (H2)",
+    max: 5,
+    rule: "5 points à partir de 2 titres de section, 2 points pour un seul.",
+    why: "Les sections aident Google et les lecteurs à parcourir la page.",
+    how: "Les blocs du site créent les H2 tout seuls : chaque bloc avec un titre est une section.",
+  },
+  {
+    id: "links",
+    label: "Au moins 2 liens vers d'autres pages du site",
+    max: 5,
+    rule: "5 points à partir de 2 liens internes différents, 2 points pour un seul.",
+    why: "Les liens guident les visiteurs et indiquent à Google quelles pages sont liées et importantes.",
+    how: "Dans un paragraphe, écrivez [texte du lien](/adresse-de-la-page), par exemple [nos réalisations](/realisations).",
+  },
+  {
+    id: "unique",
+    label: "Expression clé propre à cette page",
+    max: 5,
+    rule: "5 points si aucune autre page du site ne vise la même expression.",
+    why: "Deux pages qui visent la même expression se font concurrence dans Google (on parle de cannibalisation).",
+    how: "Une expression par page : « peintre Fronton » pour la page Fronton, « parquet Bouloc » pour la page Sols et parquets.",
+  },
+] as const;
+
+/** Ce que le score ne mesure pas, et qui compte pourtant pour le classement. */
+export const SCORE_LIMITS = [
+  ["Le choix des expressions", "Le score vérifie qu'une expression est bien placée, pas qu'elle est réellement recherchée. Validez-les avec Google Keyword Planner, puis Search Console une fois le site en ligne."],
+  ["La fiche Google Business Profile", "Pour un artisan local, c'est souvent le premier levier : catégories, photos, horaires, réponses aux avis."],
+  ["Les avis clients", "Leur nombre, leur fraîcheur et leur contenu pèsent beaucoup dans le référencement local."],
+  ["La notoriété du site", "Les liens venant d'autres sites (annuaires, partenaires, fournisseurs, presse locale)."],
+  ["La cohérence des coordonnées", "Même nom, même adresse, même téléphone partout : site, fiche Google, annuaires."],
+  ["La vitesse et le mobile", "Mesurés par Google : à vérifier avec PageSpeed Insights une fois le site sur son domaine."],
+  ["La concurrence", "Le même score ne donne pas le même classement à Bouloc qu'à Toulouse : tout dépend des autres sites qui visent la même recherche."],
+] as const;
+
 export type SeoCheck = { id: string; label: string; points: number; max: number; ok: boolean; advice: string };
 export type SeoScore = { score: number; checks: SeoCheck[]; words: number };
 

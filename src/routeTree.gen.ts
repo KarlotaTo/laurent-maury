@@ -39,6 +39,7 @@ import { Route as AdminConfigurationIndexRouteImport } from './routes/admin.conf
 import { Route as AdminConfigurationCoordonneesRouteImport } from './routes/admin.configuration.coordonnees'
 import { Route as AdminConfigurationOutilsRouteImport } from './routes/admin.configuration.outils'
 import { Route as AdminConfigurationRedirectionsRouteImport } from './routes/admin.configuration.redirections'
+import { Route as AdminConfigurationScoreSeoRouteImport } from './routes/admin.configuration.score-seo'
 import { Route as AdminPagesIndexRouteImport } from './routes/admin.pages.index'
 import { Route as AdminPagesIdRouteImport } from './routes/admin.pages.$id'
 
@@ -196,6 +197,12 @@ const AdminConfigurationRedirectionsRoute =
     path: '/configuration/redirections',
     getParentRoute: () => AdminRoute,
   } as any)
+const AdminConfigurationScoreSeoRoute =
+  AdminConfigurationScoreSeoRouteImport.update({
+    id: '/configuration/score-seo',
+    path: '/configuration/score-seo',
+    getParentRoute: () => AdminRoute,
+  } as any)
 const AdminPagesIndexRoute = AdminPagesIndexRouteImport.update({
   id: '/pages/',
   path: '/pages/',
@@ -237,6 +244,7 @@ export interface FileRoutesByFullPath {
   '/admin/configuration/coordonnees': typeof AdminConfigurationCoordonneesRoute
   '/admin/configuration/outils': typeof AdminConfigurationOutilsRoute
   '/admin/configuration/redirections': typeof AdminConfigurationRedirectionsRoute
+  '/admin/configuration/score-seo': typeof AdminConfigurationScoreSeoRoute
   '/admin/pages/$id': typeof AdminPagesIdRoute
   '/admin/configuration/': typeof AdminConfigurationIndexRoute
   '/admin/pages/': typeof AdminPagesIndexRoute
@@ -269,6 +277,7 @@ export interface FileRoutesByTo {
   '/admin/configuration/coordonnees': typeof AdminConfigurationCoordonneesRoute
   '/admin/configuration/outils': typeof AdminConfigurationOutilsRoute
   '/admin/configuration/redirections': typeof AdminConfigurationRedirectionsRoute
+  '/admin/configuration/score-seo': typeof AdminConfigurationScoreSeoRoute
   '/admin/pages/$id': typeof AdminPagesIdRoute
   '/admin/configuration': typeof AdminConfigurationIndexRoute
   '/admin/pages': typeof AdminPagesIndexRoute
@@ -304,6 +313,7 @@ export interface FileRoutesById {
   '/admin/configuration/coordonnees': typeof AdminConfigurationCoordonneesRoute
   '/admin/configuration/outils': typeof AdminConfigurationOutilsRoute
   '/admin/configuration/redirections': typeof AdminConfigurationRedirectionsRoute
+  '/admin/configuration/score-seo': typeof AdminConfigurationScoreSeoRoute
   '/admin/pages/$id': typeof AdminPagesIdRoute
   '/admin/configuration/': typeof AdminConfigurationIndexRoute
   '/admin/pages/': typeof AdminPagesIndexRoute
@@ -340,6 +350,7 @@ export interface FileRouteTypes {
     | '/admin/configuration/coordonnees'
     | '/admin/configuration/outils'
     | '/admin/configuration/redirections'
+    | '/admin/configuration/score-seo'
     | '/admin/pages/$id'
     | '/admin/configuration/'
     | '/admin/pages/'
@@ -372,6 +383,7 @@ export interface FileRouteTypes {
     | '/admin/configuration/coordonnees'
     | '/admin/configuration/outils'
     | '/admin/configuration/redirections'
+    | '/admin/configuration/score-seo'
     | '/admin/pages/$id'
     | '/admin/configuration'
     | '/admin/pages'
@@ -406,6 +418,7 @@ export interface FileRouteTypes {
     | '/admin/configuration/coordonnees'
     | '/admin/configuration/outils'
     | '/admin/configuration/redirections'
+    | '/admin/configuration/score-seo'
     | '/admin/pages/$id'
     | '/admin/configuration/'
     | '/admin/pages/'
@@ -645,6 +658,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminConfigurationRedirectionsRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/configuration/score-seo': {
+      id: '/admin/configuration/score-seo'
+      path: '/configuration/score-seo'
+      fullPath: '/admin/configuration/score-seo'
+      preLoaderRoute: typeof AdminConfigurationScoreSeoRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/pages/': {
       id: '/admin/pages/'
       path: '/pages'
@@ -671,6 +691,7 @@ interface AdminRouteChildren {
   AdminConfigurationCoordonneesRoute: typeof AdminConfigurationCoordonneesRoute
   AdminConfigurationOutilsRoute: typeof AdminConfigurationOutilsRoute
   AdminConfigurationRedirectionsRoute: typeof AdminConfigurationRedirectionsRoute
+  AdminConfigurationScoreSeoRoute: typeof AdminConfigurationScoreSeoRoute
   AdminPagesIdRoute: typeof AdminPagesIdRoute
   AdminConfigurationIndexRoute: typeof AdminConfigurationIndexRoute
   AdminPagesIndexRoute: typeof AdminPagesIndexRoute
@@ -685,6 +706,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminConfigurationCoordonneesRoute: AdminConfigurationCoordonneesRoute,
   AdminConfigurationOutilsRoute: AdminConfigurationOutilsRoute,
   AdminConfigurationRedirectionsRoute: AdminConfigurationRedirectionsRoute,
+  AdminConfigurationScoreSeoRoute: AdminConfigurationScoreSeoRoute,
   AdminPagesIdRoute: AdminPagesIdRoute,
   AdminConfigurationIndexRoute: AdminConfigurationIndexRoute,
   AdminPagesIndexRoute: AdminPagesIndexRoute,

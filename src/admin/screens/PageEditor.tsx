@@ -539,7 +539,10 @@ function ScorePanel({ score }: { score: ReturnType<typeof seoScore> }) {
           </li>
         ))}
       </ul>
-      <p className="mt-4 text-[12px] text-muted-foreground">Le score évalue ce qui dépend de la page. Le classement dans Google dépend aussi de la concurrence, des avis et de l'ancienneté du site.</p>
+      <p className="mt-4 text-[12px] text-muted-foreground">
+        Le score évalue ce qui dépend de la page. Le classement dans Google dépend aussi de la concurrence, des avis et de la notoriété du site.{" "}
+        <Link to="/admin/configuration/score-seo" className="text-accent underline-offset-4 hover:underline">Comment est calculé ce score ?</Link>
+      </p>
     </section>
   );
 }
