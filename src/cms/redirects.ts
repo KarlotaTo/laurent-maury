@@ -33,5 +33,5 @@ export function redirectResponse(redirect: Redirect, url: URL): Response {
 
 /** Adresses jamais redirigées : back-office, fichiers techniques, ressources du site. */
 export function isRedirectable(pathname: string): boolean {
-  return !/^\/(admin|_serverFn|_build|assets|images|@|__)/.test(pathname) && pathname !== "/robots.txt" && pathname !== "/sitemap.xml";
+  return !/^\/(admin|_serverFn|_build|assets|images|@|__)/.test(pathname) && pathname !== "/robots.txt" && pathname !== "/sitemap.xml" && pathname !== "/llms.txt";
 }

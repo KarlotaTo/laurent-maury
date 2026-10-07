@@ -17,6 +17,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EntrepriseRouteImport } from './routes/entreprise'
 import { Route as EntretienBatiRouteImport } from './routes/entretien-bati'
 import { Route as FacadesExterieurRouteImport } from './routes/facades-exterieur'
+import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as MursRevetementsRouteImport } from './routes/murs-revetements'
 import { Route as PeintureDecorationRouteImport } from './routes/peinture-decoration'
@@ -79,6 +80,11 @@ const EntretienBatiRoute = EntretienBatiRouteImport.update({
 const FacadesExterieurRoute = FacadesExterieurRouteImport.update({
   id: '/facades-exterieur',
   path: '/facades-exterieur',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
+  id: '/llms.txt',
+  path: '/llms.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
@@ -210,6 +216,7 @@ export interface FileRoutesByFullPath {
   '/entreprise': typeof EntrepriseRoute
   '/entretien-bati': typeof EntretienBatiRoute
   '/facades-exterieur': typeof FacadesExterieurRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/murs-revetements': typeof MursRevetementsRoute
   '/peinture-decoration': typeof PeintureDecorationRoute
@@ -242,6 +249,7 @@ export interface FileRoutesByTo {
   '/entreprise': typeof EntrepriseRoute
   '/entretien-bati': typeof EntretienBatiRoute
   '/facades-exterieur': typeof FacadesExterieurRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/murs-revetements': typeof MursRevetementsRoute
   '/peinture-decoration': typeof PeintureDecorationRoute
@@ -275,6 +283,7 @@ export interface FileRoutesById {
   '/entreprise': typeof EntrepriseRoute
   '/entretien-bati': typeof EntretienBatiRoute
   '/facades-exterieur': typeof FacadesExterieurRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/murs-revetements': typeof MursRevetementsRoute
   '/peinture-decoration': typeof PeintureDecorationRoute
@@ -310,6 +319,7 @@ export interface FileRouteTypes {
     | '/entreprise'
     | '/entretien-bati'
     | '/facades-exterieur'
+    | '/llms.txt'
     | '/mentions-legales'
     | '/murs-revetements'
     | '/peinture-decoration'
@@ -342,6 +352,7 @@ export interface FileRouteTypes {
     | '/entreprise'
     | '/entretien-bati'
     | '/facades-exterieur'
+    | '/llms.txt'
     | '/mentions-legales'
     | '/murs-revetements'
     | '/peinture-decoration'
@@ -374,6 +385,7 @@ export interface FileRouteTypes {
     | '/entreprise'
     | '/entretien-bati'
     | '/facades-exterieur'
+    | '/llms.txt'
     | '/mentions-legales'
     | '/murs-revetements'
     | '/peinture-decoration'
@@ -408,6 +420,7 @@ export interface RootRouteChildren {
   EntrepriseRoute: typeof EntrepriseRoute
   EntretienBatiRoute: typeof EntretienBatiRoute
   FacadesExterieurRoute: typeof FacadesExterieurRoute
+  LlmsDottxtRoute: typeof LlmsDottxtRoute
   MentionsLegalesRoute: typeof MentionsLegalesRoute
   MursRevetementsRoute: typeof MursRevetementsRoute
   PeintureDecorationRoute: typeof PeintureDecorationRoute
@@ -476,6 +489,13 @@ declare module '@tanstack/react-router' {
       path: '/facades-exterieur'
       fullPath: '/facades-exterieur'
       preLoaderRoute: typeof FacadesExterieurRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llms.txt': {
+      id: '/llms.txt'
+      path: '/llms.txt'
+      fullPath: '/llms.txt'
+      preLoaderRoute: typeof LlmsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mentions-legales': {
@@ -695,6 +715,7 @@ const rootRouteChildren: RootRouteChildren = {
   EntrepriseRoute: EntrepriseRoute,
   EntretienBatiRoute: EntretienBatiRoute,
   FacadesExterieurRoute: FacadesExterieurRoute,
+  LlmsDottxtRoute: LlmsDottxtRoute,
   MentionsLegalesRoute: MentionsLegalesRoute,
   MursRevetementsRoute: MursRevetementsRoute,
   PeintureDecorationRoute: PeintureDecorationRoute,
