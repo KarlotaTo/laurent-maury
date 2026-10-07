@@ -1,0 +1,177 @@
+[
+  {
+    "url": "/images/atelier.webp",
+    "format": "webp",
+    "width": 1408,
+    "height": 1008,
+    "bytes": 124608
+  },
+  {
+    "url": "/images/entretien-bati.webp",
+    "format": "webp",
+    "width": 1408,
+    "height": 1760,
+    "bytes": 448090
+  },
+  {
+    "url": "/images/facade.webp",
+    "format": "webp",
+    "width": 1408,
+    "height": 1008,
+    "bytes": 230346
+  },
+  {
+    "url": "/images/hero-interieur.webp",
+    "format": "webp",
+    "width": 1600,
+    "height": 1104,
+    "bytes": 126876
+  },
+  {
+    "url": "/images/murs-enduits.webp",
+    "format": "webp",
+    "width": 1408,
+    "height": 1760,
+    "bytes": 64990
+  },
+  {
+    "url": "/images/parquet.webp",
+    "format": "webp",
+    "width": 1408,
+    "height": 1760,
+    "bytes": 182966
+  },
+  {
+    "url": "/images/peinture-decorative.webp",
+    "format": "webp",
+    "width": 1200,
+    "height": 1504,
+    "bytes": 83844
+  },
+  {
+    "url": "/images/realisations/combles-apres.webp",
+    "format": "webp",
+    "width": 1600,
+    "height": 721,
+    "bytes": 21344
+  },
+  {
+    "url": "/images/realisations/combles-avant.webp",
+    "format": "webp",
+    "width": 1600,
+    "height": 721,
+    "bytes": 55366
+  },
+  {
+    "url": "/images/realisations/etage-poutres-parquet.webp",
+    "format": "webp",
+    "width": 1200,
+    "height": 1600,
+    "bytes": 116606
+  },
+  {
+    "url": "/images/realisations/mezzanine-charpente.webp",
+    "format": "webp",
+    "width": 1200,
+    "height": 1600,
+    "bytes": 54878
+  },
+  {
+    "url": "/images/realisations/renovation-bouloc-chambre-parquet.webp",
+    "format": "webp",
+    "width": 1170,
+    "height": 1546,
+    "bytes": 173456
+  },
+  {
+    "url": "/images/realisations/renovation-bouloc-chambre-sol-prepare.webp",
+    "format": "webp",
+    "width": 901,
+    "height": 1600,
+    "bytes": 138586
+  },
+  {
+    "url": "/images/realisations/renovation-bouloc-mur-graphique-chantier.webp",
+    "format": "webp",
+    "width": 1200,
+    "height": 1600,
+    "bytes": 174608
+  },
+  {
+    "url": "/images/realisations/renovation-bouloc-mur-graphique-detail.webp",
+    "format": "webp",
+    "width": 1200,
+    "height": 1600,
+    "bytes": 127174
+  },
+  {
+    "url": "/images/realisations/renovation-bouloc-mur-graphique-fini.webp",
+    "format": "webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 161726
+  },
+  {
+    "url": "/images/realisations/renovation-bouloc-salon-echafaudage.webp",
+    "format": "webp",
+    "width": 1200,
+    "height": 1600,
+    "bytes": 137966
+  },
+  {
+    "url": "/images/realisations/renovation-bouloc-salon-lumineux.webp",
+    "format": "webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 213782
+  },
+  {
+    "url": "/images/realisations/sejour-blanc-lumineux.webp",
+    "format": "webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 93478
+  },
+  {
+    "url": "/images/realisations/sejour-cheminee-peinture.webp",
+    "format": "webp",
+    "width": 1600,
+    "height": 720,
+    "bytes": 56518
+  },
+  {
+    "url": "/images/realisations/veranda-balma-apres.webp",
+    "format": "webp",
+    "width": 864,
+    "height": 1920,
+    "bytes": 256436
+  },
+  {
+    "url": "/images/realisations/veranda-balma-avant.webp",
+    "format": "webp",
+    "width": 866,
+    "height": 1920,
+    "bytes": 71338
+  },
+  {
+    "url": "/images/realisations/veranda-balma-hero.webp",
+    "format": "webp",
+    "width": 864,
+    "height": 1920,
+    "bytes": 231174
+  },
+  {
+    "url": "/images/realisations/veranda-balma-surfaces.webp",
+    "format": "webp",
+    "width": 1920,
+    "height": 866,
+    "bytes": 55492
+  },
+  {
+    "url": "/images/renovation.webp",
+    "format": "webp",
+    "width": 1200,
+    "height": 1504,
+    "bytes": 67152
+  }
+]
