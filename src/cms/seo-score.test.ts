@@ -81,3 +81,12 @@ describe("expression clé suggérée pour une nouvelle page", () => {
     expect(suggestKeyword("Peinture du séjour et de l’entrée")).toBe("peinture séjour entrée");
   });
 });
+
+describe("racines des mots", () => {
+  it("rapproche les mots de même famille sans confondre les autres", async () => {
+    const { contains } = await import("@/cms/seo-score");
+    expect(contains("Peinture intérieure", "peintre")).toBe(true);
+    expect(contains("Décoration", "décorateur")).toBe(true);
+    expect(contains("zones intervention", "intérieure")).toBe(false);
+  });
+});

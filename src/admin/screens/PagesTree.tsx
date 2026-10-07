@@ -3,6 +3,7 @@ import { Lock } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { fetchPages, toTree, type PageRow } from "@/admin/pages-data";
 import { useAdminSession } from "@/admin/session";
+import { useSite } from "@/cms/context";
 import { seoScore } from "@/cms/seo-score";
 import { TEMPLATE_LABELS } from "@/cms/templates";
 import { ErrorNote, inputCls } from "@/admin/ui";
@@ -11,6 +12,7 @@ const date = (iso: string) => new Date(iso).toLocaleDateString("fr-FR");
 
 export function PagesTreeScreen() {
   const { role } = useAdminSession();
+  const site = useSite();
   const [pages, setPages] = useState<PageRow[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
@@ -88,9 +90,9 @@ export function PagesTreeScreen() {
                       )}
                     </td>
                     <td className="px-4 py-3">
-                      {p.draft ? (() => {
+                      {p.draft && p.template !== "legal" ? (() => {
                         const others = (pages ?? []).filter((o) => o.id !== p.id && o.draft).map((o) => ({ path: o.path, seo: o.draft!.seo, blocks: [] }));
-                        const s = seoScore({ path: p.path, seo: p.draft.seo, blocks: p.draft.blocks }, others).score;
+                        const s = seoScore({ path: p.path, seo: p.draft!.seo, blocks: p.draft!.blocks }, others, { places: [...site.zones.map((z) => z.name), "Toulouse", "Balma"], faq: site.faq }).score;
                         const cls = s >= 80 ? "bg-emerald-50 text-emerald-800" : s >= 50 ? "bg-amber-50 text-amber-800" : "bg-rose-50 text-rose-800";
                         return <span className={`rounded-full px-2.5 py-1 text-[12px] font-medium ${cls}`}>{s}</span>;
                       })() : "—"}

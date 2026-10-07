@@ -69,20 +69,51 @@ function firstParagraph(blocks: BlockInstance[]): string {
   return "";
 }
 
-/** L'expression est-elle présente (tous ses mots significatifs, dans n'importe quel ordre) ? */
-export function contains(text: string, keyword: string): boolean {
-  const words = normalize(keyword).split(" ").filter((w) => w.length > 2);
-  if (!words.length) return false;
-  const hay = ` ${normalize(text)} `;
-  return words.every((w) => hay.includes(` ${w}`) );
+/** Racine d'un mot : 5 lettres (6 pour les mots longs) — « peintre » ≈ « peinture », mais « intérieure » ≠ « intervention ». */
+const stem = (w: string) => (w.length >= 8 ? w.slice(0, 6) : w.length >= 6 ? w.slice(0, 5) : w);
+
+/** Mots significatifs d'une expression (plus de 2 lettres). */
+const keywordWords = (keyword: string) => normalize(keyword).split(" ").filter((w) => w.length > 2);
+
+function hasWord(text: string, word: string): boolean {
+  return ` ${normalize(text)} `.includes(` ${stem(word)}`);
 }
 
-export function seoScore(page: ScoredPage, otherPages: ScoredPage[] = []): SeoScore {
+/** L'expression est-elle présente (tous ses mots significatifs, dans n'importe quel ordre, à la racine près) ? */
+export function contains(text: string, keyword: string): boolean {
+  const words = keywordWords(keyword);
+  return words.length > 0 && words.every((w) => hasWord(text, w));
+}
+
+/**
+ * Adresse de la page : au moins la moitié des mots de l'expression, hors noms de communes
+ * (une page qui couvre tout le secteur n'a pas à porter la ville dans son adresse).
+ * La page d'accueil en est dispensée.
+ */
+function pathMatches(path: string, keyword: string, places: string[]): boolean {
+  if (path === "/") return true;
+  const placeWords = new Set(places.flatMap((p) => keywordWords(p)));
+  const words = keywordWords(keyword).filter((w) => !placeWords.has(w));
+  const target = path.replace(/[-/]/g, " ");
+  if (words.length === 0) return keywordWords(keyword).some((w) => hasWord(target, w));
+  const found = words.filter((w) => hasWord(target, w)).length;
+  return found >= Math.max(1, Math.ceil(words.length / 2));
+}
+
+export type ScoreOptions = {
+  /** Noms des communes du site (non exigés dans l'adresse d'une page). */
+  places?: string[];
+  /** Questions fréquentes du site : comptées dans le texte des pages qui les affichent. */
+  faq?: { question: string; answer: string; category?: string | undefined }[];
+};
+
+export function seoScore(page: ScoredPage, otherPages: ScoredPage[] = [], options: ScoreOptions = {}): SeoScore {
   const blocks = page.blocks.filter((b) => !b.hidden);
   const outline = outlineOf(blocks);
   const h1s = outline.filter((h) => h.level === "h1");
   const h2s = outline.filter((h) => h.level === "h2" && h.text);
-  const allText = texts(blocks.map((b) => b.data)).join(" ");
+  const faqShown = blocks.some((b) => b.type === "faq") ? (options.faq ?? []).map((q) => `${q.question} ${plain(q.answer)}`) : [];
+  const allText = [...texts(blocks.map((b) => b.data)), ...faqShown].join(" ");
   const words = allText.split(/\s+/).filter((w) => /\p{L}/u.test(w)).length;
   const imgs = images(blocks.map((b) => b.data)).filter((i) => i.src);
   const missingAlt = imgs.filter((i) => i.alt.trim().length < 5).length;
@@ -105,7 +136,7 @@ export function seoScore(page: ScoredPage, otherPages: ScoredPage[] = []): SeoSc
       ["H1", h1s.some((h) => contains(h.text, keyword))],
       ["description Google", contains(description, keyword)],
       ["premier paragraphe", contains(firstParagraph(blocks), keyword)],
-      ["adresse de la page", contains(page.path.replace(/[-/]/g, " "), keyword)],
+      ["adresse de la page", pathMatches(page.path, keyword, options.places ?? [])],
     ] as const;
     const missing = spots.filter(([, ok]) => !ok).map(([where]) => where);
     add("keyword", "Expression clé bien placée", 25, (spots.length - missing.length) * 5,

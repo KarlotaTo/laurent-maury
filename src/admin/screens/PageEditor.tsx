@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { z } from "zod";
 import { FieldEditor, type FormEnv } from "@/admin/form/FieldEditor";
 import { useAdminSession } from "@/admin/session";
+import { useSite } from "@/cms/context";
 import { adminDb } from "@/admin/supabase";
 import { btnDark, btnGhost, btnPrimary, ErrorNote, inputCls, SuccessNote } from "@/admin/ui";
 import { deleteDraftPage, DUPLICABLE_TEMPLATES, duplicatePage, publishPage, savePageDraft } from "@/cms/admin-server";
@@ -52,6 +53,7 @@ function summary(block: BlockInstance): string {
 
 export function PageEditorScreen({ pageId }: { pageId: string }) {
   const { role, session } = useAdminSession();
+  const site = useSite();
   const isSuper = role === "super";
   const [row, setRow] = useState<Row | null>(null);
   const [draft, setDraft] = useState<Draft | null>(null);
@@ -200,7 +202,9 @@ export function PageEditorScreen({ pageId }: { pageId: string }) {
   const score = seoScore(
     { path: row.path, seo: draft.seo, blocks: draft.blocks },
     pages.filter((p) => p.id !== row.id && p.seo).map((p) => ({ path: p.path, seo: p.seo!, blocks: [] })),
+    { places: [...site.zones.map((z) => z.name), "Toulouse", "Balma"], faq: site.faq },
   );
+  const scored = row.template !== "legal";
   const scoreCls = score.score >= 80 ? "bg-emerald-50 text-emerald-800" : score.score >= 50 ? "bg-amber-50 text-amber-800" : "bg-rose-50 text-rose-800";
 
   const status = !row.published_version_id ? (
@@ -221,9 +225,11 @@ export function PageEditorScreen({ pageId }: { pageId: string }) {
           <div className="mt-1 flex flex-wrap items-center gap-3">
             <h1 className="font-display text-4xl">{row.label}</h1>
             {status}
-            <button type="button" onClick={() => { setPreview(false); setTab("seo"); }} className={`rounded-full px-2.5 py-1 text-[12px] font-medium ${scoreCls}`} title="Voir le détail du score SEO">
-              SEO {score.score}/100
-            </button>
+            {scored ? (
+              <button type="button" onClick={() => { setPreview(false); setTab("seo"); }} className={`rounded-full px-2.5 py-1 text-[12px] font-medium ${scoreCls}`} title="Voir le détail du score SEO">
+                SEO {score.score}/100
+              </button>
+            ) : null}
             {dirty ? <span className="text-[13px] text-muted-foreground">· modifications non enregistrées</span> : null}
           </div>
         </div>
@@ -407,7 +413,7 @@ export function PageEditorScreen({ pageId }: { pageId: string }) {
             <div className="space-y-8">
               <SeoTab draft={draft} setDraft={setDraft} path={row.path} isSuper={isSuper} locked={lockedPage} />
               <div className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]">
-                <ScorePanel score={score} />
+                {scored ? <ScorePanel score={score} /> : <p className="rounded-xl border border-line p-5 text-[14px] text-muted-foreground">Page légale : pas de score SEO, elle n'a pas vocation à se positionner dans Google.</p>}
                 <OutlinePanel blocks={draft.blocks} />
               </div>
             </div>

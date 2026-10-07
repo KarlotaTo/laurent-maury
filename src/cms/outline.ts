@@ -67,7 +67,12 @@ export function outlineOf(blocks: BlockInstance[]): OutlineEntry[] {
         }
       } else {
         const value = data[path];
-        out.push({ level, text: typeof value === "string" ? clean(value) : "", blockId: block.id });
+        let text = typeof value === "string" ? clean(value) : "";
+        // Le début de titre invisible fait partie du H1 lu par Google.
+        if (level === "h1" && typeof data["titleSeoPrefix"] === "string" && data["titleSeoPrefix"]) {
+          text = `${clean(String(data["titleSeoPrefix"]))} : ${text}`;
+        }
+        out.push({ level, text, blockId: block.id });
       }
     }
   }
