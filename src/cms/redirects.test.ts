@@ -28,7 +28,7 @@ describe("redirections", () => {
   });
   it("ne redirige jamais le back-office ni les ressources", () => {
     expect(isRedirectable("/admin")).toBe(false);
-    expect(isRedirectable("/images/a.jpg")).toBe(false);
+    expect(isRedirectable("/images/a.webp")).toBe(false);
     expect(isRedirectable("/_serverFn/x")).toBe(false);
     expect(isRedirectable("/ancienne-page")).toBe(true);
   });

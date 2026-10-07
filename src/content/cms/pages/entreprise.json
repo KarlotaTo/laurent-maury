@@ -33,7 +33,7 @@
         "title": "Une histoire de famille, un métier de main",
         "intro": "Dans la famille Maury, le métier se transmet de génération en génération. Un arrière-grand-père contremaître, un père et un oncle artisans : Laurent a grandi au milieu des chantiers. En 1994, il fonde à son tour son entreprise de rénovation à Bouloc. Aujourd'hui, c'est à son fils qu'il transmet ses gestes.",
         "image": {
-          "src": "/images/atelier.jpg",
+          "src": "/images/atelier.webp",
           "alt": "Outils d'artisan peintre : brosses, couteaux et nuancier sur un établi"
         },
         "chantier": []

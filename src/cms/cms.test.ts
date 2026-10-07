@@ -68,7 +68,7 @@ describe("garde-fous", () => {
   });
 
   it("une photo sans description est refusée", () => {
-    const data = { ...blockRegistry["feature"]!.example, image: { src: "/images/atelier.jpg", alt: "" } };
+    const data = { ...blockRegistry["feature"]!.example, image: { src: "/images/atelier.webp", alt: "" } };
     expect(checkBlock({ id: "x", type: "feature", data }).ok).toBe(false);
   });
 

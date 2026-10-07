@@ -43,7 +43,7 @@
         "title": "Entreprise de rénovation intérieure à L'Union",
         "intro": "Rénover plusieurs pièces à L'Union sans jongler entre les artisans : Laurent Maury prend en charge peinture, décoration, sols et revêtements dans un seul chantier, suivi de A à Z.",
         "image": {
-          "src": "/images/renovation.jpg",
+          "src": "/images/renovation.webp",
           "alt": "Travaux de rénovation clé en main par Laurent Maury"
         }
       }
@@ -89,7 +89,7 @@
             "label": "Rénovation intérieure",
             "text": "Rénovation intérieure complète, un seul interlocuteur.",
             "image": {
-              "src": "/images/renovation.jpg",
+              "src": "/images/renovation.webp",
               "alt": "Rénovation intérieure — savoir-faire de Laurent Maury"
             }
           },
@@ -98,7 +98,7 @@
             "label": "Peinture & décoration",
             "text": "Peinture et décoration, de la teinte au mur graphique.",
             "image": {
-              "src": "/images/peinture-decorative.jpg",
+              "src": "/images/peinture-decorative.webp",
               "alt": "Peinture & décoration — savoir-faire de Laurent Maury"
             }
           },
@@ -107,7 +107,7 @@
             "label": "Sols & parquets",
             "text": "Pose et rénovation de parquet.",
             "image": {
-              "src": "/images/parquet.jpg",
+              "src": "/images/parquet.webp",
               "alt": "Sols & parquets — savoir-faire de Laurent Maury"
             }
           },
@@ -116,7 +116,7 @@
             "label": "Murs & revêtements",
             "text": "Placo, isolation, enduits et revêtements muraux.",
             "image": {
-              "src": "/images/murs-enduits.jpg",
+              "src": "/images/murs-enduits.webp",
               "alt": "Murs & revêtements — savoir-faire de Laurent Maury"
             }
           }
@@ -136,17 +136,17 @@
           "label": "Voir la réalisation"
         },
         "before": {
-          "src": "/images/realisations/renovation-bouloc-mur-graphique-chantier.jpeg",
+          "src": "/images/realisations/renovation-bouloc-mur-graphique-chantier.webp",
           "alt": "Salon en cours de rénovation à Bouloc, mur graphique en préparation"
         },
         "after": {
-          "src": "/images/realisations/renovation-bouloc-mur-graphique-fini.jpeg",
+          "src": "/images/realisations/renovation-bouloc-mur-graphique-fini.webp",
           "alt": "Salon rénové à Bouloc avec mur graphique noir"
         },
         "beforeLabel": "Chantier",
         "afterLabel": "Après",
         "extra": {
-          "src": "/images/realisations/renovation-bouloc-chambre-parquet.jpeg",
+          "src": "/images/realisations/renovation-bouloc-chambre-parquet.webp",
           "alt": "Chambre rénovée avec parquet naturel dans une maison de Bouloc"
         }
       }

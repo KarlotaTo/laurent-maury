@@ -82,7 +82,7 @@ export const heroSplit = defineBlock({
     eyebrow: "Réalisations",
     title: "Nos réalisations",
     intro: "Une introduction.",
-    image: { src: "/images/hero-interieur.jpg", alt: "Description" },
+    image: { src: "/images/hero-interieur.webp", alt: "Description" },
   },
   render: ({ data, ctx }) => (
     <section className="border-b border-line bg-background">
@@ -189,7 +189,7 @@ export const beforeAfterWide = defineBlock({
     eyebrow: "Avant / après",
     title: "Une transformation",
     paragraphs: ["Faites glisser le curseur."],
-    comparison: { before: { src: "/images/renovation.jpg", alt: "Avant" }, after: { src: "/images/hero-interieur.jpg", alt: "Après" } },
+    comparison: { before: { src: "/images/renovation.webp", alt: "Avant" }, after: { src: "/images/hero-interieur.webp", alt: "Après" } },
   },
   render: ({ data, background, ctx }) => (
     <Section tone={background === "light" ? "light" : "sand"}>
@@ -329,7 +329,7 @@ export const projectHero = defineBlock({
     eyebrow: "Réalisation · Commune",
     title: "Titre de la réalisation",
     intro: "Une introduction.",
-    image: { src: "/images/renovation.jpg", alt: "Description", width: 1600, height: 1200 },
+    image: { src: "/images/renovation.webp", alt: "Description", width: 1600, height: 1200 },
     focus: "center",
   },
   render: ({ data, ctx }) => (
@@ -454,7 +454,7 @@ export const projectGallery = defineBlock({
   example: {
     eyebrow: "Galerie",
     title: "En images",
-    images: [{ src: "/images/renovation.jpg", alt: "Description", width: 1600, height: 1200 }],
+    images: [{ src: "/images/renovation.webp", alt: "Description", width: 1600, height: 1200 }],
   },
   render: ({ data, background, ctx }) => (
     <ProjectSection background={background === "sand" ? "sand" : "light"}>

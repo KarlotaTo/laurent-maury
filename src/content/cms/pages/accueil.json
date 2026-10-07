@@ -21,7 +21,7 @@
         "title": "L'art de rénover,\n*transmis* depuis\nquatre générations",
         "intro": "Il y a des maisons qu'on repeint et d'autres qu'on réinvente. Rénovation clé en main ou chantier ciblé : Laurent Maury et son fils mènent votre projet de A à Z, avec un seul interlocuteur, à Bouloc et dans tout le nord de Toulouse.",
         "image": {
-          "src": "/images/hero-interieur.jpg",
+          "src": "/images/hero-interieur.webp",
           "alt": "Séjour rénové avec mur peint en bleu nuit, murs clairs et parquet en chêne"
         }
       }
@@ -50,7 +50,7 @@
             "label": "Peinture & décoration",
             "text": "Peintures à effet, textures, chaux, home staging.",
             "image": {
-              "src": "/images/peinture-decorative.jpg",
+              "src": "/images/peinture-decorative.webp",
               "alt": "Application d'un enduit à la chaux au spalter sur un mur intérieur"
             }
           },
@@ -59,7 +59,7 @@
             "label": "Sols & parquets",
             "text": "Parquet massif cloué, point de Hongrie, rénovation.",
             "image": {
-              "src": "/images/parquet.jpg",
+              "src": "/images/parquet.webp",
               "alt": "Parquet en chêne massif rénové posé en point de Hongrie"
             }
           },
@@ -68,7 +68,7 @@
             "label": "Murs & revêtements",
             "text": "Enduits, placo, isolation.",
             "image": {
-              "src": "/images/murs-enduits.jpg",
+              "src": "/images/murs-enduits.webp",
               "alt": "Mur intérieur enduit et poncé avant mise en peinture"
             }
           },
@@ -77,7 +77,7 @@
             "label": "Rénovation intérieure",
             "text": "De la pièce à la maison, clé en main.",
             "image": {
-              "src": "/images/renovation.jpg",
+              "src": "/images/renovation.webp",
               "alt": "Chantier de rénovation intérieure avec sols protégés et cloisons neuves"
             }
           },
@@ -86,7 +86,7 @@
             "label": "Façades & extérieur",
             "text": "Ravalement, fissures, peinture de façade.",
             "image": {
-              "src": "/images/facade.jpg",
+              "src": "/images/facade.webp",
               "alt": "Façade de maison en cours de ravalement"
             }
           },
@@ -95,7 +95,7 @@
             "label": "Entretien & bâti",
             "text": "Clôtures, boiseries, entretien extérieur.",
             "image": {
-              "src": "/images/entretien-bati.jpg",
+              "src": "/images/entretien-bati.webp",
               "alt": "Entretien extérieur d'une maison : toiture et clôture"
             }
           }
@@ -121,7 +121,7 @@
           "label": "Découvrir la rénovation intérieure"
         },
         "image": {
-          "src": "/images/atelier.jpg",
+          "src": "/images/atelier.webp",
           "alt": "Outils d'artisan peintre : brosses, couteaux et nuancier sur un établi"
         }
       }

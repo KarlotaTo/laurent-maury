@@ -43,7 +43,7 @@
         "title": "Peintre et entreprise de rénovation à Grenade",
         "intro": "Bastide aux maisons anciennes et quartiers plus récents, Grenade réunit des besoins très différents. Laurent Maury y intervient à l'intérieur comme à l'extérieur : peinture, rénovation intérieure, peinture et ravalement de façade.",
         "image": {
-          "src": "/images/facade.jpg",
+          "src": "/images/facade.webp",
           "alt": "Travaux de intérieur & façades par Laurent Maury"
         }
       }
@@ -89,7 +89,7 @@
             "label": "Façades & extérieur",
             "text": "Peinture de façade, ravalement, traitement des fissures, clôtures et boiseries.",
             "image": {
-              "src": "/images/facade.jpg",
+              "src": "/images/facade.webp",
               "alt": "Façades & extérieur — savoir-faire de Laurent Maury"
             }
           },
@@ -98,7 +98,7 @@
             "label": "Entretien & bâti",
             "text": "Entretien extérieur et reprises du bâti.",
             "image": {
-              "src": "/images/entretien-bati.jpg",
+              "src": "/images/entretien-bati.webp",
               "alt": "Entretien & bâti — savoir-faire de Laurent Maury"
             }
           },
@@ -107,7 +107,7 @@
             "label": "Peinture & décoration",
             "text": "Peinture intérieure et décoration.",
             "image": {
-              "src": "/images/peinture-decorative.jpg",
+              "src": "/images/peinture-decorative.webp",
               "alt": "Peinture & décoration — savoir-faire de Laurent Maury"
             }
           },
@@ -116,7 +116,7 @@
             "label": "Rénovation intérieure",
             "text": "Rénovation intérieure complète ou ciblée.",
             "image": {
-              "src": "/images/renovation.jpg",
+              "src": "/images/renovation.webp",
               "alt": "Rénovation intérieure — savoir-faire de Laurent Maury"
             }
           },
@@ -125,7 +125,7 @@
             "label": "Murs & revêtements",
             "text": "Placo, isolation, enduits et revêtements.",
             "image": {
-              "src": "/images/murs-enduits.jpg",
+              "src": "/images/murs-enduits.webp",
               "alt": "Murs & revêtements — savoir-faire de Laurent Maury"
             }
           }
@@ -145,17 +145,17 @@
           "label": "Voir la réalisation"
         },
         "before": {
-          "src": "/images/realisations/renovation-bouloc-mur-graphique-chantier.jpeg",
+          "src": "/images/realisations/renovation-bouloc-mur-graphique-chantier.webp",
           "alt": "Salon en cours de rénovation à Bouloc, mur graphique en préparation"
         },
         "after": {
-          "src": "/images/realisations/renovation-bouloc-mur-graphique-fini.jpeg",
+          "src": "/images/realisations/renovation-bouloc-mur-graphique-fini.webp",
           "alt": "Salon rénové à Bouloc avec mur graphique noir"
         },
         "beforeLabel": "Chantier",
         "afterLabel": "Après",
         "extra": {
-          "src": "/images/realisations/renovation-bouloc-chambre-parquet.jpeg",
+          "src": "/images/realisations/renovation-bouloc-chambre-parquet.webp",
           "alt": "Chambre rénovée avec parquet naturel dans une maison de Bouloc"
         }
       }

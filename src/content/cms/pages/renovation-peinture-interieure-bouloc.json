@@ -13,7 +13,7 @@
     "type": "Rénovation intérieure",
     "summary": "Rénovation intérieure à Bouloc : mise en peinture du salon, nouvelles couleurs et pose d’un parquet naturel dans la chambre.",
     "image": {
-      "src": "/images/realisations/renovation-bouloc-mur-graphique-detail.jpeg",
+      "src": "/images/realisations/renovation-bouloc-mur-graphique-detail.webp",
       "alt": "Mur graphique noir dans un salon rénové à Bouloc"
     }
   },
@@ -58,7 +58,7 @@
         "title": "Rénovation et peinture intérieure d’une maison à Bouloc",
         "intro": "Isabelle souhaitait redonner de la lumière et de la fraîcheur à son intérieur. Les anciennes peintures étaient devenues ternes et plusieurs pièces ont été repensées avec de nouvelles couleurs, des finitions plus contemporaines et un travail de rénovation adapté à chaque espace.",
         "image": {
-          "src": "/images/realisations/renovation-bouloc-salon-lumineux.jpeg",
+          "src": "/images/realisations/renovation-bouloc-salon-lumineux.webp",
           "alt": "Salon rénové et repeint en blanc à Bouloc",
           "width": 1600,
           "height": 1200
@@ -100,11 +100,11 @@
         ],
         "comparison": {
           "before": {
-            "src": "/images/realisations/renovation-bouloc-mur-graphique-chantier.jpeg",
+            "src": "/images/realisations/renovation-bouloc-mur-graphique-chantier.webp",
             "alt": "Mur graphique noir en cours de réalisation, mobilier protégé dans le salon"
           },
           "after": {
-            "src": "/images/realisations/renovation-bouloc-mur-graphique-fini.jpeg",
+            "src": "/images/realisations/renovation-bouloc-mur-graphique-fini.webp",
             "alt": "Mur graphique noir dans un salon repeint en blanc à Bouloc"
           },
           "beforeLabel": "Chantier",
@@ -139,11 +139,11 @@
         ],
         "comparison": {
           "before": {
-            "src": "/images/realisations/renovation-bouloc-chambre-sol-prepare.jpeg",
+            "src": "/images/realisations/renovation-bouloc-chambre-sol-prepare.webp",
             "alt": "Préparation et isolation du sol avant la pose du parquet, mur vert matcha"
           },
           "after": {
-            "src": "/images/realisations/renovation-bouloc-chambre-parquet.jpeg",
+            "src": "/images/realisations/renovation-bouloc-chambre-parquet.webp",
             "alt": "Chambre rénovée avec parquet naturel flottant à Bouloc"
           },
           "beforeLabel": "Préparation",
@@ -160,13 +160,13 @@
         "title": "La transformation en images",
         "images": [
           {
-            "src": "/images/realisations/renovation-bouloc-salon-echafaudage.jpeg",
+            "src": "/images/realisations/renovation-bouloc-salon-echafaudage.webp",
             "alt": "Échafaudage installé pour les travaux de peinture en hauteur dans le salon",
             "width": 1200,
             "height": 1600
           },
           {
-            "src": "/images/realisations/renovation-bouloc-mur-graphique-detail.jpeg",
+            "src": "/images/realisations/renovation-bouloc-mur-graphique-detail.webp",
             "alt": "Détail du mur graphique noir et des murs blancs du salon",
             "width": 1200,
             "height": 1600

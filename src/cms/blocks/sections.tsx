@@ -103,7 +103,7 @@ export const heroHome = defineBlock({
     titleSeoPrefix: "",
     title: "Un titre,\n*sur deux* lignes",
     intro: "Une introduction de deux ou trois phrases.",
-    image: { src: "/images/hero-interieur.jpg", alt: "Description de la photo" },
+    image: { src: "/images/hero-interieur.webp", alt: "Description de la photo" },
   },
   render: ({ data, ctx }) => (
     <section className="relative">
@@ -240,7 +240,7 @@ export const feature = defineBlock({
     title: "Un titre fort",
     text: "Un texte court qui développe le titre.",
     steps: ["Première étape", "Deuxième étape", "Troisième étape"],
-    image: { src: "/images/atelier.jpg", alt: "Description de la photo" },
+    image: { src: "/images/atelier.webp", alt: "Description de la photo" },
   },
   render: ({ data, ctx }) => (
     <Section tone="dark">
@@ -430,7 +430,7 @@ export const serviceCards = defineBlock({
       link: "/",
       label: `Savoir-faire ${n}`,
       text: "Une phrase de présentation.",
-      image: { src: "/images/parquet.jpg", alt: "Description de la photo" },
+      image: { src: "/images/parquet.webp", alt: "Description de la photo" },
     })),
   },
   render: ({ data, background, ctx }) => (
@@ -694,7 +694,7 @@ export const zoneHero = defineBlock({
     eyebrow: "Artisan rénovation · Commune",
     title: "Entreprise de rénovation à Commune",
     intro: "Une introduction de deux ou trois phrases sur la commune.",
-    image: { src: "/images/renovation.jpg", alt: "Description de la photo" },
+    image: { src: "/images/renovation.webp", alt: "Description de la photo" },
   },
   render: ({ data, ctx }) => (
     <section className="border-b border-line bg-background">
@@ -789,7 +789,7 @@ export const linkedServices = defineBlock({
   example: {
     eyebrow: "Savoir-faire",
     title: "Les travaux réalisés",
-    items: [{ link: "/peinture-decoration", label: "Peinture & décoration", text: "Un texte.", image: { src: "/images/peinture-decorative.jpg", alt: "Description" } }],
+    items: [{ link: "/peinture-decoration", label: "Peinture & décoration", text: "Un texte.", image: { src: "/images/peinture-decorative.webp", alt: "Description" } }],
   },
   render: ({ data, background, ctx }) => (
     <Section tone={background === "light" ? "light" : "sand"}>
@@ -838,8 +838,8 @@ export const showcase = defineBlock({
     title: "Une rénovation en images",
     lead: "Un texte court.",
     link: { href: "/realisations", label: "Voir la réalisation" },
-    before: { src: "/images/renovation.jpg", alt: "Avant" },
-    after: { src: "/images/hero-interieur.jpg", alt: "Après" },
+    before: { src: "/images/renovation.webp", alt: "Avant" },
+    after: { src: "/images/hero-interieur.webp", alt: "Après" },
     beforeLabel: "Avant",
     afterLabel: "Après",
   },

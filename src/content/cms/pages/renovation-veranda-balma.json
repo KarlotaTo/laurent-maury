@@ -13,7 +13,7 @@
     "type": "Papier peint",
     "summary": "Retrait de l’ancien papier peint, préparation des surfaces et pose d’un papier peint végétal dans une véranda à Balma.",
     "image": {
-      "src": "/images/realisations/veranda-balma-hero.jpeg",
+      "src": "/images/realisations/veranda-balma-hero.webp",
       "alt": "Véranda rénovée avec papier peint végétal à Balma"
     }
   },
@@ -58,7 +58,7 @@
         "title": "Rénovation intérieure d’une véranda à Balma",
         "intro": "À Balma, Laurent Maury est intervenu pour donner un nouveau caractère à cette véranda. L’ancien papier peint a été retiré afin de laisser place à un nouveau décor végétal, transformant l’atmosphère de cette pièce lumineuse.",
         "image": {
-          "src": "/images/realisations/veranda-balma-hero.jpeg",
+          "src": "/images/realisations/veranda-balma-hero.webp",
           "alt": "Véranda rénovée avec papier peint végétal à Balma",
           "width": 864,
           "height": 1920
@@ -113,11 +113,11 @@
         ],
         "comparison": {
           "before": {
-            "src": "/images/realisations/veranda-balma-avant.jpeg",
+            "src": "/images/realisations/veranda-balma-avant.webp",
             "alt": "Véranda avant la pose du papier peint, ancien revêtement retiré"
           },
           "after": {
-            "src": "/images/realisations/veranda-balma-apres.jpeg",
+            "src": "/images/realisations/veranda-balma-apres.webp",
             "alt": "Pose d’un papier peint végétal dans une véranda à Balma"
           }
         }
@@ -136,13 +136,13 @@
         ],
         "gallery": [
           {
-            "src": "/images/realisations/veranda-balma-surfaces.jpeg",
+            "src": "/images/realisations/veranda-balma-surfaces.webp",
             "alt": "Murs de la véranda préparés après le retrait de l’ancien papier peint",
             "width": 1920,
             "height": 866
           },
           {
-            "src": "/images/realisations/veranda-balma-hero.jpeg",
+            "src": "/images/realisations/veranda-balma-hero.webp",
             "alt": "Rénovation intérieure d’une véranda à Balma",
             "width": 864,
             "height": 1920
